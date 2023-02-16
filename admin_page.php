@@ -93,7 +93,6 @@ if (isset($_GET['delete'])) {
                 <h3>add a new product</h3>
                 <input type="text" placeholder="enter product name" name="product_name" class="box">
                 <input type="number" placeholder="enter product price" name="product_price" class="box">
-
                 <input type="text" placeholder="enter product description" name="product_description" class="box">
                 <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="box">
                 <input type="submit" class="btn" name="add_product" value="add product">
