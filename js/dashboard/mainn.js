@@ -5,17 +5,31 @@
   - id on button add
 */
 
+
+
 ///////////////////////////// Burger menu ////////////////////////////////////////////////
 function hide() {
     var side = document.getElementById("side");
     side.classList.toggle("translate-position");
 }
 
+
+
+
+// ///////////////////////////// edit Form ////////////////////////////////////////////////////
+
+// document.getElementById("edit-button").addEventListener("click", function() {
+//     document.querySelector(".popup2").style.display = "flex";
+// });
+
+// document.querySelector(".close2").addEventListener("click", function() {
+//     document.querySelector(".popup2").style.display = "none";
+// });
 ///////////////////////////// Add Form ////////////////////////////////////////////////////
+
 document.querySelector(".close").addEventListener("click", function() {
     document.querySelector(".popup").style.display = "none";
 });
-
 
 document.getElementById("add-button").addEventListener("click", function() {
     document.querySelector(".popup").style.display = "flex";
@@ -24,6 +38,7 @@ document.getElementById("add-button").addEventListener("click", function() {
 document.querySelector(".edit").addEventListener("click", function() {
     document.querySelector(".popup").style.display = "flex";
 });
+
 
 
 //////////////////////////// Form Validation /////////////////////////////////////////////

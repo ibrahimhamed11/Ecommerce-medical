@@ -38,13 +38,13 @@
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="doctor.html">
+                    <a class="d-flex align-items-center" href="doctor_admin.php">
                         <i class="fa-solid fa-stethoscope"></i>
                         <span>Doctor</span>
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="pharmacies.html">
+                    <a class="active d-flex align-items-center" href="pharmacies_admin.php">
                         <i class="fa-solid fa-prescription-bottle-medical"></i>
                         <span>Pharmacies</span>
                     </a>
@@ -62,7 +62,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="active d-flex align-items-center" href="order.html">
+                    <a class="d-flex align-items-center" href="order.html">
                         <i class="fa-regular fa-circle-user fa-fw"></i>
                         <span>Order</span>
                     </a>
@@ -129,18 +129,17 @@
             <!-- start patient table -->
             <div class="patient bg-white">
                 <div class="table-header">
-                    <h2>ORDERS LIST</h2>
-                    <a href="#" id="add-button">Add order</a>
+                    <h2>PHARMACIES LIST</h2>
+                    <a href="#" id="add-button">Add pharmacy</a>
                 </div>
                 <div class="responsive-table">
                     <table>
                         <thead>
                             <tr>
-                                <td>Client Name</td>
-                                <td>Client Address</td>
-                                <td>Pharmacy Name</td>
-                                <td>Pharmacy Address</td>
-                                <td>Price</td>
+                                <td>Name</td>
+                                <td>Address</td>
+                                <td>Phone</td>
+                                <td>Email</td>
                                 <td>Action</td>
                             </tr>
                         </thead>
@@ -148,9 +147,8 @@
                             <tr>
                                 <td>Angelica</td>
                                 <td>Linden Avenue, Orlando</td>
-                                <td>Abdeen</td>
-                                <td>Linden Avenue, Orlando</td>
-                                <td>50LE</td>
+                                <td>(797) 506 1265</td>
+                                <td>angelicaramos@example.com</td>
                                 <td class="d-flex">
                                     <a href="#" class="edit col-5 text-center">
                                         <i class="fa-solid fa-pen-to-square"></i>

@@ -81,7 +81,7 @@ function doctorsCard($doctorname, $price,$specialization,$doctordescription,$adr
                                 <span class=\"price\">$price LE</span>
                             </h5>
                             <button type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\">Add to Cart <i class=\"fas fa-shopping-cart\"></i></button>
-                             <input type='hidden' name='doctor_id' value='$doctorid'>
+                             <input type='hidden' name='doctors_id' value='$doctorid'>
                         </div>
                     </div>
                 </form>

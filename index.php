@@ -107,9 +107,6 @@ if (isset($_POST['add'])){
                     All medicines are dispensed from pharmacies licensed by the Ministry of Health in the Arab Republic
                     of Egypt
                 </p>
-
-
-
                 <div class="card-close">
                     <button type="button" class="closebtn">×</button>
 

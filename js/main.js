@@ -8,6 +8,4 @@ function fixedNav() {
         nav.classList.remove('sticky');
     }
 }
-
 window.addEventListener('scroll', fixedNav);
-
