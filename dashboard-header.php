@@ -8,7 +8,7 @@
     <!-- Font Awesome css file -->
     <link rel="stylesheet" href="css/all.min.css" />
     <!-- Our css file -->
-    <link rel="stylesheet" href="css/nn.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
     <!-- Google Fonts links -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
