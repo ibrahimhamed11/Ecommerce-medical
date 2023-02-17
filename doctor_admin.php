@@ -1,56 +1,41 @@
 <?php
 //connect to db 
-session_start();
-// print_r($_SESSION);
-// if (!isset($_SESSION["user"])) {
-//    header("Location:login.php");
-
-//    // print_r($_SESSION);
-
-// }
-
 @include 'config.php';
 //validation
 if (isset($_POST['add_doctor'])) {
-   //get data from user
-   $doctor_name = $_POST['doctor_name'];
-   $doctor_adress = $_POST['adress'];
-   $doctor_specialization= $_POST['specialization'];
-   $doctor_price = $_POST['examination_price'];
-   $doctor_phone = $_POST['doctor_phone'];
-   $doctor_email=$_POST['doctor_email'];
-   $doctor_description =$_POST['doctor_descrip'];
-   $doctor_image = $_FILES['doctor_img']['name'];
-   $doctor_image_tmp_name = $_FILES['doctor_img']['tmp_name'];
-   $doctor_image_folder = 'upload/' . $doctor_image;
-   //validation 
-   if (empty($doctor_name) || empty($doctor_price)|| empty($doctor_adress)) {
-      $message[] = 'please fill out all';
-   } else {
-      $insert = "INSERT INTO doctors(doctor_name,doctor_adress,specialization,examination_price,doctor_phone,doctor_email,doctor_descrip,doctor_img)
-       VALUES('$doctor_name','$doctor_adress','$doctor_specialization','$doctor_price','$doctor_phone','$doctor_email','$doctor_description', '$doctor_image')";
-      $upload = mysqli_query($conn, $insert);
-      if ($upload) {
-         move_uploaded_file($doctor_image_tmp_name, $doctor_image_folder);
-         $message[] = 'new doctor added successfully';
-      } else {
-         $message[] = 'could not add the doctor';
-      }
-   }};
+//get data from user
+$doctor_name = $_POST['doctor_name'];
+$doctor_adress = $_POST['doctor_adress'];
+$doctor_specialization= $_POST['specialization'];
+$examination_price= $_POST['examination_price'];
+$doctor_phone = $_POST['doctor_phone'];
+$doctor_email=$_POST['doctor_email'];
+$doctor_description =$_POST['doctor_descrip'];
+$doctor_image = $_FILES['doctor_img']['name'];
+$doctor_image_tmp_name = $_FILES['doctor_img']['tmp_name'];
+$doctor_image_folder = 'upload/' . $doctor_image;
+//validation 
+if (empty($doctor_name) || empty($doctor_price)|| empty($doctor_adress)) {
+$message[] = 'please fill out all';
+} else {
+$insert = "INSERT INTO doctors(doctor_name,doctor_adress,specialization,examination_price,doctor_phone,doctor_email,doctor_descrip,doctor_img)
+VALUES('$doctor_name','$doctor_adress','$doctor_specialization','$examination_price','$doctor_phone','$doctor_email','$doctor_description', '$doctor_image')";
+$upload = mysqli_query($conn, $insert);
+if ($upload) {
+move_uploaded_file($doctor_image_tmp_name, $doctor_image_folder);
+$message[] = 'new doctor added successfully';
+} else {
+$message[] = 'could not add the doctor';
+}
+}};
 //delete product
 if (isset($_GET['delete'])) {
-   $id = $_GET['delete'];
-   //mysql quiry 
-   mysqli_query($conn, "DELETE FROM doctors WHERE doctors_id  = $id");
-   // return user in same page 
-   header('location:doctor_admin.php');
+$id = $_GET['delete'];
+//mysql quiry 
+mysqli_query($conn, "DELETE FROM doctors WHERE doctors_id  = $id");
+// return user in same page 
+header('location:doctor_admin.php');
 };?>
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,7 +49,7 @@ if (isset($_GET['delete'])) {
     <!-- Font Awesome css file -->
     <link rel="stylesheet" href="css/all.min.css" />
     <!-- Our css file -->
-    <link rel="stylesheet" href="css/new.css" />
+    <link rel="stylesheet" href="css/nn.css" />
     <!-- Google Fonts links -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -73,13 +58,11 @@ if (isset($_GET['delete'])) {
 
 <body>
     <?php
-
 if (isset($message)) {
-   foreach ($message as $message) {
-      echo '<span class="message">' . $message . '</span>';
-   }
+foreach ($message as $message) {
+echo '<span class="message">' . $message . '</span>';
 }
-
+}
 ?>
     <div class="page d-flex">
         <div id="side" class="sidebar">
@@ -100,7 +83,7 @@ if (isset($message)) {
                     </a>
                 </li>
                 <li>
-                    <a class="active d-flex align-items-center" href="doctor.html">
+                    <a class="active d-flex align-items-center" href="doctor_admin.php">
                         <i class="fa-solid fa-stethoscope"></i>
                         <span>Doctor</span>
                     </a>
@@ -158,12 +141,10 @@ if (isset($message)) {
                     <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>" id="addForm"
                         enctype="multipart/form-data">
 
-
                         <div class="input-control mb-3">
                             <input type="file" accept="image/png, image/jpeg, image/jpg" name="doctor_img" class="box">
                             <div class="error"></div>
                         </div>
-
                         <div class="input-control mb-3">
                             <input type="text" class="form-control" id="validateName" placeholder="Name"
                                 name="doctor_name" />
@@ -208,6 +189,8 @@ if (isset($message)) {
 
                     </form>
                 </div>
+                <!------------------------------------------------------------------------------------------->
+
             </div>
             <!-- end form -->
             <?php
@@ -230,6 +213,7 @@ $select = mysqli_query($conn, "SELECT * FROM doctors");
                                 <td>Specialization</td>
                                 <td>Phone</td>
                                 <td>Email</td>
+                                <td>Examination</td>
                                 <td>Action</td>
                             </tr>
                         </thead>
@@ -255,6 +239,12 @@ $select = mysqli_query($conn, "SELECT * FROM doctors");
                                 </td>
 
                                 <td>
+                                    <?php echo $row['examination_price']; ?>
+                                </td>
+
+
+
+                                <td>
                                     <a href="doctor_admin.php?delete=<?php echo $row['doctors_id']; ?>" class="btn"> <i
                                             class="fas fa-trash"></i>
                                         delete </a>
@@ -265,11 +255,14 @@ $select = mysqli_query($conn, "SELECT * FROM doctors");
                                 </td>
                             </tr>
                             </tr>
-
+                            <?php } ?>
                         </tbody>
+
+
                     </table>
-                    <?php } ?>
+
                 </div>
+
             </div>
             <!-- end patiente -->
         </div>
@@ -281,11 +274,9 @@ $select = mysqli_query($conn, "SELECT * FROM doctors");
 <!-- Font Awesome js file -->
 <script src="js/dashboard/all.min.js"></script>
 <!-- Our js file -->
-<script src="js/dashboard/main.js"></script>
-<script>
-document.querySelector(".close").addEventListener("click", function() {
-    document.querySelector(".popup").style.display = "none";
-});
-</script>
+
+
+<script src="js/dashboard/mainn.js"></script>
+
 
 </html>
