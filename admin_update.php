@@ -3,9 +3,10 @@
 // @include 'config.php';
 require_once("config.php");
 // get data from 
-$id = $_GET['edit'];
 
+$id = $_GET['edit'];
 if (isset($_POST['update_product'])) {
+   
    $product_name = $_POST['product_name'];
    $product_price = $_POST['product_price'];
    $product_image = $_FILES['product_image']['name'];
@@ -70,6 +71,8 @@ if (isset($_POST['update_product'])) {
                     placeholder="enter the product name">
                 <input type="number" min="0" class="box" name="product_price"
                     value="<?php echo $row['product_price']; ?>" placeholder="enter the product price">
+
+                    
                 <input type="file" class="box" name="product_image" accept="image/png, image/jpeg, image/jpg">
                 <input type="submit" value="update product" name="update_product" class="btn">
                 <a href="admin_page.php" class="btn">go back!</a>
