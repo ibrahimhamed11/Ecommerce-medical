@@ -49,80 +49,143 @@ echo '<span class="message">' . $message . '</span>';
 }
 }
 ?>
-    <?php
-    @include 'dashboard-body.php';
-    ?>
+    <div class="page d-flex">
+        <div id="side" class="sidebar">
+            <!-- logo -->
+            <div class="logo text-center text-white">
+                <a class="logo__icon d-block text-light fw-bold" href="dashboard.html"><i
+                        class="fa-solid fa-hand-holding-medical"></i>
+                    Re<span>ع</span>aya</a>
+                <a class="img__link d-block" href="#"><img class="img-fluid" src="images/admin.png" alt="Admin" /></a>
+                <h5 class="mt-2 mb-2 fw-semibold">Dr.Mohammed</h5>
+                <h6 class="mb-3">Admin</h6>
+            </div>
+            <ul>
+                <li>
+                    <a class="d-flex align-items-center" href="dashboard.html">
+                        <i class="fa-regular fa-chart-bar fa-fw"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="active d-flex align-items-center" href="doctor_admin.php">
+                        <i class="fa-solid fa-stethoscope"></i>
+                        <span>Doctor</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-items-center" href="pharmacies_admin.php">
+                        <i class="fa-solid fa-prescription-bottle-medical"></i>
+                        <span>Pharmacies</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-items-center" href="patient.html">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Patient</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-items-center" href="appointment.html">
+                        <i class="fa-regular fa-square-check"></i>
+                        <span>Appointment</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-items-center" href="order.html">
+                        <i class="fa-regular fa-circle-user fa-fw"></i>
+                        <span>Order</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-items-center" href="admin.html">
+                        <i class="fa-regular fa-circle-user fa-fw"></i>
+                        <span>Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <!-- start head -->
+            <div class="head">
+                <div onclick="hide()" class="menu">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="icon d-flex align-items-center">
+                    <img src="images/admin.png" alt="" />
+                </div>
+            </div>
+            <!-- end head -->
+            <!-- start form -->
+            <div class="popedit" id="pop">
+                <div class="form-container">
 
-    <!-- start form -->
-    <div class="popedit" id="pop">
-        <div class="form-container">
-
-            <?php
+                    <?php
 $select = mysqli_query($conn, "SELECT * FROM doctors WHERE doctors_id  = '$id'");
 while ($row = mysqli_fetch_assoc($select)) {
 ?>
-            <form method="post" id="addForm" enctype="multipart/form-data">
-                <div class="input-control mb-3">
-                    <input type="file" class="box" name="doctor_img" accept="image/png, image/jpeg, image/jpg">
-                    <!-- <div class="error"></div> -->
-                </div>
-                <div class="input-control mb-3">
-                    <input type="text" class="form-control" id="validateName" name="doctor_name"
-                        value="<?php echo $row['doctor_name']; ?>" />
-                    <!-- <div class="error"></div> -->
-                </div>
-                <div class="input-control mb-3">
-                    <input type="text" class="form-control" id="validateEmail" placeholder="Email" name="doctor_email"
-                        value="<?php echo $row['doctor_email']; ?>" />
-                    <!-- <div class="error"></div> -->
-                </div>
-                <div class="input-control mb-3">
-                    <input type="text" class="form-control" id="validatePhone" placeholder="Phone" name="doctor_phone"
-                        value="<?php echo $row['doctor_phone']; ?>" />
-                    <!-- <div class="error"></div> -->
-                </div>
-                <div class="input-control mb-3">
-                    <input type="text" class="form-control" id="validateSpecialization"
-                        placeholder="Doctor Descripition" name="doctor_descrip"
-                        value="<?php echo $row['doctor_descrip']; ?>" />
-                    <!-- <div class="error"></div> -->
-                </div>
-                <div class="input-control mb-3">
-                    <input type="text" class="form-control" id="validateSpecialization" placeholder="specialization"
-                        value="<?php echo $row['specialization']; ?>" />
-                    <!-- <div class="error"></div> -->
-                </div>
-                <div class="input-control mb-3">
-                    <input type="text" class="form-control" id="validateAddress" placeholder="Address"
-                        name="doctor_adress" value="<?php echo $row['doctor_adress']; ?>" />
-                    <!-- <div class="error"></div> -->
-                </div>
-                <div class="input-control mb-3">
-                    <input type="text" class="form-control" id="validateAddress" placeholder="Examination price"
-                        name="examination_price" value="<?php echo $row['examination_price']; ?>" />
-                    <!-- <div class="error"></div> -->
-                </div>
-                <div class="input-control mb-3 mt-4">
-                    <input type="submit" class="form-control btn btn-outline-primary" id="submit" name="update_doctor"
-                        value="update doctor" />
-                </div>
-                <div class="input-control mb-3 mt-4">
-                    <a href="doctor_admin.php"> <input type="submit!" class="form-control btn btn-outline-primary"
-                            id="submit" value="go back!" /></a>
-                </div>
-            </form>
-            <?php }
+                    <form method="post" id="addForm" enctype="multipart/form-data">
+                        <div class="input-control mb-3">
+                            <input type="file" class="box" name="doctor_img" accept="image/png, image/jpeg, image/jpg">
+                            <!-- <div class="error"></div> -->
+                        </div>
+                        <div class="input-control mb-3">
+                            <input type="text" class="form-control" id="validateName" name="doctor_name"
+                                value="<?php echo $row['doctor_name']; ?>" />
+                            <!-- <div class="error"></div> -->
+                        </div>
+                        <div class="input-control mb-3">
+                            <input type="text" class="form-control" id="validateEmail" placeholder="Email"
+                                name="doctor_email" value="<?php echo $row['doctor_email']; ?>" />
+                            <!-- <div class="error"></div> -->
+                        </div>
+                        <div class="input-control mb-3">
+                            <input type="text" class="form-control" id="validatePhone" placeholder="Phone"
+                                name="doctor_phone" value="<?php echo $row['doctor_phone']; ?>" />
+                            <!-- <div class="error"></div> -->
+                        </div>
+                        <div class="input-control mb-3">
+                            <input type="text" class="form-control" id="validateSpecialization"
+                                placeholder="Doctor Descripition" name="doctor_descrip"
+                                value="<?php echo $row['doctor_descrip']; ?>" />
+                            <!-- <div class="error"></div> -->
+                        </div>
+                        <div class="input-control mb-3">
+                            <input type="text" class="form-control" id="validateSpecialization"
+                                placeholder="specialization" value="<?php echo $row['specialization']; ?>" />
+                            <!-- <div class="error"></div> -->
+                        </div>
+                        <div class="input-control mb-3">
+                            <input type="text" class="form-control" id="validateAddress" placeholder="Address"
+                                name="doctor_adress" value="<?php echo $row['doctor_adress']; ?>" />
+                            <!-- <div class="error"></div> -->
+                        </div>
+                        <div class="input-control mb-3">
+                            <input type="text" class="form-control" id="validateAddress" placeholder="Examination price"
+                                name="examination_price" value="<?php echo $row['examination_price']; ?>" />
+                            <!-- <div class="error"></div> -->
+                        </div>
+                        <div class="input-control mb-3 mt-4">
+                            <input type="submit" class="form-control btn btn-outline-primary" id="submit"
+                                name="update_doctor" value="update doctor" />
+                        </div>
+                        <div class="input-control mb-3 mt-4">
+                            <a href="doctor_admin.php"> <input type="submit!"
+                                    class="form-control btn btn-outline-primary" id="submit" value="go back!" /></a>
+                        </div>
+                    </form>
+                    <?php }
          ; ?>
+                </div>
+                <!------------------------------------------------------------------------------------------->
+
+            </div>
+            <!-- end form -->
+
+            <!-- start patient table -->
+
+            <!-- end patiente -->
         </div>
-        <!------------------------------------------------------------------------------------------->
-
-    </div>
-    <!-- end form -->
-
-    <!-- start patient table -->
-
-    <!-- end patiente -->
-    </div>
     </div>
 
 </body>
