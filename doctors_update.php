@@ -42,27 +42,21 @@ if (empty($doctor_name) || empty($examination_price)) {
 ?>
 
 <body>
-    <?php
-if (isset($message)) {
-foreach ($message as $message) {
-echo '<span class="message">' . $message . '</span>';
-}
-}
-?>
+
     <div class="page d-flex">
         <div id="side" class="sidebar">
             <!-- logo -->
             <div class="logo text-center text-white">
-                <a class="logo__icon d-block text-light fw-bold" href="dashboard.html"><i
+                <a class="logo__icon d-block text-light fw-bold" href="dashboard.php"><i
                         class="fa-solid fa-hand-holding-medical"></i>
                     Re<span>ع</span>aya</a>
                 <a class="img__link d-block" href="#"><img class="img-fluid" src="images/admin.png" alt="Admin" /></a>
-                <h5 class="mt-2 mb-2 fw-semibold">Dr.Mohammed</h5>
+                <h5 class="mt-2 mb-2 fw-semibold">Dr</h5>
                 <h6 class="mb-3">Admin</h6>
             </div>
             <ul>
                 <li>
-                    <a class="d-flex align-items-center" href="dashboard.html">
+                    <a class="d-flex align-items-center" href="dashboard.php">
                         <i class="fa-regular fa-chart-bar fa-fw"></i>
                         <span>Dashboard</span>
                     </a>
@@ -80,32 +74,41 @@ echo '<span class="message">' . $message . '</span>';
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="patient.html">
+                    <a class="d-flex align-items-center" href="patient.php">
                         <i class="fa-solid fa-user"></i>
                         <span>Patient</span>
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="appointment.html">
+                    <a class="d-flex align-items-center" href="appointment.php">
                         <i class="fa-regular fa-square-check"></i>
                         <span>Appointment</span>
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="order.html">
+                    <a class="d-flex align-items-center" href="order.php">
                         <i class="fa-regular fa-circle-user fa-fw"></i>
                         <span>Order</span>
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="admin.html">
+                    <a class="d-flex align-items-center" href="admin.php">
                         <i class="fa-regular fa-circle-user fa-fw"></i>
                         <span>Admin</span>
                     </a>
                 </li>
             </ul>
         </div>
+
+
         <div class="content">
+            <?php
+if (isset($message)) {
+foreach ($message as $message) {
+echo '<span class="message">' . $message . '</span>';
+}
+}
+?>
             <!-- start head -->
             <div class="head">
                 <div onclick="hide()" class="menu">

@@ -37,9 +37,9 @@ document.getElementById("add-button").addEventListener("click", function() {
     document.querySelector(".popup").style.display = "flex";
 });
 
-document.querySelector(".edit").addEventListener("click", function() {
-    document.querySelector(".popup").style.display = "flex";
-});
+// document.querySelector(".edit").addEventListener("click", function() {
+//     document.querySelector(".popup").style.display = "flex";
+// });
 
 
 

@@ -45,19 +45,19 @@ if (isset($_POST['update_product'])) {
 
 <body>
 
-    <?php
+
+
+    <div class="container">
+
+
+        <div class="admin-product-form-container centered">
+            <?php
    if (isset($message)) {
       foreach ($message as $message) {
          echo '<span class="message">' . $message . '</span>';
       }
    }
    ?>
-
-    <div class="container">
-
-
-        <div class="admin-product-form-container centered">
-
             <?php
 
          $select = mysqli_query($conn, "SELECT * FROM producttb WHERE id = '$id'");

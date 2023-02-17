@@ -17,8 +17,6 @@ if (isset($_POST['add_product'])) {
    $product_name = $_POST['product_name'];
    $product_price = $_POST['product_price'];
    $product_description = $_POST['product_description'];
-
-
    $product_image = $_FILES['product_image']['name'];
    $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
    $product_image_folder = 'upload/' . $product_image;
@@ -148,3 +146,37 @@ if (isset($_GET['delete'])) {
 </body>
 
 </html>
+
+
+
+
+
+
+<form method="post" action="<?php $_SERVER['PHP_SELF'] ?>" id="addForm" enctype="multipart/form-data">
+
+    <h3>add a new product</h3>
+
+    <div class="input-control mb-3">
+        <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_img" class="box">
+        <!-- <div class="error"></div> -->
+    </div>
+
+    <div class="input-control mb-3">
+        <input type="text" class="form-control" placeholder="product_name" name="product_name" />
+        <div class="error"></div>
+    </div>
+    <div class="input-control mb-3">
+        <input type="text" class="form-control" placeholder="product_price" name="product_price" />
+        <!-- <div class="error"></div> -->
+    </div>
+    <div class="input-control mb-3">
+        <input type="text" class="form-control" placeholder="product_description" name="product_description" />
+        <!-- <div class="error"></div> -->
+    </div>
+
+    <div class="input-control mb-3 mt-4">
+        <input type="submit" class="form-control btn btn-outline-primary" id="submit" name="add_product"
+            value="add_product" />
+    </div>
+
+</form>

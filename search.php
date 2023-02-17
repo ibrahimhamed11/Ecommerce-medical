@@ -115,7 +115,6 @@
         $sql = "SELECT * FROM producttb WHERE product_name LIKE 
         '%$search%' OR product_description LIKE '%$search%'
         ";
-
         //execute the query
 
         $res = mysqli_query($con, $sql);

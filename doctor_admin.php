@@ -3,39 +3,42 @@
 @include 'config.php';
 //validation
 if (isset($_POST['add_doctor'])) {
-   //get data from user
-   $doctor_name = $_POST['doctor_name'];
-   $doctor_adress = $_POST['adress'];
-   $doctor_specialization= $_POST['specialization'];
-   $doctor_price = $_POST['examination_price'];
-   $doctor_phone = $_POST['doctor_phone'];
-   $doctor_email=$_POST['doctor_email'];
-   $doctor_description =$_POST['doctor_descrip'];
-   $doctor_image = $_FILES['doctor_img']['name'];
-   $doctor_image_tmp_name = $_FILES['doctor_img']['tmp_name'];
-   $doctor_image_folder = 'upload/' . $doctor_image;
-   //validation 
-   if (empty($doctor_name) || empty($doctor_price)|| empty($doctor_adress)) {
-      $message[] = 'please fill out all';
-   } else {
-      $insert = "INSERT INTO doctors(doctor_name,doctor_adress,specialization,examination_price,doctor_phone,doctor_email,doctor_descrip,doctor_img)
+    //get data from user
+    $doctor_name = $_POST['doctor_name'];
+    $doctor_adress = $_POST['adress'];
+    $doctor_specialization = $_POST['specialization'];
+    $doctor_price = $_POST['examination_price'];
+    $doctor_phone = $_POST['doctor_phone'];
+    $doctor_email = $_POST['doctor_email'];
+    $doctor_description = $_POST['doctor_descrip'];
+    $doctor_image = $_FILES['doctor_img']['name'];
+    $doctor_image_tmp_name = $_FILES['doctor_img']['tmp_name'];
+    $doctor_image_folder = 'upload/' . $doctor_image;
+    //validation 
+    if (empty($doctor_name) || empty($doctor_price) || empty($doctor_adress)) {
+        $message[] = 'please fill out all';
+    } else {
+        $insert = "INSERT INTO doctors(doctor_name,doctor_adress,specialization,examination_price,doctor_phone,doctor_email,doctor_descrip,doctor_img)
        VALUES('$doctor_name','$doctor_adress','$doctor_specialization','$doctor_price','$doctor_phone','$doctor_email','$doctor_description', '$doctor_image')";
-      $upload = mysqli_query($conn, $insert);
-      if ($upload) {
-         move_uploaded_file($doctor_image_tmp_name, $doctor_image_folder);
-         $message[] = 'new doctor added successfully';
-      } else {
-         $message[] = 'could not add the doctor';
-      }
-   }};
+        $upload = mysqli_query($conn, $insert);
+        if ($upload) {
+            move_uploaded_file($doctor_image_tmp_name, $doctor_image_folder);
+            $message[] = 'New doctor added successfully';
+        } else {
+            $message[] = 'Could not add the doctor';
+        }
+    }
+}
+;
 //delete product
 if (isset($_GET['delete'])) {
-$id = $_GET['delete'];
-//mysql quiry 
-mysqli_query($conn, "DELETE FROM doctors WHERE doctors_id  = $id");
-// return user in same page 
-header('location:doctor_admin.php');
-};?>
+    $id = $_GET['delete'];
+    //mysql quiry 
+    mysqli_query($conn, "DELETE FROM doctors WHERE doctors_id  = $id");
+    // return user in same page 
+    header('location:doctor_admin.php');
+}
+; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,22 +47,19 @@ header('location:doctor_admin.php');
 ?>
 
 <body>
-    <?php
-if (isset($message)) {
-foreach ($message as $message) {
-echo '<span class="message">' . $message . '</span>';
-}
-}
-?>
+
     <div class="page d-flex">
+
         <div id="side" class="sidebar">
+
+
             <!-- logo -->
             <div class="logo text-center text-white">
                 <a class="logo__icon d-block text-light fw-bold" href="dashboard.html"><i
                         class="fa-solid fa-hand-holding-medical"></i>
                     Re<span>ع</span>aya</a>
                 <a class="img__link d-block" href="#"><img class="img-fluid" src="images/admin.png" alt="Admin" /></a>
-                <h5 class="mt-2 mb-2 fw-semibold">Dr.Mohammed</h5>
+                <h5 class="mt-2 mb-2 fw-semibold">Dr</h5>
                 <h6 class="mb-3">Admin</h6>
             </div>
             <ul>
@@ -108,6 +108,7 @@ echo '<span class="message">' . $message . '</span>';
             </ul>
         </div>
         <div class="content">
+
             <!-- start head -->
             <div class="head">
                 <div onclick="hide()" class="menu">
@@ -119,14 +120,20 @@ echo '<span class="message">' . $message . '</span>';
             </div>
             <!-- end head -->
 
+            <?php
+            if (isset($message)) {
+                foreach ($message as $message) {
+                    echo '<span class="message">' . $message . '</span>';
+                }
+            }
+            ?>
             <!-- start form -->
             <div class="popup">
                 <div class="form-container">
                     <div class="close">
                         <i class="fa-solid fa-circle-xmark"></i>
                     </div>
-                    <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>" id="addForm"
-                        enctype="multipart/form-data">
+                    <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data">
 
 
                         <div class="input-control mb-3">
@@ -173,7 +180,7 @@ echo '<span class="message">' . $message . '</span>';
 
                         <div class="input-control mb-3 mt-4">
                             <input type="submit" class="form-control btn btn-outline-primary" id="submit"
-                                name="add_doctor" value="add_doctor" />
+                                name="add_doctor" value="Add doctor" />
                         </div>
 
                     </form>
@@ -182,8 +189,8 @@ echo '<span class="message">' . $message . '</span>';
             <!-- end form -->
             <?php
 
-$select = mysqli_query($conn, "SELECT * FROM doctors");
-?>
+            $select = mysqli_query($conn, "SELECT * FROM doctors");
+            ?>
             <!-- start patient table -->
             <div class="patient bg-white">
                 <div class="table-header">

@@ -470,3 +470,13 @@ ul {
     width: 40px;
     height: 20px;
 }
+
+.message {
+    display: block;
+    background: var(--bg-color);
+    padding: 1.5rem 1rem;
+    font-size: 2rem;
+    color: var(--black);
+    margin-bottom: 2rem;
+    text-align: center;
+}
