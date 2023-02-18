@@ -62,7 +62,7 @@ if (isset($_GET['delete'])) {
                         class="fa-solid fa-hand-holding-medical"></i>
                     Re<span>ع</span>aya</a>
                 <a class="img__link d-block" href="#"><img class="img-fluid" src="images/admin.png" alt="Admin" /></a>
-                <h5 class="mt-2 mb-2 fw-semibold">Dr</h5>
+                <h5 class="mt-2 mb-2 fw-semibold">Admin</h5>
                 <h6 class="mb-3">Admin</h6>
             </div>
             <ul>
