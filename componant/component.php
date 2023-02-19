@@ -5,7 +5,7 @@ function component($productname, $productprice,$productdescription, $productimg,
 
     
     <div class=\"col-md-3 col-sm-6 my-3 my-md-0\">
-                <form action=\"index.php\" method=\"post\">
+                <form action=\"pharmacies.php\" method=\"post\">
                     <div class=\"card shadow\">
                         <div>
                             <img src=\"upload\\$productimg\" alt=\"Image1\" height=\"100\"   class=\"img-fluid card-img-top\" >

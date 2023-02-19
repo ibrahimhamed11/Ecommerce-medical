@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once ('CreateDb.php');
-require_once ('component.php');
+require_once ('componant/CreateDb.php');
+require_once ('componant/component.php');
 
 
 // create instance of Createdb class
@@ -76,22 +76,22 @@ if (isset($_POST['add'])){
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3 active" aria-current="page" href="index.html">HOME</a>
+                            <a class="nav-link p-1 p-lg-3 active" aria-current="page" href="index.php">HOME</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="PHARMACEIES.html">PHARMACEIES</a>
+                            <a class="nav-link p-1 p-lg-3" href="pharmacies.php">PHARMACEIES</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="doctor.html">DOCTORS</a>
+                            <a class="nav-link p-1 p-lg-3" href="doctor.php">DOCTORS</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="contact.html">CONTACT</a>
+                            <a class="nav-link p-1 p-lg-3" href="contact.php">CONTACT</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="join us.html">JOIN</a>
+                            <a class="nav-link p-1 p-lg-3" href="join us.php">JOIN</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="donate.html">DONATE</a>
+                            <a class="nav-link p-1 p-lg-3" href="donate.php">DONATE</a>
                         </li>
                     </ul>
                 </div>

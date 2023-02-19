@@ -1,0 +1,128 @@
+:root {
+    --blue-color: #009efb;
+    --black-color: #18100f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Quicksand", sans-serif;
+}
+
+
+/********Nav Bar*******/
+
+.images span {
+    color: #18100f;
+    font-size: 1.5em;
+}
+
+.images span h {
+    color: #009ffb;
+    font-size: 1.5em;
+}
+
+.images img {
+    width: 70px;
+}
+
+
+/********Nav Bar*******/
+
+
+/*  */
+
+
+/* Start Form */
+
+.section-one {
+    background-image: url(../images/images.png), url(../images/images2.png);
+    background-repeat: no-repeat;
+    background-size: 50px;
+    background-position: 18% 4%, 79% 73%;
+}
+
+.container .form {
+    background-image: url(../images/1db315228240eb2ed1a3432ab564f4f6.png);
+    /* height: 600px; */
+    object-fit: cover;
+    vertical-align: middle;
+    background-size: cover;
+    background-position: 0% 20%;
+    background-repeat: no-repeat;
+}
+
+.form {
+    width: 40%;
+    margin: 0px auto;
+    background-color: #f4f6f9;
+    padding: 15px;
+    box-shadow: 2px 1px 6px 0px #2490eb;
+}
+
+.form_butt {
+    background-color: #009efb;
+}
+
+
+/* End Form */
+
+
+/* Start Table */
+
+.table {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.table thead {
+    background-color: #f4f6f9;
+}
+
+.table svg {
+    color: #009efb;
+}
+
+
+/* End Table */
+
+
+/********************************************************************/
+
+
+/* Srart footer */
+
+.section_end {
+    color: white;
+    background-color: #009ffb;
+}
+
+.section_end img {
+    width: 120px;
+}
+
+.section_end i {
+    font-size: 20px;
+    color: white;
+    padding: 0;
+}
+
+.section_end span {
+    color: white;
+    font-size: 1.5em;
+}
+
+.section_end span h {
+    color: #18100f;
+    font-size: 1.5em;
+}
+
+
+/* End footer */
+
+.iconn {
+    padding: 0px;
+}

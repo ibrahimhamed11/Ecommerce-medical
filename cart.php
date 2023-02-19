@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-require_once ("CreateDb.php");
-require_once ("component.php");
+require_once ("componant/CreateDb.php");
+require_once ("componant/component.php");
 //new object from db connectin 
 $db = new CreateDb("Productdb", "Producttb");
 //validation
@@ -45,7 +45,7 @@ if (isset($_POST['remove'])){
 </head>
 
 <body class="bg-light">
-     <!-- start nav -->
+    <!-- start nav -->
     <div class="pharmaceies-page">
         <nav class="navbar navbar-expand-lg navbar-light nav sticky-top p-0">
             <div class="container">
@@ -66,7 +66,7 @@ if (isset($_POST['remove'])){
                             <a class="nav-link p-1 p-lg-3 active" aria-current="page" href="index.html">HOME</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="index.php">PHARMACEIES</a>
+                            <a class="nav-link p-1 p-lg-3" href="pharmacies.php">PHARMACEIES</a>
                         </li>
                         <li class="nav-item align-self-center">
                             <a class="nav-link p-1 p-lg-3" href="doctor.html">DOCTORS</a>

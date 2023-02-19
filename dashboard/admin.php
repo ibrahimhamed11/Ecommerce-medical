@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-@include 'dashboard-header.php';
-?>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Users</title>
+    <!-- Bootstrap css file -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <!-- Font Awesome css file -->
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <!-- Our css file -->
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <!-- Google Fonts links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" />
+</head>
 
 <body>
     <div class="page d-flex">
         <div id="side" class="sidebar">
             <!-- logo -->
             <div class="logo text-center text-white">
-                <a class="logo__icon d-block text-light fw-bold" href="dashboard.php"><i
+                <a class="logo__icon d-block text-light fw-bold" href="home.php"><i
                         class="fa-solid fa-hand-holding-medical"></i>
                     Re<span>ع</span>aya</a>
-                <a class="img__link d-block" href="#"><img class="img-fluid" src="images/admin.png" alt="Admin" /></a>
-                <h5 class="mt-2 mb-2 fw-semibold">Dr.Mohammed</h5>
+                <a class="img__link d-block" href="#"><img class="img-fluid" src="/images/admin.png" alt="Admin" /></a>
+                <h5 class="mt-2 mb-2 fw-semibold">Admin</h5>
                 <h6 class="mb-3">Admin</h6>
             </div>
             <ul>
                 <li>
-                    <a class="d-flex align-items-center" href="dashboard.php">
+                    <a class="d-flex align-items-center" href="home.php">
                         <i class="fa-regular fa-chart-bar fa-fw"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="doctor.php">
+                    <a class=" d-flex align-items-center" href="doctors.php">
                         <i class="fa-solid fa-stethoscope"></i>
                         <span>Doctor</span>
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="pharmacies.php">
+                    <a class=" d-flex align-items-center" href="products.php">
                         <i class="fa-solid fa-prescription-bottle-medical"></i>
-                        <span>Pharmacies</span>
+                        <span>Products</span>
                     </a>
                 </li>
+                <li>
+                    <a class=" d-flex align-items-center" href="pharmacies.php">
+                        <i class="fa-solid fa-prescription-bottle-medical"></i>
+                        <span>Pharmacies Users</span>
+                    </a>
+                </li>
+
                 <li>
                     <a class="d-flex align-items-center" href="patient.php">
                         <i class="fa-solid fa-user"></i>
@@ -43,7 +63,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="active d-flex align-items-center" href="appointment.php">
+                    <a class="d-flex align-items-center" href="appointment.php">
                         <i class="fa-regular fa-square-check"></i>
                         <span>Appointment</span>
                     </a>
@@ -55,7 +75,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="admin.php">
+                    <a class=" active d-flex align-items-center" href="admin.php">
                         <i class="fa-regular fa-circle-user fa-fw"></i>
                         <span>Admin</span>
                     </a>
@@ -116,18 +136,17 @@
             <!-- start patient table -->
             <div class="patient bg-white">
                 <div class="table-header">
-                    <h2>APPOINTMENTS LIST</h2>
-                    <a href="#" id="add-button">Add appointment</a>
+                    <h2>ADMINS LIST</h2>
+                    <a href="#" id="add-button">Add admin</a>
                 </div>
                 <div class="responsive-table">
                     <table>
                         <thead>
                             <tr>
-                                <td>Client Name</td>
-                                <td>Client Address</td>
-                                <td>Client Phone</td>
-                                <td>Client Email</td>
-                                <td>When</td>
+                                <td>Name</td>
+                                <td>Address</td>
+                                <td>Phone</td>
+                                <td>Email</td>
                                 <td>Action</td>
                             </tr>
                         </thead>
@@ -137,7 +156,6 @@
                                 <td>Linden Avenue, Orlando</td>
                                 <td>(797) 506 1265</td>
                                 <td>angelicaramos@example.com</td>
-                                <td>5PM 20/02/2023</td>
                                 <td class="d-flex">
                                     <a href="#" class="edit col-5 text-center">
                                         <i class="fa-solid fa-pen-to-square"></i>
@@ -156,10 +174,11 @@
     </div>
 </body>
 <!-- Bootstrap js file -->
-<script src="js/bootstrap.bundle.min.js"></script>
+<script src="../js/dashboard/bootstrap.bundle.min.js"></script>
 <!-- Font Awesome js file -->
-<script src="js/all.min.js"></script>
+<script src="../js/dashboard/all.min.js"></script>
 <!-- Our js file -->
-<script src="js/main.js"></script>
+<script src="../js/dashboard/main.js"></script>
+
 
 </html>
