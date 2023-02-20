@@ -36,7 +36,7 @@ if (isset($_GET['delete'])) {
     //mysql quiry 
     mysqli_query($conn, "DELETE FROM doctors WHERE doctors_id  = $id");
     // return user in same page 
-    header('location:doctor_admin.php');
+    header('location:doctors.php');
 }
 ; ?>
 <!DOCTYPE html>
@@ -98,7 +98,7 @@ if (isset($_GET['delete'])) {
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="pharmacies.php">
+                    <a class="d-flex align-items-center" href="pharmacie_users.php">
                         <i class="fa-solid fa-prescription-bottle-medical"></i>
                         <span>Pharmacies Users</span>
                     </a>

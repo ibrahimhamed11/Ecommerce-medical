@@ -1,51 +1,53 @@
 <?php
 //connect to db 
-session_start();
-
 @include '../componant/config.php';
 //validation
-if (isset($_POST['add_product'])) {
-   //get data from user
-   $product_name = $_POST['product_name'];
-   $product_price = $_POST['product_price'];
-   $product_description = $_POST['product_description'];
-   $product_image = $_FILES['product_image']['name'];
-   $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
-   $product_image_folder = 'upload/' . $product_image;
-   //validation 
-print_r($product_name);
-   if (empty($product_name) || empty($product_price) || empty($product_image)) {
-      $message[] = 'please fill out all';
-   } else {
-      $insert = "INSERT INTO producttb(product_name, product_price,product_description,product_image) VALUES('$product_name', '$product_price','$product_description', '$product_image')";
-      $upload = mysqli_query($conn, $insert);
-      if ($upload) {
-         move_uploaded_file($product_image_tmp_name, $product_image_folder);
-         $message[] = 'new product added successfully';
-      } else {
-         $message[] = 'could not add the product';
-      }
-   }
 
-}
-;
-//delete product
+if (isset($_POST['add_pharmacie'])) {
+    //get data from user
+    $pharmacie_name = $_POST['doctor_name'];
+    $pharmacie_adress = $_POST['doctor_adress'];
+    $pharmacie_phone = $_POST['doctor_phone'];
+    $pharmacie_email = $_POST['doctor_email'];
+    $pahrmacie_password = $_POST['doctor_pass'];
+    // $rule=$_POST['rule'];
+
+    //validation 
+    if (empty($pharmacie_name) ){
+        $message[] = 'please fill out all';
+        print_r("True");
+
+
+    } else {
+        $insert = "INSERT INTO doctors(doctor_name,doctor_adress,doctor_phone,doctor_email,doctor_pass,rule)
+       VALUES ('$pharmacie_name','$pharmacie_adress','$pharmacie_phone','$pharmacie_email','$pahrmacie_password','pharmacie')";
+        $upload = mysqli_query($conn, $insert);
+        
+        if ($upload) {
+            $message[] = 'New Pharmacie added successfully';
+        } else {
+            $message[] = 'Could not add the Pharmacie';
+        }
+    }
+};
+//delete patient
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     //mysql quiry 
-    mysqli_query($conn, "DELETE FROM producttb WHERE id  = $id");
+    mysqli_query($conn, "DELETE FROM doctors WHERE doctors_id  = $id AND rule='pharmacie'");
     // return user in same page 
-    header('location:pharmacies.php');
-    };?>
+    header('location:pharmacie_users.php');
+}
+; ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<!--Header file-->
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Products </title>
+    <title>Pharmacie</title>
     <!-- Bootstrap css file -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <!-- Font Awesome css file -->
@@ -59,7 +61,6 @@ if (isset($_GET['delete'])) {
 </head>
 
 <body>
-
     <div class="page d-flex">
         <div id="side" class="sidebar">
             <!-- logo -->
@@ -86,13 +87,13 @@ if (isset($_GET['delete'])) {
                     </a>
                 </li>
                 <li>
-                    <a class="active d-flex align-items-center" href="products.php">
+                    <a class=" d-flex align-items-center" href="products.php">
                         <i class="fa-solid fa-prescription-bottle-medical"></i>
                         <span>Products</span>
                     </a>
                 </li>
                 <li>
-                    <a class=" d-flex align-items-center" href="pharmacie_users.php">
+                    <a class="active  d-flex align-items-center" href="pharmacie_users.php">
                         <i class="fa-solid fa-prescription-bottle-medical"></i>
                         <span>Pharmacies Users</span>
                     </a>
@@ -105,7 +106,7 @@ if (isset($_GET['delete'])) {
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="appointment.php">
+                    <a class="  d-flex align-items-center" href="appointment.php">
                         <i class="fa-regular fa-square-check"></i>
                         <span>Appointment</span>
                     </a>
@@ -117,7 +118,7 @@ if (isset($_GET['delete'])) {
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="admin.php">
+                    <a class="  d-flex align-items-center" href="admin.php">
                         <i class="fa-regular fa-circle-user fa-fw"></i>
                         <span>Admin</span>
                     </a>
@@ -125,58 +126,62 @@ if (isset($_GET['delete'])) {
             </ul>
         </div>
         <div class="content">
-
-            <?php
-if (isset($message)) {
-foreach ($message as $message) {
-echo '<span class="message">' . $message . '</span>';
-}
-}
-?>
             <!-- start head -->
             <div class="head">
                 <div onclick="hide()" class="menu">
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <div class="icon d-flex align-items-center">
-                    <img src="images/admin.png" alt="" />
+                    <img src="../images/admin.png" alt="" />
                 </div>
             </div>
             <!-- end head -->
 
             <!-- start form -->
+
             <div class="popup">
                 <div class="form-container">
                     <div class="close">
                         <i class="fa-solid fa-circle-xmark"></i>
                     </div>
-                    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+                    <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data">
+                        <div> <?php
+            if (isset($message)) {
+                foreach ($message as $message) {
+                    echo '<span class="message">' . $message . '</span>';
+                }
+            }
+            ?></div>
+                        <div class="input-control mb-3">
+                            <input type="text" class="form-control" placeholder="Pharmacie Name" name="doctor_name" />
+                            <!-- <div class="error"></div> -->
+                        </div>
+                        <div class="input-control mb-3">
+                            <input type="text" class="form-control" placeholder="Pharmacie Phone" name="doctor_phone" />
+                            <!-- <div class="error"></div> -->
+                        </div>
 
-                        <h3>Add a new product</h3>
 
                         <div class="input-control mb-3">
-                            <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image"
-                                class="box">
+                            <input type="email" class="form-control" placeholder="Pharmacie Email"
+                                name="doctor_email" />
+                            <!-- <div class="error"></div> -->
+
+                        </div>
+                        <div class="input-control mb-3">
+                            <input type="password" class="form-control" placeholder="Pharmacie password"
+                                name="doctor_pass" />
                             <!-- <div class="error"></div> -->
                         </div>
 
                         <div class="input-control mb-3">
-                            <input type="text" class="form-control" placeholder="product_name" name="product_name" />
-                            <div class="error"></div>
-                        </div>
-                        <div class="input-control mb-3">
-                            <input type="text" class="form-control" placeholder="product_price" name="product_price" />
+                            <input type="text" class="form-control" placeholder="Pharmacie Adress"
+                                name="doctor_adress" />
                             <!-- <div class="error"></div> -->
                         </div>
-                        <div class="input-control mb-3">
-                            <input type="text" class="form-control" placeholder="product_description"
-                                name="product_description" />
-                            <!-- <div class="error"></div> -->
-                        </div>
-
                         <div class="input-control mb-3 mt-4">
                             <input type="submit" class="form-control btn btn-outline-primary" id="submit"
-                                name="add_product" value="add product" />
+                                name="add_pharmacie" value="Add Pharmacie" />
                         </div>
 
                     </form>
@@ -184,49 +189,54 @@ echo '<span class="message">' . $message . '</span>';
             </div>
             <!-- end form -->
             <?php
-$select = mysqli_query($conn, "SELECT * FROM producttb");
+
+$select = mysqli_query($conn, "SELECT * FROM doctors where rule='pharmacie'");
 ?>
             <!-- start patient table -->
             <div class="patient bg-white">
                 <div class="table-header">
-                    <h2>DOCTORS LIST</h2>
+                    <h2>Pharmacie Users</h2>
                     <a href="#" id="add-button">Add Pharmacie</a>
                 </div>
                 <div class="responsive-table">
                     <table>
                         <thead>
                             <tr>
-                                <td>product image</td>
-                                <td>product name</td>
-                                <td>product price</td>
-                                <td>product description</td>
-                                <td>action</td>
+                                <!-- <td>id</td> -->
+                                <td>Pharmacie Name</td>
+                                <td>Pharmacie Phone</td>
+                                <td>Pharmacie Email</td>
+                                <td>Pharmacie Adress</td>
+                                <td>Action</td>
                             </tr>
                         </thead>
-                        <?php while ($row = mysqli_fetch_assoc($select)) { ?>
-                        <tr>
-                            <td><img src="../upload/<?php echo $row['product_image']; ?>" height="100" width="100"
-                                    alt="">
-                            </td>
-                            <td>
-                                <?php echo $row['product_name']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['product_price']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['product_description']; ?>
-                            </td>
+                        <tbody>
 
-                            <td>
-                                <a href="products_update.php?edit=<?php echo $row['id']; ?>" class="btn"> <i
-                                        class="fas fa-edit"></i>
-                                    edit </a>
-                                <a href="pharmacies_admin.php?delete=<?php echo $row['id']; ?>" class="btn"> <i
-                                        class="fas fa-trash"></i>
-                                    delete </a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <?php while ($row = mysqli_fetch_assoc($select)) { ?>
+                                <td>
+                                    <?php echo $row['doctor_name']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['doctor_phone']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['doctor_email']; ?>
+                                </td>
+
+                                <td>
+                                    <?php echo $row['doctor_adress'];?>
+                                </td>
+
+
+                                <td>
+                                    <a href="pharmacie_users.php?delete=<?php echo $row['doctors_id']; ?>" class="btn">
+                                        <i class="fas fa-trash"></i>delete </a>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
                         <?php } ?>
                     </table>
                 </div>
@@ -234,7 +244,6 @@ $select = mysqli_query($conn, "SELECT * FROM producttb");
             <!-- end patiente -->
         </div>
     </div>
-
 </body>
 <!-- Bootstrap js file -->
 <script src="../js/dashboard/bootstrap.bundle.min.js"></script>
