@@ -6,7 +6,11 @@ function component($productname, $productprice,$productdescription, $productimg,
     
     <div class=\"col-md-3 col-sm-6 my-3 my-md-0\">
                 <form action=\"pharmacies.php\" method=\"post\">
-                    <div class=\"card shadow\">
+                    <div class=\"card shadow productcard\">
+
+                    <style>.productcard {
+                        margin-bottom: 20px;
+                    }</style>
                         <div>
                             <img src=\"upload\\$productimg\" alt=\"Image1\" height=\"50 px\"   class=\"img-fluid card-img-top\" >
                           
@@ -65,22 +69,30 @@ function doctorsCard($doctorname, $price,$specialization,$doctordescription,$adr
     $element = "
     <div class=\"col-md-3 col-sm-6 my-3 my-md-0\">
                 <form action=\"index.php\" method=\"post\">
-                    <div class=\"card shadow\">
+                    <div class=\"card shadow doctorcard\">
                         <div>
+
+                        <style>.doctorcard {
+                            margin-bottom: 20px;
+
+                        }</style>
                             <img src=\"upload\\$doctorimg\" alt=\"Image1\" height=\"100\"   class=\"img-fluid card-img-top\" >
                           
                         </div>
                         <div class=\"card-body\">
                             <h5 class=\"card-title\">$doctorname</h5>
-                            <h5 class=\"card-title\">$specialization</h5>
-                            <h5 class=\"card-title\">$adress</h5>
+                            <h6 class=\"card-title\">$specialization</h6>
+                            <h6 class=\"card-title\">$adress</h6>
                             <p class=\"card-text\">
                                 $doctordescription
                             </p>
-                            <h5>
+
+                            <h6>Examination price</h6>
+
+                            <h6>
                                 <span class=\"price\">$price LE</span>
-                            </h5>
-                            <button type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\">Add to Cart <i class=\"fas fa-shopping-cart\"></i></button>
+                            </h6>
+                            <button type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\">Book Now <i class=\"fas  fa-solid fa-calendar-days\"></i></button>
                              <input type='hidden' name='doctors_id' value='$doctorid'>
                         </div>
                     </div>

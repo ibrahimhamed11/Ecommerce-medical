@@ -35,7 +35,7 @@ if (isset($_GET['delete'])) {
     //mysql quiry 
     mysqli_query($conn, "DELETE FROM producttb WHERE id  = $id");
     // return user in same page 
-    header('location:pharmacies.php');
+    header('location:products.php');
     };?>
 <!DOCTYPE html>
 <html lang="en">
@@ -222,7 +222,7 @@ $select = mysqli_query($conn, "SELECT * FROM producttb");
                                 <a href="products_update.php?edit=<?php echo $row['id']; ?>" class="btn"> <i
                                         class="fas fa-edit"></i>
                                     edit </a>
-                                <a href="pharmacies_admin.php?delete=<?php echo $row['id']; ?>" class="btn"> <i
+                                <a href="products.php?delete=<?php echo $row['id']; ?>" class="btn"> <i
                                         class="fas fa-trash"></i>
                                     delete </a>
                             </td>

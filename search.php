@@ -41,13 +41,20 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3 active" aria-current="page" href="index.php">HOME</a>
+                            <a class="nav-link p-1 p-lg-3 " aria-current="page" href="index.php">HOME</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="pharmacies.php">PHARMACEIES</a>
+                            <a class="nav-link p-1 p-lg-3" href="pharmacies">PHARMACEIES</a>
+
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="doctors.php">DOCTORS</a>
+                            <a class="nav-link p-1 p-lg-3 " href="pharmacie_profile.php">PHARMACY PROFILE</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link p-1 p-lg-3" href="doctor.php">DOCTORS</a>
+                        </li>
+                        <li class="nav-item align-self-center ">
+                            <a class="nav-link p-1 p-lg-3" href="doctor_profile.php">DOCTOR PROFILE</a>
                         </li>
                         <li class="nav-item align-self-center">
                             <a class="nav-link p-1 p-lg-3" href="contact.php">CONTACT</a>

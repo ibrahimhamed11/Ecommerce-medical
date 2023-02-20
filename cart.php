@@ -63,22 +63,29 @@ if (isset($_POST['remove'])){
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3 active" aria-current="page" href="index.html">HOME</a>
+                            <a class="nav-link p-1 p-lg-3 " aria-current="page" href="index.php">HOME</a>
                         </li>
                         <li class="nav-item align-self-center">
                             <a class="nav-link p-1 p-lg-3" href="pharmacies.php">PHARMACEIES</a>
+
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="doctor.html">DOCTORS</a>
+                            <a class="nav-link p-1 p-lg-3 " href="pharmacie_profile.php">PHARMACY PROFILE</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="contact.html">CONTACT</a>
+                            <a class="nav-link p-1 p-lg-3" href="doctor.php">DOCTORS</a>
+                        </li>
+                        <li class="nav-item align-self-center ">
+                            <a class="nav-link p-1 p-lg-3" href="#">DOCTOR PROFILE</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="join us.html">JOIN</a>
+                            <a class="nav-link p-1 p-lg-3" href="contact.php">CONTACT</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="donate.html">DONATE</a>
+                            <a class="nav-link p-1 p-lg-3" href="join us.php">JOIN</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link p-1 p-lg-3" href="donate.php">DONATE</a>
                         </li>
                     </ul>
                 </div>

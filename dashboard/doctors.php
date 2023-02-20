@@ -13,7 +13,7 @@ if (isset($_POST['add_doctor'])) {
     $doctor_description = $_POST['doctor_descrip'];
     $doctor_image = $_FILES['doctor_img']['name'];
     $doctor_image_tmp_name = $_FILES['doctor_img']['tmp_name'];
-    $doctor_image_folder = 'upload/' . $doctor_image;
+    $doctor_image_folder = '../upload/' . $doctor_image;
     //validation 
     if (empty($doctor_name) || empty($doctor_price) || empty($doctor_adress)) {
         $message[] = 'please fill out all';

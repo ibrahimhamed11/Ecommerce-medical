@@ -41,13 +41,20 @@
             <div class="collapse navbar-collapse col-7 justify-content-end" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                     <li class="nav-item align-self-center">
-                        <a class="nav-link p-1 p-lg-3 active" aria-current="page" href="index.php">HOME</a>
+                        <a class="nav-link p-1 p-lg-3 " aria-current="page" href="index.php">HOME</a>
                     </li>
                     <li class="nav-item align-self-center">
                         <a class="nav-link p-1 p-lg-3" href="pharmacies.php">PHARMACEIES</a>
+
+                    </li>
+                    <li class="nav-item align-self-center">
+                        <a class="nav-link p-1 p-lg-3 " href="pharmacie_profile.php">PHARMACY PROFILE</a>
                     </li>
                     <li class="nav-item align-self-center">
                         <a class="nav-link p-1 p-lg-3" href="doctor.php">DOCTORS</a>
+                    </li>
+                    <li class="nav-item align-self-center active">
+                        <a class="nav-link p-1 p-lg-3" href="#">DOCTOR PROFILE</a>
                     </li>
                     <li class="nav-item align-self-center">
                         <a class="nav-link p-1 p-lg-3" href="contact.php">CONTACT</a>
@@ -118,7 +125,7 @@
     <!-- start section three -->
     <div class="table-doctor-profile">
         <!-- <div class="container">
-            <div class="row"> -->
+<div class="row"> -->
         <div class="table table-bordered table-color ">
             <table class="table">
                 <thead>
@@ -168,8 +175,8 @@
                 </tbody>
             </table>
             <!-- </div>
-            </div>
-        </div>  -->
+</div>
+</div>  -->
 
         </div>
         <!-- end section three -->

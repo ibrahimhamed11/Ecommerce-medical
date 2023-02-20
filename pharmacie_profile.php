@@ -4,27 +4,27 @@
 @include 'componant/config.php';
 //validation
 if (isset($_POST['add_product'])) {
-   //get data from user
-   $product_name = $_POST['product_name'];
-   $product_price = $_POST['product_price'];
-   $product_description = $_POST['product_description'];
-   $product_image = $_FILES['product_image']['name'];
-   $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
-   $product_image_folder = 'upload/' . $product_image;
-   //validation 
-print_r($product_name);
-   if (empty($product_name) || empty($product_price) || empty($product_image)) {
-      $message[] = 'please fill out all';
-   } else {
-      $insert = "INSERT INTO producttb(product_name, product_price,product_description,product_image) VALUES('$product_name', '$product_price','$product_description', '$product_image')";
-      $upload = mysqli_query($conn, $insert);
-      if ($upload) {
-         move_uploaded_file($product_image_tmp_name, $product_image_folder);
-         $message[] = 'new product added successfully';
-      } else {
-         $message[] = 'could not add the product';
-      }
-   }
+    //get data from user
+    $product_name = $_POST['product_name'];
+    $product_price = $_POST['product_price'];
+    $product_description = $_POST['product_description'];
+    $product_image = $_FILES['product_image']['name'];
+    $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
+    $product_image_folder = 'upload/' . $product_image;
+    //validation 
+    print_r($product_name);
+    if (empty($product_name) || empty($product_price) || empty($product_image)) {
+        $message[] = 'please fill out all';
+    } else {
+        $insert = "INSERT INTO producttb(product_name, product_price,product_description,product_image) VALUES('$product_name', '$product_price','$product_description', '$product_image')";
+        $upload = mysqli_query($conn, $insert);
+        if ($upload) {
+            move_uploaded_file($product_image_tmp_name, $product_image_folder);
+            $message[] = 'new product added successfully';
+        } else {
+            $message[] = 'could not add the product';
+        }
+    }
 
 }
 ;
@@ -35,7 +35,8 @@ if (isset($_GET['delete'])) {
     mysqli_query($conn, "DELETE FROM producttb WHERE id  = $id");
     // return user in same page 
     header('location:pharmacie_profile.php');
-    };?>
+}
+; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,13 +87,20 @@ if (!isset($_SESSION['doctors_id'])) {
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3 active" aria-current="page" href="index.php">HOME</a>
+                            <a class="nav-link p-1 p-lg-3 " aria-current="page" href="index.php">HOME</a>
                         </li>
                         <li class="nav-item align-self-center">
                             <a class="nav-link p-1 p-lg-3" href="pharmacies.php">PHARMACEIES</a>
+
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="doctor.php">DOCTORS</a>
+                            <a class="nav-link p-1 p-lg-3 active" href="#">PHARMACY PROFILE</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link p-1 p-lg-3" href="doctors.php">DOCTORS</a>
+                        </li>
+                        <li class="nav-item align-self-center ">
+                            <a class="nav-link p-1 p-lg-3" href="doctor_profile.php">DOCTOR PROFILE</a>
                         </li>
                         <li class="nav-item align-self-center">
                             <a class="nav-link p-1 p-lg-3" href="contact.php">CONTACT</a>
@@ -113,12 +121,12 @@ if (!isset($_SESSION['doctors_id'])) {
     <!-- start section two -->
 
     <?php
-if (isset($message)) {
-foreach ($message as $message) {
-echo '<span class="message">' . $message . '</span>';
-}
-}
-?>
+    if (isset($message)) {
+        foreach ($message as $message) {
+            echo '<span class="message">' . $message . '</span>';
+        }
+    }
+    ?>
     <section class="section-one">
         <div class="container">
             <div class="row">
@@ -133,8 +141,10 @@ echo '<span class="message">' . $message . '</span>';
                         <div class="title_description col-9 ">
                             <h3>Hello Doctor</h3>
                             <h3>
+
                                 <?php
                                 require_once('componant/config.php');
+
 
                                 $query = mysqli_query($conn, "SELECT * FROM `doctors` WHERE `doctors_id`='$_SESSION[doctors_id]'");
                                 $fetch = mysqli_fetch_array($query);
@@ -157,15 +167,9 @@ echo '<span class="message">' . $message . '</span>';
                             require_once('componant/config.php');
 
                             $query = mysqli_query($conn, "SELECT * FROM `producttb` WHERE 1
-                                ");
-
-
-
+            ");
                             $query = mysqli_query($conn, "SELECT count(*) as total from producttb");
-
-
                             $fetch = mysqli_fetch_array($query);
-
                             echo "<h2 class='text-success'>" . $fetch['total'] . "</h2>";
                             ?>
                         </div>
@@ -179,10 +183,8 @@ echo '<span class="message">' . $message . '</span>';
                             <h3>
                                 <?php
                                 require_once('componant/config.php');
-
                                 $query = mysqli_query($conn, "SELECT * FROM `doctors` WHERE `doctors_id`='$_SESSION[doctors_id]'");
                                 $fetch = mysqli_fetch_array($query);
-
                                 echo "<h2 class='text-success'>" . $fetch['doctor_phone'] . "</h2>";
                                 ?>
                             </h3>
@@ -196,10 +198,8 @@ echo '<span class="message">' . $message . '</span>';
                             <h3>Address</h3>
                             <?php
                             require_once('componant/config.php');
-
                             $query = mysqli_query($conn, "SELECT * FROM `doctors` WHERE `doctors_id`='$_SESSION[doctors_id]'");
                             $fetch = mysqli_fetch_array($query);
-
                             echo "<h2 class='text-success'>" . $fetch['doctor_adress'] . "</h2>";
                             ?>
                         </div>
@@ -251,8 +251,8 @@ echo '<span class="message">' . $message . '</span>';
     </section>
     <!-- End Form -->
     <?php
-$select = mysqli_query($conn, "SELECT * FROM producttb");
-?>
+    $select = mysqli_query($conn, "SELECT * FROM producttb");
+    ?>
     <!-- Start Table -->
     <div class=" section-trhee">
         <div class="container mt-5 mb-4">

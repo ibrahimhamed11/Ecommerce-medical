@@ -159,3 +159,25 @@ session_start();
 <script src="js/main.js"></script>
 
 </html>
+
+
+
+
+
+
+<!-- 
+
+
+
+
+/*****************login
+************** */
+require_once('componant/config.php');
+
+$select = mysqli_query($conn, "SELECT * FROM doctors WHERE `doctors_id`=''");
+while ($row = mysqli_fetch_assoc($select)) {
+echo "<h2 class='text-success'>". $row['doctor_name'];
+
+    };
+    /******************************* */
+    ?> -->

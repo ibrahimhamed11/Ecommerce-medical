@@ -76,13 +76,20 @@ if (isset($_POST['add'])){
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3 active" aria-current="page" href="index.php">HOME</a>
+                            <a class="nav-link p-1 p-lg-3 " aria-current="page" href="index.php">HOME</a>
                         </li>
                         <li class="nav-item align-self-center">
                             <a class="nav-link p-1 p-lg-3" href="pharmacies.php">PHARMACEIES</a>
+
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="doctor.php">DOCTORS</a>
+                            <a class="nav-link p-1 p-lg-3 active" href="pharmacie_profile.php">PHARMACY PROFILE</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link p-1 p-lg-3" href="#">DOCTORS</a>
+                        </li>
+                        <li class="nav-item align-self-center ">
+                            <a class="nav-link p-1 p-lg-3" href="doctor_profile.php">DOCTOR PROFILE</a>
                         </li>
                         <li class="nav-item align-self-center">
                             <a class="nav-link p-1 p-lg-3" href="contact.php">CONTACT</a>
@@ -117,20 +124,7 @@ if (isset($_POST['add'])){
 
                     <div class="carttt">
                         <div class="navbar-nav ">
-                            <a href="cart.php" class="nav-item nav-link active">
-                                <h5 class="px-5 cart">
-                                    <i class="fas fa-shopping-cart"></i> Cart
-                                    <?php
-                        if (isset($_SESSION['cart'])){
-                            $count = count($_SESSION['cart']);
-                            echo "<span id=\"cart_count\">$count</span>";
-                            
-                        }else{
-                            echo "<span id=\"cart_count\">0</span>";
-                        }
-                        ?>
-                                </h5>
-                            </a>
+
                         </div>
                     </div>
                 </div>
