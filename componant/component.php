@@ -79,18 +79,23 @@ function doctorsCard($doctorname, $price,$specialization,$doctordescription,$adr
                             <img src=\"upload\\$doctorimg\" alt=\"Image1\" height=\"100\"   class=\"img-fluid card-img-top\" >
                           
                         </div>
-                        <div class=\"card-body\">
-                            <h5 class=\"card-title\">$doctorname</h5>
-                            <h6 class=\"card-title\">$specialization</h6>
-                            <h6 class=\"card-title\">$adress</h6>
+                        <div class=\"card-body doccardbody\">
+
+                        <style>
+                        .doccardbody{
+                            align-content: start;
+                        }
+                        </style>
+                            <h5 class=\"card-title\">Dr $doctorname</h5>
+                            <h6 class=\"card-title\">Spicialization : $specialization</h6>
+                            <h6 class=\"card-title\"><i class=\"fa-sharp fa-solid fa-location-dot\"></i> $adress</h6>
                             <p class=\"card-text\">
-                                $doctordescription
+                            <i class=\"fa-solid fa-notes-medical\"></i>  $doctordescription
                             </p>
 
-                            <h6>Examination price</h6>
 
                             <h6>
-                                <span class=\"price\">$price LE</span>
+                                <span class=\"price\"><i class=\"fa-solid fa-money-bill-transfer\"></i> $price LE</span>
                             </h6>
                             <button type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\">Book Now <i class=\"fas  fa-solid fa-calendar-days\"></i></button>
                              <input type='hidden' name='doctors_id' value='$doctorid'>

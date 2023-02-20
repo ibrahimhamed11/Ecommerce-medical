@@ -210,7 +210,15 @@ if (isset($_POST['add'])){
         <!--******************************************************* -->
 
         <div class="container">
-            <div class="row text-center py-5">
+            <div class="row text-center py-5 carddoc">
+
+                <style>
+                .carddoc {
+
+                    margin-top: 40px;
+                    min-width: 400px
+                }
+                </style>
 
                 <?php
                 $result = $database->getData();

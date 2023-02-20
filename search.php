@@ -89,61 +89,63 @@
                                 <h5 class="px-5 cart">
                                     <i class="fas fa-shopping-cart"></i> Cart
                                     <?php
-                        if (isset($_SESSION['cart'])){
-                            $count = count($_SESSION['cart']);
-                            echo "<span id=\"cart_count\">$count</span>";
-                            
-                        }else{
-                            echo "<span id=\"cart_count\">0</span>";
-                        }
-                        ?>
+                                    if (isset($_SESSION['cart'])) {
+                                        $count = count($_SESSION['cart']);
+                                        echo "<span id=\"cart_count\">$count</span>";
+
+                                    } else {
+                                        echo "<span id=\"cart_count\">0</span>";
+                                    }
+                                    ?>
                                 </h5>
                             </a>
                         </div>
                     </div>
                 </div>
             </header>
-            <?php $search = $_POST['search'];?>
+            <?php $search = $_POST['search']; ?>
             <div style="margin:30px auto; text-align:center ;margin-bottom: -40px;">
-                <h3>This page content is based on: <?php echo $search;?></h3>
+                <h3>This page content is based on:
+                    <?php echo $search; ?>
+                </h3>
             </div>
             <div class="container">
                 <div class="row text-center py-5">
 
                     <?php
 
-//connect ot the database
-        require 'componant/conn.php';
-        require_once ('componant/CreateDb.php');
-        require_once ('componant/component.php');
-        //get the search keyword
-        //$search = $_POST['search'];
-        //SQL query to get the products based on the search keyword
-        $sql = "SELECT * FROM producttb WHERE product_name LIKE 
+                    //connect ot the database
+                    require 'componant/conn.php';
+                    require_once('componant/CreateDb.php');
+                    require_once('componant/component.php');
+                    //get the search keyword
+                    //$search = $_POST['search'];
+                    //SQL query to get the products based on the search keyword
+                    $sql = "SELECT * FROM producttb WHERE product_name LIKE 
         '%$search%' OR product_description LIKE '%$search%'
         ";
 
-        //execute the query
-
-        $res = mysqli_query($con, $sql);
-        //count the rows
-        $count = mysqli_num_rows($res);
-        //check whether the product is available
-        if ($count > 0) {
-            while ($row= mysqli_fetch_assoc($res)) {
-                component($row['product_name'], $row['product_price'],$row['product_description'], $row ['product_image'], $row['id']);
-                ?>
+                    //execute the query
+                    
+                    $res = mysqli_query($con, $sql);
+                    //count the rows
+                    $count = mysqli_num_rows($res);
+                    //check whether the product is available
+                    if ($count > 0) {
+                        while ($row = mysqli_fetch_assoc($res)) {
+                            component($row['product_name'], $row['product_price'], $row['product_description'], $row['product_image'], $row['id']);
+                            ?>
 
                     <?php
 
-            }
-        }else {
-            echo "<div class='alert alert-danger'>
+                        }
+                    } else {
+                        echo "<div class='alert alert-danger'>
             there is no product matching your search....
             </div>";
-        }
+                    }
 
-            ?>
+                    ?>
                 </div>
 
 
