@@ -254,7 +254,7 @@ if (isset($_GET['delete'])) {
                                 </td>
 
                                 <td>
-                                    <a href="doctor_admin.php?delete=<?php echo $row['doctors_id']; ?>" class="btn"> <i
+                                    <a href="doctors.php?delete=<?php echo $row['doctors_id']; ?>" class="btn"> <i
                                             class="fas fa-trash"></i>
                                         delete </a>
                                     <a href="doctors_update.php?edit=<?php echo $row['doctors_id']; ?>" class="btn"> <i
@@ -278,10 +278,11 @@ if (isset($_GET['delete'])) {
 
 </body>
 <!-- Bootstrap js file -->
-<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/dashboard/bootstrap.bundle.min.js"></script>
 <!-- Font Awesome js file -->
-<script src="../js/all.min.js"></script>
+<script src="../js/dashboard/all.min.js"></script>
 <!-- Our js file -->
-<script src="../js/main.js"></script>
+<script src="../js/dashboard/main.js"></script>
+
 
 </html>

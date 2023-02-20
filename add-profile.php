@@ -1,18 +1,25 @@
 <?php
 //connect to db 
-// session_start();
+session_start();
+
+
 @include 'componant/config.php';
 //validation
+
 if (isset($_POST['add_product'])) {
    //get data from user
    $product_name = $_POST['product_name'];
    $product_price = $_POST['product_price'];
    $product_description = $_POST['product_description'];
+
+
    $product_image = $_FILES['product_image']['name'];
    $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
    $product_image_folder = 'upload/' . $product_image;
+
    //validation 
-print_r($product_name);
+
+
    if (empty($product_name) || empty($product_price) || empty($product_image)) {
       $message[] = 'please fill out all';
    } else {
@@ -28,14 +35,10 @@ print_r($product_name);
 
 }
 ;
-//delete product
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-    //mysql quiry 
-    mysqli_query($conn, "DELETE FROM producttb WHERE id  = $id");
-    // return user in same page 
-    header('location:pharmacie_profile.php');
-    };?>
+
+;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +50,10 @@ if (isset($_GET['delete'])) {
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="css/pharmacie-profile.css" />
+    <link rel="stylesheet" href="css/add-profile.css" />
+
+
+
 
     <!-- <link rel="stylesheet" href="css/pharmacie.css"> -->
     <!-- دي لينكات google fonts بتاع الخطوط -->
@@ -55,17 +61,9 @@ if (isset($_GET['delete'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="css/pharmacie-profile.css" />
-
 </head>
 
 
-<?php
-session_start();
-if (!isset($_SESSION['doctors_id'])) {
-    header('location:login.php');
-}
-?>
 
 <body>
     <div class="pharmaceies-page">
@@ -110,196 +108,50 @@ if (!isset($_SESSION['doctors_id'])) {
         <!-- end nav -->
     </div>
     <!-- end nav -->
-    <!-- start section two -->
-
     <?php
-if (isset($message)) {
-foreach ($message as $message) {
-echo '<span class="message">' . $message . '</span>';
-}
-}
-?>
-    <section class="section-one">
-        <div class="container">
-            <div class="row">
-                <div class="description_doctor_profile ">
 
-                    <div class="Description ">
-                        <div class="icon">
-                            <i class="fa-solid fa-pen"></i>
-                        </div>
+   if (isset($message)) {
+      foreach ($message as $message) {
+         echo '<span class="message">' . $message . '</span>';
+      }
+   }
+
+   ?>
+
+    <div class="container">
 
 
-                        <div class="title_description col-9 ">
-                            <h3>Hello Doctor</h3>
-                            <h3>
-                                <?php
-                                require_once('componant/config.php');
-
-                                $query = mysqli_query($conn, "SELECT * FROM `doctors` WHERE `doctors_id`='$_SESSION[doctors_id]'");
-                                $fetch = mysqli_fetch_array($query);
-
-                                echo "<h2 class='text-success'>" . $fetch['doctor_name'] . "</h2>";
-                                ?>
-                            </h3>
-
-                        </div>
-                    </div>
-                    <div class="Age">
-                        <div class="icon">
-                            <i class="fa-solid fa-list-ol"></i>
-                        </div>
-                        <div class="title_age col-9 ">
+        <li class="nav-item">
+            <a class="nav-link" href="logout.php">logout</a>
+        </li>
 
 
-                            <h3>Tolal your products</h3>
-                            <?php
-                            require_once('componant/config.php');
+        <div class="admin-product-form-container">
 
-                            $query = mysqli_query($conn, "SELECT * FROM `producttb` WHERE 1
-                                ");
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+                <h3>add a new product</h3>
+                <input type="text" placeholder="enter product name" name="product_name" class="box">
+                <input type="number" placeholder="enter product price" name="product_price" class="box">
+                <input type="text" placeholder="enter product description" name="product_description" class="box">
+                <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="box">
+                <div class="addbtn">
 
-
-
-                            $query = mysqli_query($conn, "SELECT count(*) as total from producttb");
-
-
-                            $fetch = mysqli_fetch_array($query);
-
-                            echo "<h2 class='text-success'>" . $fetch['total'] . "</h2>";
-                            ?>
-                        </div>
-                    </div>
-                    <div class="Phone">
-                        <div class="icon">
-                            <i class="fa-solid fa-mobile"></i>
-                        </div>
-                        <div class="title_phone col-9">
-                            <h3>Phone Number</h3>
-                            <h3>
-                                <?php
-                                require_once('componant/config.php');
-
-                                $query = mysqli_query($conn, "SELECT * FROM `doctors` WHERE `doctors_id`='$_SESSION[doctors_id]'");
-                                $fetch = mysqli_fetch_array($query);
-
-                                echo "<h2 class='text-success'>" . $fetch['doctor_phone'] . "</h2>";
-                                ?>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="Address">
-                        <div class="icon">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="title_address col-9">
-                            <h3>Address</h3>
-                            <?php
-                            require_once('componant/config.php');
-
-                            $query = mysqli_query($conn, "SELECT * FROM `doctors` WHERE `doctors_id`='$_SESSION[doctors_id]'");
-                            $fetch = mysqli_fetch_array($query);
-
-                            echo "<h2 class='text-success'>" . $fetch['doctor_adress'] . "</h2>";
-                            ?>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <button type="su" onClick="location.href='add-profile.php'" id="buttons"
-                            class="btn form_butt mt-5">Add
-                            Product</button>
-                    </div>
-
-                    <!-- <input type="submit" value="update product" name="Add Product" class="btn"> -->
+                    <input type="submit" class="btn" name="add_product" value="add product">
+                    <a href="pharmacie_profile.php" class="btn">go back!</a>
 
 
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- end section two -->
-
-    <!-- Start Form -->
-    <section class="section-two">
-        <div class="container mt-5 mb-4">
-
-            <form class="form" id="form">
-                <div class="mb-3">
-                    <input type="text" class="form-control mb-4" name="product_name" placeholder="Enter Product Name"
-                        aria-label="product-name">
-                    <input type="text" class="form-control mb-4" name="product_price" placeholder="Enter Product Price"
-                        aria-label="Server">
-                    <input type="text" class="form-control mb-4" name="product_description"
-                        placeholder="Enter Product Description" aria-label="Server">
-                </div>
-
-                <div class="mb-3">
-                    <label for="formFile" class="form-label"></label>
-                    <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="box">
-
-                    <div class="">
-                        <input type="submit" class="addbtn" name="add_product" value="add product">
-                        <a href="add-profile.php" class="btn">Add Product</a>
-
-                    </div>
                 </div>
             </form>
 
         </div>
-    </section>
-    <!-- End Form -->
-    <?php
-$select = mysqli_query($conn, "SELECT * FROM producttb");
-?>
-    <!-- Start Table -->
-    <div class=" section-trhee">
-        <div class="container mt-5 mb-4">
-            <div class="row">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Product Image</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Product Price</th>
-                            <th scope="col">Product Description</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php while ($row = mysqli_fetch_assoc($select)) { ?>
 
-                        <tr>
-                            <td><img src="upload/<?php echo $row['product_image']; ?>" height="100" width="100" alt="">
-                            </td>
-                            <td>
-                                <?php echo $row['product_name']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['product_price']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['product_description']; ?>
-                            </td>
+        <?php
 
-                            <td>
-                                <a href="products_update.php?edit=<?php echo $row['id']; ?>" class="btn"> <i
-                                        class="fas fa-edit"></i>
-                                    edit </a>
-                                <a href="pharmacie_profile.php?delete=<?php echo $row['id']; ?>" class="btn"> <i
-                                        class="fas fa-trash"></i>
-                                    delete </a>
-                            </td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+      $select = mysqli_query($conn, "SELECT * FROM producttb");
+
+      ?>
+
     </div>
-    <!-- End Table -->
-
     <!-- start footer -->
     <footer class="section_end text-center text-lg-start pt-2">
         <!-- Section: Links  -->
@@ -399,16 +251,5 @@ $select = mysqli_query($conn, "SELECT * FROM producttb");
 </body>
 <script src="js/all.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
-<script>
-function display() {
-    var display = document.getElementById("form");
-    display.style.display = "block";
-}
-
-function nonedisplay() {
-    var x = document.getElementById("form");
-    x.style.display = "none";
-}
-</script>
 
 </html>

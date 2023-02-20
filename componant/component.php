@@ -8,7 +8,7 @@ function component($productname, $productprice,$productdescription, $productimg,
                 <form action=\"pharmacies.php\" method=\"post\">
                     <div class=\"card shadow\">
                         <div>
-                            <img src=\"upload\\$productimg\" alt=\"Image1\" height=\"100\"   class=\"img-fluid card-img-top\" >
+                            <img src=\"upload\\$productimg\" alt=\"Image1\" height=\"50 px\"   class=\"img-fluid card-img-top\" >
                           
                         </div>
                         <div class=\"card-body\">

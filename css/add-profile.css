@@ -156,23 +156,6 @@ ul {
     background: var(--black);
 }
 
-.addbtn {
-    display: block;
-    width: 100%;
-    cursor: pointer;
-    border-radius: .5rem;
-    margin-top: 1rem;
-    font-size: 1.7rem;
-    padding: 1rem 3rem;
-    background: var(--blue);
-    color: var(--white);
-    text-align: center;
-}
-
-.addbtn:hover {
-    background: var(--black);
-}
-
 
 /* End Form */
 
@@ -249,9 +232,6 @@ ul {
 
 /*********edite product page************/
 
-
-/* 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 :root {
     --green: #27ae60;
     --blue: #009ffb;
@@ -263,7 +243,6 @@ ul {
 }
 
 * {
-    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -274,7 +253,7 @@ ul {
 }
 
 html {
-    font-size: 62.5%;
+    /* font-size: 80%; */
     overflow-x: hidden;
 }
 
@@ -399,35 +378,7 @@ html {
     html {
         font-size: 50%;
     }
-} */
+}
 
-
+*/
 /*********edite product page************/
-
-
-/* .btn {
-    display: block;
-    width: 100%;
-    cursor: pointer;
-    border-radius: .5rem;
-    margin-top: 1rem;
-    font-size: 1.7rem;
-    padding: 1rem 3rem;
-    background: var(--green);
-    color: var(--white);
-    text-align: center;
-}
-
-.btn:hover {
-    background: var(--black);
-}
-
-.message {
-    display: block;
-    background: var(--bg-color);
-    padding: 1.5rem 1rem;
-    font-size: 2rem;
-    color: var(--black);
-    margin-bottom: 2rem;
-    text-align: center;
-} */

@@ -177,11 +177,12 @@
     </div>
 </body>
 <!-- Bootstrap js file -->
-<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/dashboard/bootstrap.bundle.min.js"></script>
 <!-- Font Awesome js file -->
-<script src="../js/all.min.js"></script>
+<script src="../js/dashboard/all.min.js"></script>
 <!-- Our js file -->
-<script src="../js/main.js"></script>
+<script src="../js/dashboard/main.js"></script>
+
 
 
 </html>
