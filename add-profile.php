@@ -1,37 +1,39 @@
 <?php
-//connect to db 
+//connect to db
 session_start();
-
-
 @include 'componant/config.php';
 //validation
-
+$doc="$_SESSION[doctors_id]";
+// print_r($doc);
 if (isset($_POST['add_product'])) {
-   //get data from user
-   $product_name = $_POST['product_name'];
-   $product_price = $_POST['product_price'];
-   $product_description = $_POST['product_description'];
+//get data from user
+$product_name = $_POST['product_name'];
+$product_price = $_POST['product_price'];
+$product_description = $_POST['product_description'];
+$product_image = $_FILES['product_image']['name'];
+$product_image_tmp_name = $_FILES['product_image']['tmp_name'];
+$product_image_folder = 'upload/' . $product_image;
+$doctors_id=$_SESSION['doctors_id'];
+//validation
 
 
-   $product_image = $_FILES['product_image']['name'];
-   $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
-   $product_image_folder = 'upload/' . $product_image;
 
-   //validation 
+if (empty($product_name) || empty($product_price) || empty($product_image)) {
+$message[] = 'please fill out all';
+} else {
 
 
-   if (empty($product_name) || empty($product_price) || empty($product_image)) {
-      $message[] = 'please fill out all';
-   } else {
-      $insert = "INSERT INTO producttb(product_name, product_price,product_description,product_image) VALUES('$product_name', '$product_price','$product_description', '$product_image')";
-      $upload = mysqli_query($conn, $insert);
-      if ($upload) {
-         move_uploaded_file($product_image_tmp_name, $product_image_folder);
-         $message[] = 'new product added successfully';
-      } else {
-         $message[] = 'could not add the product';
-      }
-   }
+
+$insert = "INSERT INTO producttb (product_name, product_price,product_description,product_image,doctor_id)
+VALUES('$product_name', '$product_price','$product_description', '$product_image','$doc')";
+$upload = mysqli_query($conn, $insert);
+if ($upload) {
+move_uploaded_file($product_image_tmp_name, $product_image_folder);
+$message[] = 'new product added successfully';
+} else {
+$message[] = 'could not add the product';
+}
+}
 
 }
 ;

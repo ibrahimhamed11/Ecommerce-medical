@@ -1,8 +1,10 @@
 <?php
 //connect to db 
-// session_start();
+session_start();
 @include 'componant/config.php';
 //validation
+$doc="$_SESSION[doctors_id]";
+// print_r($doc);
 if (isset($_POST['add_product'])) {
     //get data from user
     $product_name = $_POST['product_name'];
@@ -11,12 +13,18 @@ if (isset($_POST['add_product'])) {
     $product_image = $_FILES['product_image']['name'];
     $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
     $product_image_folder = 'upload/' . $product_image;
+    $doctors_id=$_SESSION['doctors_id'];
     //validation 
-    print_r($product_name);
+
+
+
     if (empty($product_name) || empty($product_price) || empty($product_image)) {
         $message[] = 'please fill out all';
     } else {
-        $insert = "INSERT INTO producttb(product_name, product_price,product_description,product_image) VALUES('$product_name', '$product_price','$product_description', '$product_image')";
+
+     
+
+        $insert = "INSERT INTO producttb (product_name, product_price,product_description,product_image,doctor_id) VALUES('$product_name', '$product_price','$product_description', '$product_image','$doc')";
         $upload = mysqli_query($conn, $insert);
         if ($upload) {
             move_uploaded_file($product_image_tmp_name, $product_image_folder);
@@ -62,7 +70,6 @@ if (isset($_GET['delete'])) {
 
 
 <?php
-session_start();
 if (!isset($_SESSION['doctors_id'])) {
     header('location:login.php');
 }
@@ -164,11 +171,17 @@ if (!isset($_SESSION['doctors_id'])) {
 
                             <h3>Tolal your products</h3>
                             <?php
+
+
                             require_once('componant/config.php');
 
-                            $query = mysqli_query($conn, "SELECT * FROM `producttb` WHERE 1
-            ");
-                            $query = mysqli_query($conn, "SELECT count(*) as total from producttb");
+                            $doc="$_SESSION[doctors_id]";
+
+                            // print_r($doc);
+
+            //                 $query = mysqli_query($conn, "SELECT * FROM `producttb` 
+            // ");
+                            $query = mysqli_query($conn, "SELECT count(*) as total from producttb WHERE doctor_id=$doc");
                             $fetch = mysqli_fetch_array($query);
                             echo "<h2 class='text-success'>" . $fetch['total'] . "</h2>";
                             ?>
@@ -183,7 +196,7 @@ if (!isset($_SESSION['doctors_id'])) {
                             <h3>
                                 <?php
                                 require_once('componant/config.php');
-                                $query = mysqli_query($conn, "SELECT * FROM `doctors` WHERE `doctors_id`='$_SESSION[doctors_id]'");
+                                $query = mysqli_query($conn, "SELECT * FROM `doctors` WHERE doctors_id=$doc");
                                 $fetch = mysqli_fetch_array($query);
                                 echo "<h2 class='text-success'>" . $fetch['doctor_phone'] . "</h2>";
                                 ?>
@@ -251,7 +264,7 @@ if (!isset($_SESSION['doctors_id'])) {
     </section>
     <!-- End Form -->
     <?php
-    $select = mysqli_query($conn, "SELECT * FROM producttb");
+    $select = mysqli_query($conn, "SELECT * FROM producttb where doctor_id=$doc");
     ?>
     <!-- Start Table -->
     <div class=" section-trhee">

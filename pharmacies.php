@@ -221,7 +221,7 @@ if (isset($_POST['add'])){
             <div class="row text-center py-5">
 
                 <?php
-                $result = $database->getData();
+                $result = $database->getDataProducts();
                 
                 while ($row = mysqli_fetch_assoc($result)){
 

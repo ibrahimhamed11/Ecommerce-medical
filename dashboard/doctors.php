@@ -34,7 +34,7 @@ if (isset($_POST['add_doctor'])) {
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     //mysql quiry 
-    mysqli_query($conn, "DELETE FROM doctors WHERE doctors_id  = $id");
+    mysqli_query($conn, "DELETE FROM doctors WHERE doctors_id  = $id AND rule='doctor'" );
     // return user in same page 
     header('location:doctors.php');
 }
@@ -211,7 +211,7 @@ if (isset($_GET['delete'])) {
             <!-- end form -->
             <?php
 
-            $select = mysqli_query($conn, "SELECT * FROM doctors");
+            $select = mysqli_query($conn, "SELECT * FROM doctors where rule='doctor'");
             ?>
             <!-- start patient table -->
             <div class="patient bg-white">
