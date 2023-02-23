@@ -17,7 +17,7 @@ if (isset($_POST['update_product'])) {
       $message[] = 'please fill out all!';
    } else {
 
-      $update_data = "UPDATE producttb SET product_name='$product_name', product_price='$product_price', product_image='$product_image'  WHERE id = '$id'";
+      $update_data = "UPDATE products SET product_name='$product_name', product_price='$product_price', product_image='$product_image'  WHERE product_id = '$id'";
       $upload = mysqli_query($conn, $update_data);
 
       if ($upload) {
@@ -60,7 +60,7 @@ if (isset($_POST['update_product'])) {
    ?>
             <?php
 
-         $select = mysqli_query($conn, "SELECT * FROM producttb WHERE id = '$id'");
+         $select = mysqli_query($conn, "SELECT * FROM products WHERE product_id = '$id'");
          while ($row = mysqli_fetch_assoc($select)) {
 
             ?>

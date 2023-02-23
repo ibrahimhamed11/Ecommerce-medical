@@ -1,5 +1,5 @@
 <?php
 
-$conn = mysqli_connect('localhost', 'root', '', 'productdb');
+$conn = mysqli_connect('localhost', 'root', '', 'reaya');
 
 ?>

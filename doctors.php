@@ -5,7 +5,7 @@ require_once ('componant/component.php');
 
 
 // create instance of Createdb class
-$database = new CreateDb("Productdb", "doctors");
+$database = new CreateDb("reaya", "users");
 if (isset($_POST['add'])){
     /// print_r($_POST['product_id']);
     if(isset($_SESSION['cart'])){
@@ -221,16 +221,19 @@ if (isset($_POST['add'])){
                 </style>
 
                 <?php
-                $result = $database->getData();
+                $result = $database->getDoctorsData();
                 
                 while ($row = mysqli_fetch_assoc($result)){
 
-                    doctorsCard($row['doctor_name'],$row['examination_price'],$row['specialization'],$row['doctor_descrip'],$row['doctor_adress'],$row ['doctor_img'],$row['doctors_id']);
+                    doctorsCard($row['name'],$row['price'],$row['specialization'],$row['docDesc'],$row['address'],$row ['image'],$row['id']);
                   
                 }
+
+
             ?>
             </div>
         </div>
+
 
         <!-- start footer -->
         <footer class="section_end text-center text-lg-start pt-2">

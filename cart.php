@@ -4,7 +4,7 @@ session_start();
 require_once ("componant/CreateDb.php");
 require_once ("componant/component.php");
 //new object from db connectin 
-$db = new CreateDb("Productdb", "Producttb");
+$db = new CreateDb("reaya", "products");
 //validation
 if (isset($_POST['remove'])){
   if ($_GET['action'] == 'remove'){
@@ -142,8 +142,8 @@ if (isset($_POST['remove'])){
                         $result = $db->getData();
                         while ($row = mysqli_fetch_assoc($result)){
                             foreach ($product_id as $id){
-                                if ($row['id'] == $id){
-                                    cartElement($row['product_image'], $row['product_name'],$row['product_price'], $row['id']);
+                                if ($row['product_id'] == $id){
+                                    cartElement($row['product_image'], $row['product_name'],$row['product_price'], $row['product_id']);
                                     $total = $total + (int)$row['product_price'];
                                 }
                             }

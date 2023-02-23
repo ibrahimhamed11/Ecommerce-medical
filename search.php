@@ -121,7 +121,7 @@
                     //get the search keyword
                     //$search = $_POST['search'];
                     //SQL query to get the products based on the search keyword
-                    $sql = "SELECT * FROM producttb WHERE product_name LIKE 
+                    $sql = "SELECT * FROM products WHERE product_name LIKE 
         '%$search%' OR product_description LIKE '%$search%'
         ";
 
@@ -133,7 +133,7 @@
                     //check whether the product is available
                     if ($count > 0) {
                         while ($row = mysqli_fetch_assoc($res)) {
-                            component($row['product_name'], $row['product_price'], $row['product_description'], $row['product_image'], $row['id']);
+                            component($row['product_name'], $row['product_price'], $row['product_description'], $row['product_image'], $row['product_id']);
                             ?>
 
                     <?php

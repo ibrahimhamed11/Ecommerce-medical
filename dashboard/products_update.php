@@ -17,12 +17,12 @@ if (isset($_POST['update_product'])) {
       $message[] = 'please fill out all!';
    } else {
 
-      $update_data = "UPDATE producttb SET product_name='$product_name', product_price='$product_price', product_image='$product_image'  WHERE id = '$id'";
+      $update_data = "UPDATE products SET product_name='$product_name', product_price='$product_price', product_image='$product_image'  WHERE product_id = '$id'";
       $upload = mysqli_query($conn, $update_data);
 
       if ($upload) {
          move_uploaded_file($product_image_tmp_name, $product_image_folder);
-         header('location:admin_page.php');
+         header('location:products.php');
       } else {
          $$message[] = 'please fill out all!';
       }
@@ -71,7 +71,7 @@ if (isset($_POST['update_product'])) {
    ?>
             <?php
 
-         $select = mysqli_query($conn, "SELECT * FROM producttb WHERE id = '$id'");
+         $select = mysqli_query($conn, "SELECT * FROM products WHERE product_id = '$id'");
          while ($row = mysqli_fetch_assoc($select)) {
 
             ?>

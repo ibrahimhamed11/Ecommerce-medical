@@ -14,11 +14,12 @@ if (isset($_POST['add_appointment'])) {
     
 
     //validation 
+    //Insert
     if (empty($patient_name) ) {
         $message[] = 'please fill out all';
     } else {
-        $insert = "INSERT INTO patients(patient_name,patient_adress,patient_phone,patient_email,doctor_name,patient_status)
-       VALUES ('$patient_name','$patient_adress','$patient_phone','$patient_email','$doctor_name','$patient_status')";
+        $insert = "INSERT INTO appointments(patientName,patient_adress,patient_phone,patient_email,doctor_name,status	)
+                                     VALUES ('$patient_name','$patient_adress','$patient_phone','$patient_email','$doctor_name','$patient_status')";
         $upload = mysqli_query($conn, $insert);
         
         if ($upload) {
@@ -32,7 +33,7 @@ if (isset($_POST['add_appointment'])) {
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     //mysql quiry 
-    mysqli_query($conn, "DELETE FROM patients WHERE patient_id  = $id");
+    mysqli_query($conn, "DELETE FROM appointments WHERE appointmentId   = $id");
     // return user in same page 
     header('location:appointment.php');
 }
@@ -91,7 +92,7 @@ if (isset($_GET['delete'])) {
                     </a>
                 </li>
                 <li>
-                    <a class=" d-flex align-items-center" href="pharmacies.php">
+                    <a class=" d-flex align-items-center" href="pharmacie_users.php">
                         <i class="fa-solid fa-prescription-bottle-medical"></i>
                         <span>Pharmacies Users</span>
                     </a>
@@ -158,8 +159,6 @@ if (isset($_GET['delete'])) {
                             <input type="text" class="form-control" placeholder="Patient Phone" name="patient_phone" />
                             <!-- <div class="error"></div> -->
                         </div>
-
-
                         <div class="input-control mb-3">
                             <input type="email" class="form-control" placeholder="Patient Email" name="patient_email" />
                             <!-- <div class="error"></div> -->
@@ -193,7 +192,7 @@ if (isset($_GET['delete'])) {
             <!-- end form -->
             <?php
 
-$select = mysqli_query($conn, "SELECT * FROM patients");
+$select = mysqli_query($conn, "SELECT * FROM appointments ");
 ?>
             <!-- start patient table -->
             <div class="patient bg-white">
@@ -220,7 +219,7 @@ $select = mysqli_query($conn, "SELECT * FROM patients");
                                 <?php while ($row = mysqli_fetch_assoc($select)) { ?>
                             <tr>
                                 <td>
-                                    <?php echo $row['patient_name']; ?>
+                                    <?php echo $row['patientName']; ?>
                                 </td>
                                 <td>
                                     <?php echo $row['patient_phone']; ?>
@@ -229,18 +228,18 @@ $select = mysqli_query($conn, "SELECT * FROM patients");
                                     <?php echo $row['patient_email']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row['booking_time']; ?>
+                                    <?php echo $row['date']; ?>
                                 </td>
                                 <td>
                                     <?php echo $row['doctor_name']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row['patient_status']; ?>
+                                    <?php echo $row['date']; ?>
                                 </td>
 
                                 <td>
-                                    <a href="appointment.php?delete=<?php echo $row['patient_id']; ?>" class="btn"> <i
-                                            class="fas fa-trash"></i>
+                                    <a href="appointment.php?delete=<?php echo $row['appointmentId']; ?>" class="btn">
+                                        <i class="fas fa-trash"></i>
                                         delete </a>
 
                                 </td>

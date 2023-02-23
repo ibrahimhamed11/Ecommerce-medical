@@ -181,3 +181,14 @@ echo "<h2 class='text-success'>". $row['doctor_name'];
     };
     /******************************* */
     ?> -->
+
+
+
+
+
+
+    <?php
+if (!isset($_SESSION['doctors_id'])) {
+    header('location:login.php');
+}
+?>

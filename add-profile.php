@@ -3,7 +3,7 @@
 session_start();
 @include 'componant/config.php';
 //validation
-$doc="$_SESSION[doctors_id]";
+$doc="$_SESSION[id]";
 // print_r($doc);
 if (isset($_POST['add_product'])) {
 //get data from user
@@ -13,7 +13,7 @@ $product_description = $_POST['product_description'];
 $product_image = $_FILES['product_image']['name'];
 $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
 $product_image_folder = 'upload/' . $product_image;
-$doctors_id=$_SESSION['doctors_id'];
+$doctors_id=$_SESSION['id'];
 //validation
 
 
@@ -24,7 +24,7 @@ $message[] = 'please fill out all';
 
 
 
-$insert = "INSERT INTO producttb (product_name, product_price,product_description,product_image,doctor_id)
+$insert = "INSERT INTO products (product_name, product_price,product_description,product_image,user_id)
 VALUES('$product_name', '$product_price','$product_description', '$product_image','$doc')";
 $upload = mysqli_query($conn, $insert);
 if ($upload) {
@@ -138,7 +138,7 @@ $message[] = 'could not add the product';
         <div class="admin-product-form-container">
 
             <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
-                <h3>add a new product</h3>
+                <h3>Add a new product</h3>
                 <input type="text" placeholder="enter product name" name="product_name" class="box">
                 <input type="number" placeholder="enter product price" name="product_price" class="box">
                 <input type="text" placeholder="enter product description" name="product_description" class="box">
@@ -156,7 +156,7 @@ $message[] = 'could not add the product';
 
         <?php
 
-      $select = mysqli_query($conn, "SELECT * FROM producttb");
+      $select = mysqli_query($conn, "SELECT * FROM products");
 
       ?>
 

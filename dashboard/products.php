@@ -11,13 +11,13 @@ if (isset($_POST['add_product'])) {
    $product_description = $_POST['product_description'];
    $product_image = $_FILES['product_image']['name'];
    $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
-   $product_image_folder = 'upload/' . $product_image;
+   $product_image_folder = '../upload/' . $product_image;
    //validation 
-print_r($product_name);
+// print_r($product_name);
    if (empty($product_name) || empty($product_price) || empty($product_image)) {
       $message[] = 'please fill out all';
    } else {
-      $insert = "INSERT INTO producttb(product_name, product_price,product_description,product_image) VALUES('$product_name', '$product_price','$product_description', '$product_image')";
+      $insert = "INSERT INTO products(product_name, product_price,product_description,product_image) VALUES('$product_name', '$product_price','$product_description', '$product_image')";
       $upload = mysqli_query($conn, $insert);
       if ($upload) {
          move_uploaded_file($product_image_tmp_name, $product_image_folder);
@@ -33,7 +33,7 @@ print_r($product_name);
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     //mysql quiry 
-    mysqli_query($conn, "DELETE FROM producttb WHERE id  = $id");
+    mysqli_query($conn, "DELETE FROM products WHERE product_id  = $id");
     // return user in same page 
     header('location:products.php');
     };?>
@@ -184,7 +184,7 @@ echo '<span class="message">' . $message . '</span>';
             </div>
             <!-- end form -->
             <?php
-$select = mysqli_query($conn, "SELECT * FROM producttb");
+$select = mysqli_query($conn, "SELECT * FROM products");
 ?>
             <!-- start patient table -->
             <div class="patient bg-white">
@@ -219,10 +219,10 @@ $select = mysqli_query($conn, "SELECT * FROM producttb");
                             </td>
 
                             <td>
-                                <a href="products_update.php?edit=<?php echo $row['id']; ?>" class="btn"> <i
+                                <a href="products_update.php?edit=<?php echo $row['product_id']; ?>" class="btn"> <i
                                         class="fas fa-edit"></i>
                                     edit </a>
-                                <a href="products.php?delete=<?php echo $row['id']; ?>" class="btn"> <i
+                                <a href="products.php?delete=<?php echo $row['product_id']; ?>" class="btn"> <i
                                         class="fas fa-trash"></i>
                                     delete </a>
                             </td>

@@ -3,8 +3,8 @@
 session_start();
 @include 'componant/config.php';
 //validation
-$doc="$_SESSION[doctors_id]";
-// print_r($doc);
+$doc=$_SESSION['id'];
+
 if (isset($_POST['add_product'])) {
     //get data from user
     $product_name = $_POST['product_name'];
@@ -13,7 +13,7 @@ if (isset($_POST['add_product'])) {
     $product_image = $_FILES['product_image']['name'];
     $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
     $product_image_folder = 'upload/' . $product_image;
-    $doctors_id=$_SESSION['doctors_id'];
+    $doctors_id=$_SESSION['id'];
     //validation 
 
 
@@ -24,7 +24,7 @@ if (isset($_POST['add_product'])) {
 
      
 
-        $insert = "INSERT INTO producttb (product_name, product_price,product_description,product_image,doctor_id) VALUES('$product_name', '$product_price','$product_description', '$product_image','$doc')";
+        $insert = "INSERT INTO products (product_name, product_price,product_description,product_image,user_id ) VALUES('$product_name', '$product_price','$product_description', '$product_image','$doc')";
         $upload = mysqli_query($conn, $insert);
         if ($upload) {
             move_uploaded_file($product_image_tmp_name, $product_image_folder);
@@ -40,7 +40,7 @@ if (isset($_POST['add_product'])) {
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     //mysql quiry 
-    mysqli_query($conn, "DELETE FROM producttb WHERE id  = $id");
+    mysqli_query($conn, "DELETE FROM products WHERE product_id  = $id");
     // return user in same page 
     header('location:pharmacie_profile.php');
 }
@@ -69,11 +69,11 @@ if (isset($_GET['delete'])) {
 </head>
 
 
-<?php
-if (!isset($_SESSION['doctors_id'])) {
+<!-- <?php
+if (!isset($_SESSION['id'])) {
     header('location:login.php');
 }
-?>
+?> -->
 
 <body>
     <div class="pharmaceies-page">
@@ -153,10 +153,10 @@ if (!isset($_SESSION['doctors_id'])) {
                                 require_once('componant/config.php');
 
 
-                                $query = mysqli_query($conn, "SELECT * FROM `doctors` WHERE `doctors_id`='$_SESSION[doctors_id]'");
+                                $query = mysqli_query($conn, "SELECT * FROM users WHERE id=$doc AND role='pharmacie'");
                                 $fetch = mysqli_fetch_array($query);
 
-                                echo "<h2 class='text-success'>" . $fetch['doctor_name'] . "</h2>";
+                                echo "<h2 class='text-success'>" . $fetch['name'] . "</h2>";
                                 ?>
                             </h3>
 
@@ -175,13 +175,13 @@ if (!isset($_SESSION['doctors_id'])) {
 
                             require_once('componant/config.php');
 
-                            $doc="$_SESSION[doctors_id]";
+                            $doc="$_SESSION[id]";
 
                             // print_r($doc);
 
             //                 $query = mysqli_query($conn, "SELECT * FROM `producttb` 
             // ");
-                            $query = mysqli_query($conn, "SELECT count(*) as total from producttb WHERE doctor_id=$doc");
+                            $query = mysqli_query($conn, "SELECT count(*) as total from products WHERE user_id=$doc");
                             $fetch = mysqli_fetch_array($query);
                             echo "<h2 class='text-success'>" . $fetch['total'] . "</h2>";
                             ?>
@@ -196,9 +196,9 @@ if (!isset($_SESSION['doctors_id'])) {
                             <h3>
                                 <?php
                                 require_once('componant/config.php');
-                                $query = mysqli_query($conn, "SELECT * FROM `doctors` WHERE doctors_id=$doc");
+                                $query = mysqli_query($conn, "SELECT * FROM `users` WHERE id=$doc AND role='pharmacie'");
                                 $fetch = mysqli_fetch_array($query);
-                                echo "<h2 class='text-success'>" . $fetch['doctor_phone'] . "</h2>";
+                                echo "<h2 class='text-success'>" . $fetch['phone'] . "</h2>";
                                 ?>
                             </h3>
                         </div>
@@ -211,9 +211,9 @@ if (!isset($_SESSION['doctors_id'])) {
                             <h3>Address</h3>
                             <?php
                             require_once('componant/config.php');
-                            $query = mysqli_query($conn, "SELECT * FROM `doctors` WHERE `doctors_id`='$_SESSION[doctors_id]'");
+                            $query = mysqli_query($conn, "SELECT * FROM users WHERE id=$doc AND role='pharmacie'");
                             $fetch = mysqli_fetch_array($query);
-                            echo "<h2 class='text-success'>" . $fetch['doctor_adress'] . "</h2>";
+                            echo "<h2 class='text-success'>" . $fetch['address'] . "</h2>";
                             ?>
                         </div>
                     </div>
@@ -264,7 +264,7 @@ if (!isset($_SESSION['doctors_id'])) {
     </section>
     <!-- End Form -->
     <?php
-    $select = mysqli_query($conn, "SELECT * FROM producttb where doctor_id=$doc");
+    $select = mysqli_query($conn, "SELECT * FROM products where user_id=$doc");
     ?>
     <!-- Start Table -->
     <div class=" section-trhee">
@@ -297,10 +297,10 @@ if (!isset($_SESSION['doctors_id'])) {
                             </td>
 
                             <td>
-                                <a href="products_update.php?edit=<?php echo $row['id']; ?>" class="btn"> <i
+                                <a href="products_update.php?edit=<?php echo $row['product_id']; ?>" class="btn"> <i
                                         class="fas fa-edit"></i>
                                     edit </a>
-                                <a href="pharmacie_profile.php?delete=<?php echo $row['id']; ?>" class="btn"> <i
+                                <a href="pharmacie_profile.php?delete=<?php echo $row['product_id']; ?>" class="btn"> <i
                                         class="fas fa-trash"></i>
                                     delete </a>
                             </td>

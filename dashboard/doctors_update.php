@@ -13,13 +13,13 @@ $doctor_descrip = $_POST['doctor_descrip'];
 $examination_price=$_POST['examination_price'];
 $doctor_img = $_FILES['doctor_img']['name'];
 $doctor_image_tmp_name = $_FILES['doctor_img']['tmp_name'];
-$doctor_image_folder = 'upload/' . $doctor_img;
+$doctor_image_folder = '../upload/' . $doctor_img;
 
 //validation
 if (empty($doctor_name) || empty($examination_price)) {
     $message[] = 'please fill out all!';
  } else {
-    $update_data = "UPDATE doctors SET doctor_name='$doctor_name', examination_price='$examination_price', doctor_img='$doctor_img', doctor_adress='$doctor_adress',examination_price='$examination_price'  WHERE doctors_id = '$id'";
+    $update_data = "UPDATE users SET name='$doctor_name', price='$examination_price', image='$doctor_img', address='$doctor_adress'  WHERE id = '$id'";
     $upload = mysqli_query($conn, $update_data);
     if ($upload) {
        move_uploaded_file($doctor_image_tmp_name, $doctor_image_folder);
@@ -145,7 +145,7 @@ echo '<span class="message">' . $message . '</span>';
                 <div class="form-container">
 
                     <?php
-$select = mysqli_query($conn, "SELECT * FROM doctors WHERE doctors_id  = '$id'");
+$select = mysqli_query($conn, "SELECT * FROM users WHERE id  = '$id'");
 while ($row = mysqli_fetch_assoc($select)) {
 ?>
                     <form method="post" id="addForm" enctype="multipart/form-data">
@@ -155,23 +155,23 @@ while ($row = mysqli_fetch_assoc($select)) {
                         </div>
                         <div class="input-control mb-3">
                             <input type="text" class="form-control" id="validateName" name="doctor_name"
-                                value="<?php echo $row['doctor_name']; ?>" />
+                                value="<?php echo $row['name']; ?>" />
                             <!-- <div class="error"></div> -->
                         </div>
                         <div class="input-control mb-3">
                             <input type="text" class="form-control" id="validateEmail" placeholder="Email"
-                                name="doctor_email" value="<?php echo $row['doctor_email']; ?>" />
+                                name="doctor_email" value="<?php echo $row['email']; ?>" />
                             <!-- <div class="error"></div> -->
                         </div>
                         <div class="input-control mb-3">
                             <input type="text" class="form-control" id="validatePhone" placeholder="Phone"
-                                name="doctor_phone" value="<?php echo $row['doctor_phone']; ?>" />
+                                name="doctor_phone" value="<?php echo $row['phone']; ?>" />
                             <!-- <div class="error"></div> -->
                         </div>
                         <div class="input-control mb-3">
                             <input type="text" class="form-control" id="validateSpecialization"
                                 placeholder="Doctor Descripition" name="doctor_descrip"
-                                value="<?php echo $row['doctor_descrip']; ?>" />
+                                value="<?php echo $row['docDesc']; ?>" />
                             <!-- <div class="error"></div> -->
                         </div>
                         <div class="input-control mb-3">
@@ -181,12 +181,12 @@ while ($row = mysqli_fetch_assoc($select)) {
                         </div>
                         <div class="input-control mb-3">
                             <input type="text" class="form-control" id="validateAddress" placeholder="Address"
-                                name="doctor_adress" value="<?php echo $row['doctor_adress']; ?>" />
+                                name="doctor_adress" value="<?php echo $row['address']; ?>" />
                             <!-- <div class="error"></div> -->
                         </div>
                         <div class="input-control mb-3">
                             <input type="text" class="form-control" id="validateAddress" placeholder="Examination price"
-                                name="examination_price" value="<?php echo $row['examination_price']; ?>" />
+                                name="examination_price" value="<?php echo $row['price']; ?>" />
                             <!-- <div class="error"></div> -->
                         </div>
                         <div class="input-control mb-3 mt-4">

@@ -52,7 +52,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-items-center" href="pharmacies.php">
+                    <a class="d-flex align-items-center" href="pharmacie_users.php">
                         <i class="fa-solid fa-prescription-bottle-medical"></i>
                         <span>Pharmacies Users</span>
                     </a>

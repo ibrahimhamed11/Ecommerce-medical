@@ -2,7 +2,6 @@
 //connect to db 
 @include '../componant/config.php';
 //validation
-
 if (isset($_POST['add_pharmacie'])) {
     //get data from user
     $pharmacie_name = $_POST['doctor_name'];
@@ -11,35 +10,31 @@ if (isset($_POST['add_pharmacie'])) {
     $pharmacie_email = $_POST['doctor_email'];
     $pahrmacie_password = $_POST['doctor_pass'];
     // $rule=$_POST['rule'];
-
     //validation 
-    if (empty($pharmacie_name) ){
+    if (empty($pharmacie_name)) {
         $message[] = 'please fill out all';
-        print_r("True");
-
-
     } else {
-        $insert = "INSERT INTO doctors(doctor_name,doctor_adress,doctor_phone,doctor_email,doctor_pass,rule)
+        $insert = "INSERT INTO users(name,address,phone,email,password,role)
        VALUES ('$pharmacie_name','$pharmacie_adress','$pharmacie_phone','$pharmacie_email','$pahrmacie_password','pharmacie')";
         $upload = mysqli_query($conn, $insert);
-        
+
         if ($upload) {
             $message[] = 'New Pharmacie added successfully';
         } else {
             $message[] = 'Could not add the Pharmacie';
         }
     }
-};
+}
+;
 //delete patient
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     //mysql quiry 
-    mysqli_query($conn, "DELETE FROM doctors WHERE doctors_id  = $id AND rule='pharmacie'");
+    mysqli_query($conn, "DELETE FROM users WHERE id  = $id AND role='pharmacie'");
     // return user in same page 
     header('location:pharmacie_users.php');
 }
 ; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -145,13 +140,15 @@ if (isset($_GET['delete'])) {
                         <i class="fa-solid fa-circle-xmark"></i>
                     </div>
                     <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data">
-                        <div> <?php
-            if (isset($message)) {
-                foreach ($message as $message) {
-                    echo '<span class="message">' . $message . '</span>';
-                }
-            }
-            ?></div>
+                        <div>
+                            <?php
+                            if (isset($message)) {
+                                foreach ($message as $message) {
+                                    echo '<span class="message">' . $message . '</span>';
+                                }
+                            }
+                            ?>
+                        </div>
                         <div class="input-control mb-3">
                             <input type="text" class="form-control" placeholder="Pharmacie Name" name="doctor_name" />
                             <!-- <div class="error"></div> -->
@@ -190,8 +187,8 @@ if (isset($_GET['delete'])) {
             <!-- end form -->
             <?php
 
-$select = mysqli_query($conn, "SELECT * FROM doctors where rule='pharmacie'");
-?>
+            $select = mysqli_query($conn, "SELECT * FROM users where role='pharmacie'");
+            ?>
             <!-- start patient table -->
             <div class="patient bg-white">
                 <div class="table-header">
@@ -215,22 +212,22 @@ $select = mysqli_query($conn, "SELECT * FROM doctors where rule='pharmacie'");
                             <tr>
                                 <?php while ($row = mysqli_fetch_assoc($select)) { ?>
                                 <td>
-                                    <?php echo $row['doctor_name']; ?>
+                                    <?php echo $row['name']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row['doctor_phone']; ?>
+                                    <?php echo $row['phone']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row['doctor_email']; ?>
-                                </td>
-
-                                <td>
-                                    <?php echo $row['doctor_adress'];?>
+                                    <?php echo $row['email']; ?>
                                 </td>
 
+                                <td>
+                                    <?php echo $row['address']; ?>
+                                </td>
+
 
                                 <td>
-                                    <a href="pharmacie_users.php?delete=<?php echo $row['doctors_id']; ?>" class="btn">
+                                    <a href="pharmacie_users.php?delete=<?php echo $row['id']; ?>" class="btn">
                                         <i class="fas fa-trash"></i>delete </a>
 
                                 </td>

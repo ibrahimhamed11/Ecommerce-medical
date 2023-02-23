@@ -1,10 +1,13 @@
 <?php
 //connect to db 
 @include '../componant/config.php';
+$conn = mysqli_connect('localhost', 'root', '', 'reaya');
+
 //validation
 if (isset($_POST['add_doctor'])) {
     //get data from user
     $doctor_name = $_POST['doctor_name'];
+    $doctor_password= $_POST['doctor_password'];
     $doctor_adress = $_POST['adress'];
     $doctor_specialization = $_POST['specialization'];
     $doctor_price = $_POST['examination_price'];
@@ -18,8 +21,8 @@ if (isset($_POST['add_doctor'])) {
     if (empty($doctor_name) || empty($doctor_price) || empty($doctor_adress)) {
         $message[] = 'please fill out all';
     } else {
-        $insert = "INSERT INTO doctors(doctor_name,doctor_adress,specialization,examination_price,doctor_phone,doctor_email,doctor_descrip,doctor_img)
-       VALUES('$doctor_name','$doctor_adress','$doctor_specialization','$doctor_price','$doctor_phone','$doctor_email','$doctor_description', '$doctor_image')";
+        $insert = "INSERT INTO users(name,address,specialization,price,phone,email,docDesc,image,password,role)
+       VALUES('$doctor_name','$doctor_adress','$doctor_specialization','$doctor_price','$doctor_phone','$doctor_email','$doctor_description','$doctor_image','$doctor_password','doctor')";
         $upload = mysqli_query($conn, $insert);
         if ($upload) {
             move_uploaded_file($doctor_image_tmp_name, $doctor_image_folder);
@@ -34,7 +37,7 @@ if (isset($_POST['add_doctor'])) {
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     //mysql quiry 
-    mysqli_query($conn, "DELETE FROM doctors WHERE doctors_id  = $id AND rule='doctor'" );
+    mysqli_query($conn, "DELETE FROM users WHERE id = $id AND role='doctor'" );
     // return user in same page 
     header('location:doctors.php');
 }
@@ -174,6 +177,11 @@ if (isset($_GET['delete'])) {
                             <div class="error"></div>
                         </div>
                         <div class="input-control mb-3">
+                            <input type="password" class="form-control" id="validateEmail" placeholder="Password"
+                                name="doctor_password" />
+                            <div class="error"></div>
+                        </div>
+                        <div class="input-control mb-3">
                             <input type="text" class="form-control" id="validatePhone" placeholder="Phone"
                                 name="doctor_phone" />
                             <div class="error"></div>
@@ -211,7 +219,7 @@ if (isset($_GET['delete'])) {
             <!-- end form -->
             <?php
 
-            $select = mysqli_query($conn, "SELECT * FROM doctors where rule='doctor'");
+            $select = mysqli_query($conn, "SELECT * FROM users where role='doctor'");
             ?>
             <!-- start patient table -->
             <div class="patient bg-white">
@@ -236,28 +244,28 @@ if (isset($_GET['delete'])) {
                             <tr>
                                 <?php while ($row = mysqli_fetch_assoc($select)) { ?>
                             <tr>
-                                <td><img src="../upload/<?php echo $row['doctor_img']; ?>" height="100" alt=""></td>
+                                <td><img src="../upload/<?php echo $row['image']; ?>" height="100" alt=""></td>
                                 <td>
-                                    <?php echo $row['doctor_name']; ?>
+                                    <?php echo $row['name']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row['doctor_adress']; ?>
+                                    <?php echo $row['address']; ?>
                                 </td>
                                 <td>
                                     <?php echo $row['specialization']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row['doctor_phone']; ?>
+                                    <?php echo $row['phone']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row['doctor_email']; ?>
+                                    <?php echo $row['email']; ?>
                                 </td>
 
                                 <td>
-                                    <a href="doctors.php?delete=<?php echo $row['doctors_id']; ?>" class="btn"> <i
+                                    <a href="doctors.php?delete=<?php echo $row['id']; ?>" class="btn"> <i
                                             class="fas fa-trash"></i>
                                         delete </a>
-                                    <a href="doctors_update.php?edit=<?php echo $row['doctors_id']; ?>" class="btn"> <i
+                                    <a href="doctors_update.php?edit=<?php echo $row['id']; ?>" class="btn"> <i
                                             class="fas fa-edit"></i>
                                         edit </a>
 

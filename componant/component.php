@@ -24,11 +24,43 @@ function component($productname, $productprice,$productdescription, $productimg,
                             <h5>
                                 <span class=\"price\">$productprice LE</span>
                             </h5>
-                            <button type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\">Add to Cart <i class=\"fas fa-shopping-cart\"></i></button>
+                            <button type=\"submit\" class=\"productCardBtn btn-warning my-3\" name=\"add\">Add to Cart <i class=\"productIcon fas fa-shopping-cart\"></i></button>
                              <input type='hidden' name='product_id' value='$productid'>
+                             
                         </div>
                     </div>
                 </form>
+                <style>
+                .productCardBtn{
+
+
+                    display: inline-block;
+                    font-weight: 400;
+                    color: #212529;
+                    text-align: center;
+                    vertical-align: middle;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    background-color: #009efb;
+color: #fff;
+                    border: 1px solid #009efb;
+                    padding: 0.375rem 0.75rem;
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    border-radius: 0.25rem;
+                    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                }
+
+                .productIcon{
+
+                    color: #f0f8ff;
+
+                }
+                
+                </style>
+
             </div>
     ";
     echo $element;
@@ -68,7 +100,7 @@ function cartElement($productimg, $productname, $productprice, $productid){
 function doctorsCard($doctorname, $price,$specialization,$doctordescription,$adress,$doctorimg,$doctorid){
     $element = "
     <div class=\"col-md-3 col-sm-6 my-3 my-md-0\">
-                <form action=\"index.php\" method=\"post\">
+                <form action=\"booking.php?addbooking=$doctorid\" method=\"post\">
                     <div class=\"card shadow doctorcard\">
                         <div>
 
@@ -90,18 +122,24 @@ function doctorsCard($doctorname, $price,$specialization,$doctordescription,$adr
                             <h6 class=\"card-title\">Spicialization : $specialization</h6>
                             <h6 class=\"card-title\"><i class=\"fa-sharp fa-solid fa-location-dot\"></i> $adress</h6>
                             <p class=\"card-text\">
-                            <i class=\"fa-solid fa-notes-medical\"></i>  $doctordescription
+                            <i class=\"fa-solid fa-notes-medical\"></i> $doctordescription
                             </p>
 
 
                             <h6>
                                 <span class=\"price\"><i class=\"fa-solid fa-money-bill-transfer\"></i> $price LE</span>
+
                             </h6>
-                            <button type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\">Book Now <i class=\"fas  fa-solid fa-calendar-days\"></i></button>
-                             <input type='hidden' name='doctors_id' value='$doctorid'>
+                            <button  href=\"booking.php?edit=
+                            \"              type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\">Book Now <i class=\"fas  fa-solid fa-calendar-days\"></i></button>
+
+
+                       
                         </div>
                     </div>
                 </form>
+
+                
             </div>
     ";
     echo $element;

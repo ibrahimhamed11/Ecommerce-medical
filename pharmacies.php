@@ -3,7 +3,7 @@ session_start();
 require_once ('componant/CreateDb.php');
 require_once ('componant/component.php');
 // create instance of Createdb class
-$database = new CreateDb("Productdb", "Producttb");
+$database = new CreateDb("reaya", "Products");
 if (isset($_POST['add'])){
     /// print_r($_POST['product_id']);
     if(isset($_SESSION['cart'])){
@@ -27,8 +27,6 @@ if (isset($_POST['add'])){
         // print_r($_SESSION['cart']);
     }
 }
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -50,8 +48,8 @@ if (isset($_POST['add'])){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--icons library-->
-    <link rel="stylesheet" href="css/pharmacie.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" />
+    <link rel="stylesheet" href="css/pharmacie.css">
 
 </head>
 
@@ -221,12 +219,13 @@ if (isset($_POST['add'])){
             <div class="row text-center py-5">
 
                 <?php
+
                 $result = $database->getDataProducts();
-                
+               
                 while ($row = mysqli_fetch_assoc($result)){
 
                     
-                    component($row['product_name'], $row['product_price'],$row['product_description'], $row ['product_image'], $row['id']);
+                    component($row['product_name'], $row['product_price'],$row['product_description'], $row ['product_image'], $row['product_id']);
                 }
             ?>
             </div>

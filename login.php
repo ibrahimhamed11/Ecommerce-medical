@@ -1,26 +1,26 @@
 <?php
 require_once ('componant/config.php');
 session_start();
-
+// print_r($_SESSION['id']);
 
 	if(ISSET($_POST['login'])){
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 
  
-		$query = mysqli_query($conn, "SELECT * FROM `doctors` WHERE `doctor_email` = '$email' AND `doctor_pass` = '$password'") ;
+		$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$password'") ;
 		$fetch = mysqli_fetch_array($query);
 		$row = mysqli_num_rows($query);
  
 		if($row > 0){
-			$_SESSION['doctors_id']=$fetch['doctors_id'];
+			$_SESSION['id']=$fetch['id'];
 			echo "<script>alert('Login Successfully!')</script>";
 			echo "<script>window.location='pharmacie_profile.php'</script>";
 		}else{
 			echo "<script>alert('Invalid username or password')</script>";
 			echo "<script>window.location='login.php'</script>";
 		}
- 
+//  print_r($_SESSION['id']);
 	}
  
 ?>
