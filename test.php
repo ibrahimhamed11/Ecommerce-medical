@@ -217,3 +217,42 @@ if (!isset($_SESSION['doctors_id'])) {
 		}
 	}
 ?>
+
+
+
+
+
+<h3 class="">
+    <?php
+                $adminName = "SELECT * FROM `users` WHERE `role` = 'admin'";
+
+                if ($doctorResult = mysqli_query($conn, $adminName)) {
+                  // Return the number of rows in result set
+                  $rowcount = mysqli_num_rows($doctorResult);
+                  printf($rowcount);
+                  // Free result set
+                  mysqli_free_result($doctorResult);
+                }
+                ?>
+</h3>
+
+
+<h3>
+
+    <?php
+
+	session_start();
+	if (!isset($_SESSION['id'])) {
+		header('location:login.php');
+	}
+	$adminId=$_SESSION['id'];
+	   $select = mysqli_query($conn, "SELECT * FROM users where role='admin' AND id='$adminId'");
+	   $fetch = mysqli_fetch_array($query);
+
+	   $adminName= "<h2 class='text-success'>" . $fetch['name'] . "</h2>";
+	
+	?>
+
+
+
+</h3>

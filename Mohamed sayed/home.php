@@ -32,7 +32,7 @@
             </div>
             <ul>
                 <li>
-                    <a class=" active d-flex align-items-center" href="home.php">
+                    <a class=" active d-flex align-items-center" href="dashboard.php">
                         <i class="fa-regular fa-chart-bar fa-fw"></i>
                         <span>Dashboard</span>
                     </a>

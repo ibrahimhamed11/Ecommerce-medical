@@ -36,7 +36,23 @@ if (isset($_GET['delete'])) {
     mysqli_query($conn, "DELETE FROM products WHERE product_id  = $id");
     // return user in same page 
     header('location:products.php');
-    };?>
+    };
+    
+    
+//get admin name from db and print 
+if (!isset($_SESSION['id'])) {
+    header('location:login.php');
+}
+$adminId=$_SESSION['id'];
+   $query = mysqli_query($conn, "SELECT * FROM users where role='admin' AND id='$adminId'");
+   $fetch = mysqli_fetch_array($query);
+
+   $adminName= "<h5 class='text-success text-white mb-3
+
+   '>" . $fetch['name'] . "</h5>";
+   //get admin name from db and print 
+
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <!--Header file-->
@@ -69,12 +85,12 @@ if (isset($_GET['delete'])) {
                     Re<span>ع</span>aya</a>
                 <a class="img__link d-block" href="#"><img class="img-fluid" src="../images/admin.png"
                         alt="Admin" /></a>
-                <h5 class="mt-2 mb-2 fw-semibold">Admin</h5>
-                <h6 class="mb-3">Admin</h6>
+                <h5 class="mt-2 mb-2 fw-semibold">Admin<h5><?php echo $adminName?></h5>
+                </h5>
             </div>
             <ul>
                 <li>
-                    <a class="d-flex align-items-center" href="home.php">
+                    <a class="d-flex align-items-center" href="dashboard.php">
                         <i class="fa-regular fa-chart-bar fa-fw"></i>
                         <span>Dashboard</span>
                     </a>

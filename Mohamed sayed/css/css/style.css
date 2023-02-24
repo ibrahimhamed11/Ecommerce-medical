@@ -1,0 +1,99 @@
+body {
+  font-family: "Quicksand", sans-serif;
+}
+
+/* start header */
+.navbar {
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 5px 0px 5px 5px #f4f6f9;
+  color: #18100f;
+  background-color: white;
+}
+.images span{
+  color: #18100f;
+  font-size: 1.5em;
+}
+span{
+  color: #009efb;
+
+}
+.images span h {
+  color: #009efb;
+  font-size: 1.5em;
+}
+.images img {
+  width: 70px;
+}
+/* end Nav */
+
+/* start icons code */
+.fa-user-doctor {
+  font-size: 6rem;
+  color: #009efb;
+  padding-top: 30px;
+}
+.fa-staff-snake {
+  font-size: 6rem;
+  color: #009efb;
+  padding-top: 30px;
+}
+.fa-user {
+  font-size: 6rem;
+  color: #009efb;
+  padding-top: 30px;
+}
+.dropdown .btn{
+  border: #009efb 2px solid;
+}
+.dropdown button :hover{
+  background-color: #009efb;
+}
+/*End icons code*/
+.join
+{
+  background: #f4f6f9;
+}
+.card {
+  box-shadow: 2px 1px 6px 0px #009efb;
+}
+body {
+  height: 100%;
+}
+
+/* start modal */
+.modal-color {
+  background-color: #009efb;
+  color: white;
+}
+.input {
+  padding: 20px;
+  background-color: aqua;
+}
+.start {
+  text-align: start;
+  padding-left: 10px;
+}
+/* Srart footer */
+.section_end {
+  color: white;
+  background-color: #009efb;
+}
+.section_end img {
+  width: 120px;
+}
+.section_end svg {
+  font-size: 20px;
+  color: white;
+  padding: 0;
+}
+.section_end span {
+  color: white;
+  font-size: 1.5em;
+}
+.section_end span h {
+  color: #18100f;
+  font-size: 1.5em;
+}
+/* End footer */

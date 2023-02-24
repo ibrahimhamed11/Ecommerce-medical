@@ -31,6 +31,20 @@ if (isset($_POST['update_product'])) {
 }
 ;
 
+//get admin name from db and print 
+session_start();
+if (!isset($_SESSION['id'])) {
+    header('location:login.php');
+}
+$adminId=$_SESSION['id'];
+   $query = mysqli_query($conn, "SELECT * FROM users where role='admin' AND id='$adminId'");
+   $fetch = mysqli_fetch_array($query);
+
+   $adminName= "<h5 class='text-success text-white mb-3
+
+   '>" . $fetch['name'] . "</h5>";
+   //get admin name from db and print 
+
 ?>
 
 <!DOCTYPE html>

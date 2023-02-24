@@ -163,6 +163,11 @@ if (isset($_POST['add'])){
                                     <option value="brain">brain</option>
                                     <option value="bones">bones</option>
                                 </select>
+                                <style>
+                                .form-control {
+                                    margin-right: 20px;
+                                }
+                                </style>
                                 <!-- <label>Address</label> -->
                                 <select class="form-control" name="address">
                                     <option value="">Address</option>

@@ -105,6 +105,76 @@ $doctor_name =$docnn;
 
 
 <body>
+    <div class="pharmaceies-page">
+        <!-- start nav -->
+        <nav class="navbar navbar-expand-lg navbar-light nav sticky-top p-0">
+            <div class="container">
+                <div class="col-6 logo">
+                    <div class="images">
+                        <img src="assets/images/logo.PNG" alt="" />
+                        <span>Re<h>ع</h>aya</span>
+                    </div>
+                </div>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link p-1 p-lg-3 " aria-current="page" href="index.php">HOME</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link p-1 p-lg-3" href="pharmacies.php">PHARMACEIES</a>
+
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link p-1 p-lg-3 active" href="pharmacie_profile.php">PHARMACY PROFILE</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link p-1 p-lg-3" href="#">DOCTORS</a>
+                        </li>
+                        <li class="nav-item align-self-center ">
+                            <a class="nav-link p-1 p-lg-3" href="doctor_profile.php">DOCTOR PROFILE</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link p-1 p-lg-3" href="contact.php">CONTACT</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link p-1 p-lg-3" href="join us.php">JOIN</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link p-1 p-lg-3" href="donate.php">DONATE</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- end nav -->
+    </div>
+
+
+
+    <!-- Start Form -->
+    <div class="cartnav" id="cardnav">
+        <header class="line" style="display: flex;">
+            <p class="title">
+                All medicines are dispensed from pharmacies licensed by the Ministry of Health in the Arab Republic
+                of Egypt
+            </p>
+            <div class="card-close">
+                <button type="button" class="closebtn">×</button>
+
+                <div class="carttt">
+                    <div class="navbar-nav ">
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    </div>
     <div> <?php
             if (isset($message)) {
                 foreach ($message as $message) {
@@ -112,8 +182,6 @@ $doctor_name =$docnn;
                 }
             }
             ?></div>
-
-    <!-- Start Form -->
     <section class="section-two">
         <div class="container mt-5 mb-4">
             <form method="post" enctype="multipart/form-data" class="form" id="form">
@@ -139,9 +207,6 @@ $doctor_name =$docnn;
             echo $row['name']; ?>">
                     <input type="text" name="doctor_id" value="<?php echo $docId ?>">
                 </div> -->
-
-
-
                     <div class="mb-3">
                         <button type="submit" name="adding" id="form_butt" onclick="nonedisplay()"
                             class="btn form_butt mt-5">
@@ -152,9 +217,6 @@ $doctor_name =$docnn;
         </div>
     </section>
     <!-- End Form -->
-
-
-
 </body>
 <!-- start footer -->
 <footer class="section_end text-center text-lg-start pt-2">
@@ -163,9 +225,7 @@ $doctor_name =$docnn;
         <!-- Grid row -->
         <div class="row">
             <!-- Grid column -->
-
             <!-- Copyright -->
-
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-2">
                 <!-- Content -->
                 <div class="pb-2">
@@ -178,11 +238,8 @@ $doctor_name =$docnn;
                 </div>
             </div>
             <!-- Copyright -->
-
             <!-- Start Grid column -->
-
             <!-- End Grid column -->
-
             <!-- Start Grid column -->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                 <!-- Links -->
@@ -262,8 +319,6 @@ $doctor_name =$docnn;
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
 <script src="js/main.js"></script>
-
-
 <!-- Bootstrap js file -->
 <script src="js/bootstrap.bundle.min.js"></script>
 <!-- Font Awesome js file -->

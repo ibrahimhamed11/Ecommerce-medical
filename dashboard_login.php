@@ -8,7 +8,7 @@ session_start();
 		$password = $_POST['password'];
 
  
-		$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$password' AND `role`='doctor' ") ;
+		$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$password' AND `role`='admin' ") ;
 		$fetch = mysqli_fetch_array($query);
 		$row = mysqli_num_rows($query);
  
@@ -16,7 +16,7 @@ session_start();
 			$_SESSION['id']=$fetch['id'];
             $_SESSION['email']=$fetch['email'];
 			echo "<script>alert('Login Successfully!')</script>";
-			echo "<script>window.location='doctor_profile.php'</script>";
+			echo "<script>window.location='dashboard/dashboard.php'</script>";
 		}else{
 			echo "<script>alert('Invalid username or password')</script>";
 			echo "<script>window.location='login.php'</script>";

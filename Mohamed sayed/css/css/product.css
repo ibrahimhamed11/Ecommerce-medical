@@ -1,0 +1,198 @@
+:root {
+    --blue-color: #009efb;
+    --black-color: #18100f;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Quicksand", sans-serif;
+}
+
+
+
+/* Start Nav */
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.navbar {
+    /* height: 75px; */
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 5px 0px 5px 5px #f4f6f9;
+    color: #18100f;
+    background-color: white;
+}
+
+.images span {
+    color: #18100f;
+    font-size: 1.5em;
+}
+
+.images span h {
+    color: #009efb;
+    font-size: 1.5em;
+}
+
+.images img {
+    width: 70px;
+}
+
+/* end Nav */
+
+/* Start Form */
+
+.section-one{
+    background-image: url(../images/makingmedicines784.jpg);
+    background-size:cover;
+    background-position: 30% 700%;
+    background-repeat: no-repeat;
+}
+.description_doctor_profile {
+    background-color: white;
+    box-shadow: 0px 0px 2px 2px #f4f6f9;
+    width: 40%;
+    padding: 30px;
+    margin: 50px auto;
+    text-align: center;
+
+}
+.card {
+    background-image: url();
+    border-radius: 0;
+    border: none;
+    margin-bottom: 50px;
+    
+
+}
+.Description , .Age, .Phone, .Address{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+.icon ,.fa-solid {
+    width: 50px;
+    height: 50px; 
+    font-size: 35px;
+    /* background-color: #009efb; */
+    color: #009efb;
+    padding-top: 10px;
+
+    /* padding-left: 15px; */
+    /* margin-top: 5px; */
+
+}
+
+.title_description, .title_age,.title_phone,.title_address {
+    padding-left: 20px;
+    text-align: start;
+}
+/* Start Form */
+/* Start Form */
+.section-two {
+    background-image: url(../images/images.png) , url(../images/images2.png);
+    background-repeat: no-repeat;
+    background-size: 50px;
+    background-position: 18% 4% , 79% 73%;
+}
+.container .form {
+    background-image: url(../images/1db315228240eb2ed1a3432ab564f4f6.png);
+    height: 400px;
+    object-fit: cover;
+    vertical-align: middle;
+    background-size: cover;
+    background-position: 0% 20%;
+    background-repeat: no-repeat;
+    display: none;
+}
+
+.form {
+    width: 40%;
+    margin: 0px auto;
+    background-color: #f4f6f9;
+    padding: 15px;
+    box-shadow: 2px 1px 6px 0px #2490eb;
+}
+
+.form_butt {
+    background-color: #009efb;
+
+}
+
+/* End Form */
+/* Start Table */
+.table {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.table thead {
+    background-color: #f4f6f9;
+}
+
+.table svg {
+    color: #009efb;
+
+}
+
+/* End Table */
+
+/* Srart footer */
+.section_end {
+    color: white;
+    background-color: #009efb;
+}
+
+.section_end img {
+    width: 120px;
+}
+
+.section_end svg {
+    font-size: 20px;
+    color: white;
+    padding: 0;
+}
+
+.section_end span {
+    color: white;
+    font-size: 1.5em;
+}
+
+.section_end span h {
+    color: #18100f;
+    font-size: 1.5em;
+}
+
+/* End footer */
+
+.iconn{
+    padding: 0px;
+}
+
+
+
+/*  */
+
+@media (max-width:768px) {
+    .description_doctor_profile {
+        width: 100%;
+    }
+    .form{
+        width: 100%;
+    }
+    .table{
+        width: 100%;
+    }
+}
+    

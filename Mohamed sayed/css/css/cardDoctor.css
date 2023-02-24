@@ -1,0 +1,192 @@
+:root {
+  --blue-color: #009efb;
+  --black-color: #18100f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+}
+
+
+
+/* Start Nav */
+.contanier {
+  width: 80%;
+  margin: 0px auto;
+}
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navbar {
+  /* height: 75px; */
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 5px 0px 5px 5px #f4f6f9;
+  color: #18100f;
+  background-color: white;
+}
+
+.images span {
+  color: #18100f;
+  font-size: 1.5em;
+}
+
+.images span h {
+  color: #009efb;
+  font-size: 1.5em;
+}
+
+.images img {
+  width: 70px;
+}
+
+/* end Nav */
+
+/* --------------start body section 1--------- */
+/* ----start nav search for doctor---- */
+.doctor_nav_search {
+  height: 12vh;
+  background-color: var(--blue-alt-color);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  opacity: 0.9;
+}
+.doctor_nav_search_div {
+  padding-top: 30px;
+  color: var(--blue-color);
+  padding-left: 1.875rem;
+}
+.doctor_nav_search_div a {
+  color: white;
+  font-size: 1.25rem;
+}
+/*------------- end of nav ------*/
+
+/* -----start doctor_cards---------------------------- */
+
+.container1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 4rem 0;
+}
+
+/*----- start side bar for searching of doctors   --- */
+.side_bar {
+  width: 30%;
+  padding-left: .625rem;
+}
+.side_bar_header {
+  margin-bottom: 0.625rem;
+  font-weight: 800;
+  font-size: 18px;
+}
+.side_bar_option .card {
+  width: 190px;
+  padding: 10px 0;
+  outline: none;
+  margin-bottom: 8px;
+  background-color: #eee;
+}
+.input_search {
+  width: 190px;
+  margin-top: .625rem;
+  outline: none;
+}
+.button_search button{
+  margin-top: .625rem;
+  font-size: 18px;
+}
+/* ----end of side bar for searching of doctors--------- */
+
+/* ----start  doctor_cards---- */
+.doctor_card {
+  width: 65%;
+}
+.items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.doctor_card .card h2 {
+  font-weight: 600;
+}
+.doctor_card .card small {
+  padding-bottom: 5px;
+  
+}
+.doctor_card .card {
+  width: 45%;
+  margin-right: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding-left: 20px;
+  border: 2px solid var(--blue-color);
+  box-shadow: 4px 4px 9px 4px #ccc;
+  padding-top: 8px;
+  transition: 0.9s ease;
+}
+.doctor_card .card:hover {
+  background-color: #eee;
+  
+  
+}
+.doctor_card .card .specific {
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 5px;
+}
+.doctor_card .card input {
+  outline: none;
+  border: 2px solid var(--blue-color);
+  box-shadow: 0px 0px 5px 0px var(--blue-color);
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  width: 50%;
+  border-radius: 10px;
+  margin-bottom: .1875rem;
+}
+/* --------media for responsive---- */
+@media(max-width: 425px){
+  .doctor_card .card{
+    width: 100%;
+    margin-left: 20px;
+  }
+}
+/* ---------end doctor_cards--------- */
+/* Srart footer */
+.section_end{
+  color: white;
+  background-color: var(--blue-color);
+}
+.section_end img
+{
+  width: 120px;
+}
+.section_end svg {
+  font-size: 20px;
+  color: white;
+  padding: 0;
+}
+.section_end span {
+  color:white;
+  font-size: 1.5em;
+}
+.section_end span  h{
+  color:#18100f;
+  font-size: 1.5em;
+}
+/* End footer */
