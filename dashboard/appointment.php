@@ -18,7 +18,7 @@ if (isset($_POST['add_appointment'])) {
     if (empty($patient_name) ) {
         $message[] = 'please fill out all';
     } else {
-        $insert = "INSERT INTO appointments(patientName,patient_adress,patient_phone,patient_email,doctor_name,status	)
+        $insert = "INSERT INTO appointment(patientName,patient_adress,patient_phone,patient_email,doctor_name,status	)
                                      VALUES ('$patient_name','$patient_adress','$patient_phone','$patient_email','$doctor_name','$patient_status')";
         $upload = mysqli_query($conn, $insert);
         
@@ -33,7 +33,7 @@ if (isset($_POST['add_appointment'])) {
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     //mysql quiry 
-    mysqli_query($conn, "DELETE FROM appointments WHERE appointmentId   = $id");
+    mysqli_query($conn, "DELETE FROM appointment WHERE appointmentId   = $id");
     // return user in same page 
     header('location:appointment.php');
 }
@@ -192,7 +192,7 @@ if (isset($_GET['delete'])) {
             <!-- end form -->
             <?php
 
-$select = mysqli_query($conn, "SELECT * FROM appointments ");
+$select = mysqli_query($conn, "SELECT * FROM appointment ");
 ?>
             <!-- start patient table -->
             <div class="patient bg-white">

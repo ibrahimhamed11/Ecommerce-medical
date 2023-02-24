@@ -4,11 +4,10 @@ require_once ('componant/CreateDb.php');
 require_once ('componant/component.php');
 
 
-
 //get doctor name from ussers table 
-$select= mysqli_query($conn, "SELECT `name` FROM users where id =$docId");
-$docname = mysqli_fetch_assoc($select);
-$docnn=($docname['name']);
+// $select= mysqli_query($conn, "SELECT `name` FROM users where id =$docId");
+// $docname = mysqli_fetch_assoc($select);
+// $docnn=($docname['name']);
 
 
 
@@ -138,36 +137,90 @@ if (isset($_POST['add'])){
                 </div>
             </header>
 
+
+
             <div class="listitems">
 
                 <div class="searchcontainer">
                     <form action="search.php" method="post" class=" d-flex py-0">
                         <input type="text" name="search" class="form-control mb-4" placeholder="Enter any details">
                         <br>
-                        <button type="submit" name="submit" class="btn btn-success mb-4">Search</button>
+
+                        <button type="submit" name="submit" class="btn btn-primary mb-4">Search</button>
                     </form>
+
+                    <div>
+
+                        <form action="filter.php" method="post" action="">
+                            <div class="form-inline">
+                                <!-- <label>Specialization</label> -->
+                                <select class="form-control" name="Specialization">
+                                    <option value="Specialization">Specialization</option>
+
+                                    <option value="skin">skin</option>
+                                    <option value="teeth">teeth</option>
+                                    <option value="child">child</option>
+                                    <option value="brain">brain</option>
+                                    <option value="bones">bones</option>
+                                </select>
+                                <!-- <label>Address</label> -->
+                                <select class="form-control" name="address">
+                                    <option value="">Address</option>
+                                    <option value="Mansoura">Mansoura</option>
+                                    <option value="aswan">Aswan</option>
+                                </select>
+                                <button class="btn btn-primary" name="filter">Filter</button>
+                                <!-- <button class="btn btn-success" name="reset">Reset</button> -->
+                            </div>
+                        </form>
+                        <br /><br />
+                    </div>
                 </div>
-
-
-
 
                 <!-------------------------lables container div------------------------->
             </div>
         </div>
         <!--******************************************************* -->
+        <!--Fileter-->
 
-        <div class="container">
-            <div class="row text-center py-5 carddoc">
 
-                <style>
-                .carddoc {
+        <div>
+            <form class="filter" method="post" action="./test.php" enctype="multipart/form-data">
+                <div class="part2_province_region">
+                    <div class="container">
 
-                    margin-top: 40px;
-                    min-width: 400px
-                }
-                </style>
+                        <!-- <select class="card" id="sec2">
+                                <option>Choose the region</option>
+                                <option></option>
+                            </select> -->
+                    </div>
 
-                <?php
+                </div>
+        </div>
+    </div>
+    </section>
+    </form>
+    </div>
+    <style>
+    .filter {
+        display: flex;
+    }
+    </style>
+    <!--Fileter-->
+
+    <div class="container">
+
+        <div class="row text-center py-5 carddoc">
+
+            <style>
+            .carddoc {
+
+                margin-top: 40px;
+                min-width: 400px
+            }
+            </style>
+
+            <?php
                 $result = $database->getDoctorsData();
                 
                 while ($row = mysqli_fetch_assoc($result)){
@@ -178,106 +231,106 @@ if (isset($_POST['add'])){
 
 
             ?>
-            </div>
         </div>
+    </div>
 
 
-        <!-- start footer -->
-        <footer class="section_end text-center text-lg-start pt-2">
-            <!-- Section: Links  -->
-            <div class="container p-3">
+    <!-- start footer -->
+    <footer class="section_end text-center text-lg-start pt-2">
+        <!-- Section: Links  -->
+        <div class="container p-3">
+            <!-- Grid row -->
+            <div class="row">
+                <!-- Grid column -->
+
+                <!-- Copyright -->
+
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-2">
+                    <!-- Content -->
+                    <div class="pb-2">
+                        <img src="./assets/images/logoFooter.PNG" alt="" />
+                        <span>Re<h>ع</h>aya</span>
+                    </div>
+                    <p></p>
+                    <div class="pt-3">
+                        <a class="text-reset" href="">©2020 Thousand Sunny. All rights reserved</a>
+                    </div>
+                </div>
+                <!-- Copyright -->
+
+                <!-- Start Grid column -->
+
+                <!-- End Grid column -->
+
+                <!-- Start Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">OUR PAGE</h6>
+                    <p>
+                        <a href="#!" class="text-reset">HOME</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">PHARMACEIES</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">DOCTORS</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">JOIN US</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">CONTACT US</a>
+                    </p>
+                </div>
+                <!-- End Grid column -->
+
+                <!-- Start Grid column -->
+                <div class="col-md-2 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">ABOUT</h6>
+                    <p><i class="fa-solid fa-phone"></i> +1800-001-658</p>
+                    <p>
+                        <i class="fa-solid fa-envelope"></i> Info@Peacefulthemes.Com
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i> Themeforest, Envato HQ
+                        24 Fifthst., Los Angeles, USA
+                    </p>
+                </div>
+
+                <!-- End Grid column -->
                 <!-- Grid row -->
-                <div class="row">
-                    <!-- Grid column -->
-
-                    <!-- Copyright -->
-
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-2">
-                        <!-- Content -->
-                        <div class="pb-2">
-                            <img src="./assets/images/logoFooter.PNG" alt="" />
-                            <span>Re<h>ع</h>aya</span>
-                        </div>
-                        <p></p>
-                        <div class="pt-3">
-                            <a class="text-reset" href="">©2020 Thousand Sunny. All rights reserved</a>
-                        </div>
-                    </div>
-                    <!-- Copyright -->
-
-                    <!-- Start Grid column -->
-
-                    <!-- End Grid column -->
-
-                    <!-- Start Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">OUR PAGE</h6>
-                        <p>
-                            <a href="#!" class="text-reset">HOME</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">PHARMACEIES</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">DOCTORS</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">JOIN US</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">CONTACT US</a>
-                        </p>
-                    </div>
-                    <!-- End Grid column -->
-
-                    <!-- Start Grid column -->
-                    <div class="col-md-2 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">ABOUT</h6>
-                        <p><i class="fa-solid fa-phone"></i> +1800-001-658</p>
-                        <p>
-                            <i class="fa-solid fa-envelope"></i> Info@Peacefulthemes.Com
-                        </p>
-                        <p>
-                            <i class="fa-solid fa-location-dot"></i> Themeforest, Envato HQ
-                            24 Fifthst., Los Angeles, USA
-                        </p>
-                    </div>
-
-                    <!-- End Grid column -->
-                    <!-- Grid row -->
-                </div>
-                <!-- Section: Links  -->
-
-                <!-- Icons -->
-                <div class="text-center pl-4">
-                    <div class="container" style="border-top: 1px solid white">
-                        <!-- Twitter -->
-                        <a class="btn btn-link btn-floating btn-lg text-dark mt-2" href="#!" role="button"
-                            data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
-
-                        <!-- Facebook -->
-                        <a class="btn btn-link btn-floating btn-lg text-dark mt-2" href="#!" role="button"
-                            data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
-
-                        <!-- Instagram -->
-                        <a class="btn btn-link btn-floating btn-lg text-dark mt-2" href="#!" role="button"
-                            data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
-
-                        <!-- Linkedin -->
-                        <a class="btn btn-link btn-floating btn-lg text-dark mt-2" href="#!" role="button"
-                            data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
-
-                        <!-- Google -->
-                        <a class="btn btn-link btn-floating btn-lg text-dark mt-2" href="#!" role="button"
-                            data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
-                    </div>
-                </div>
-                <!-- Icons -->
             </div>
-        </footer>
-        <!-- end footer -->
+            <!-- Section: Links  -->
+
+            <!-- Icons -->
+            <div class="text-center pl-4">
+                <div class="container" style="border-top: 1px solid white">
+                    <!-- Twitter -->
+                    <a class="btn btn-link btn-floating btn-lg text-dark mt-2" href="#!" role="button"
+                        data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
+
+                    <!-- Facebook -->
+                    <a class="btn btn-link btn-floating btn-lg text-dark mt-2" href="#!" role="button"
+                        data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
+
+                    <!-- Instagram -->
+                    <a class="btn btn-link btn-floating btn-lg text-dark mt-2" href="#!" role="button"
+                        data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+
+                    <!-- Linkedin -->
+                    <a class="btn btn-link btn-floating btn-lg text-dark mt-2" href="#!" role="button"
+                        data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
+
+                    <!-- Google -->
+                    <a class="btn btn-link btn-floating btn-lg text-dark mt-2" href="#!" role="button"
+                        data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
+                </div>
+            </div>
+            <!-- Icons -->
+        </div>
+    </footer>
+    <!-- end footer -->
 
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

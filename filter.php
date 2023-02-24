@@ -1,3 +1,53 @@
+<?php
+
+//connect ot the database
+require 'componant/conn.php';
+require_once('componant/CreateDb.php');
+require_once('componant/component.php');
+//get the search keyword
+//$search = $_POST['search'];
+//SQL query to get the products based on the search keyword
+
+if (isset($_POST['filter'])) {
+    $address = $_POST['address'];
+    $Specialization = $_POST['Specialization'];
+    $sql = "SELECT * FROM `users` WHERE `address`='$address' and role='doctor'";
+    //execute the query
+    $query = mysqli_query($con, $sql);
+    //count the rows
+    $count = mysqli_num_rows($query);
+    //check whether the product is available
+    if ($count > 0) {
+        while ($row = mysqli_fetch_assoc($query)) {
+            doctorsCard($row['name'], $row['price'], $row['specialization'], $row['docDesc'], $row['address'], $row['image'], $row['id']);
+        }
+    } else if (isset($_POST['filter'])) {
+        $address = $_POST['Specialization'];
+        $sql = "SELECT * FROM `users` WHERE `Specialization`='$Specialization' and role='doctor'";
+
+        //execute the query
+
+        $query = mysqli_query($con, $sql);
+        //count the rows
+        $count = mysqli_num_rows($query);
+        //check whether the product is available
+        if ($count > 0) {
+            while ($row = mysqli_fetch_assoc($query)) {
+
+                doctorsCard($row['name'], $row['price'], $row['specialization'], $row['docDesc'], $row['address'], $row['image'], $row['id']);
+
+            }
+        } else {
+            echo "<div class='alert alert-danger'>
+there is no product matching your search....
+</div>";
+        }
+
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +55,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" />
-    <title>Doctors Search</title>
+    <title>Doctors Filter</title>
     <link rel="stylesheet" href="css/normalize.css" />
     <!--fontawesome -->
     <link rel="stylesheet" href="css/all.min.css" />
@@ -51,7 +101,7 @@
                             <a class="nav-link p-1 p-lg-3 " href="pharmacie_profile.php">PHARMACY PROFILE</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="doctorS.php">DOCTORS</a>
+                            <a class="nav-link p-1 p-lg-3" href="doctors.php">DOCTORS</a>
                         </li>
                         <li class="nav-item align-self-center ">
                             <a class="nav-link p-1 p-lg-3" href="doctor_profile.php">DOCTOR PROFILE</a>
@@ -86,58 +136,20 @@
 
                 </div>
             </header>
-            <?php $search = $_POST['search']; ?>
+            <?php $search = $_POST['address']; ?>
             <div style="margin:30px auto; text-align:center ;margin-bottom: -40px;">
-                <h3>This page content is based on:
+                <h3>This page content is based on :
                     <?php echo $search; ?>
                 </h3>
             </div>
             <div class="container">
                 <div class="row text-center py-5">
 
-                    <?php
 
-                    //connect ot the database
-                    require 'componant/conn.php';
-                    require_once('componant/CreateDb.php');
-                    require_once('componant/component.php');
-                    //get the search keyword
-                    //$search = $_POST['search'];
-                    //SQL query to get the products based on the search keyword
-                    $sql = "SELECT * FROM users WHERE name LIKE 
-        '%$search%' OR address LIKE '%$search%' OR docDesc LIKE '%$search% 'OR specialization  LIKE '%$search%'";
 
-                     //execute the query
-                        
-                     $query = mysqli_query($con, $sql);
-                     //count the rows
-                     $count = mysqli_num_rows($query);
-                     //check whether the product is available
-                     if ($count > 0) {
-                         while ($row = mysqli_fetch_assoc($query)) {
 
-                             doctorsCard($row['name'], $row['price'], $row['specialization'], $row['docDesc'], $row['address'], $row['image'], $row['id']);
-                            ?>
-
-                    <?php
-
-                        }
-                    } else {
-                        echo "<div class='alert alert-danger'>
-            there is no product matching your search....
-            </div>";
-                    }
-
-                    ?>
                 </div>
-
-
             </div>
-
-
-
-
-
             < <!-- start footer -->
                 <footer class="section_end text-center text-lg-start pt-2" style="  bottom: 0;
     margin-top: 100px;">

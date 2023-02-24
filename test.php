@@ -187,8 +187,33 @@ echo "<h2 class='text-success'>". $row['doctor_name'];
 
 
 
-    <?php
+<?php
 if (!isset($_SESSION['doctors_id'])) {
     header('location:login.php');
 }
+?>
+
+
+
+
+<?php
+@include 'componant/config.php';
+	if(ISSET($_POST['filter'])){
+		$address=$_POST['address'];
+		
+		$query=mysqli_query($conn, "SELECT * FROM `users` WHERE `address`='$address' and role='doctor'") or die(mysqli_error());
+		while($fetch=mysqli_fetch_array($query)){
+			echo"<tr><td>".$fetch['name']."</td><td>".$fetch['address']."</td></tr>";
+		}
+	}else if(ISSET($_POST['reset'])){
+		$query=mysqli_query($conn, "SELECT * FROM `users`") or die(mysqli_error());
+		while($fetch=mysqli_fetch_array($query)){
+			echo"<tr><td>".$fetch['name']."</td><td>".$fetch['address']."</td></tr>";
+		}
+	}else{
+		$query=mysqli_query($conn, "SELECT * FROM `users`") or die(mysqli_error());
+		while($fetch=mysqli_fetch_array($query)){
+			echo"<tr><td>".$fetch['name']."</td><td>".$fetch['address']."</td></tr>";
+		}
+	}
 ?>

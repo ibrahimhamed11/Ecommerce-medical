@@ -130,7 +130,7 @@ function doctorsCard($doctorname, $price,$specialization,$doctordescription,$adr
                                 <span class=\"price\"><i class=\"fa-solid fa-money-bill-transfer\"></i> $price LE</span>
 
                             </h6>
-                            <button  href=\"booking.php?edit=
+                            <button  href=\"booking.php?addbooking=
                             \"              type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\">Book Now <i class=\"fas  fa-solid fa-calendar-days\"></i></button>
 
 
