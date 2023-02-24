@@ -4,6 +4,14 @@ require_once ('componant/CreateDb.php');
 require_once ('componant/component.php');
 
 
+
+//get doctor name from ussers table 
+$select= mysqli_query($conn, "SELECT `name` FROM users where id =$docId");
+$docname = mysqli_fetch_assoc($select);
+$docnn=($docname['name']);
+
+
+
 // create instance of Createdb class
 $database = new CreateDb("reaya", "users");
 if (isset($_POST['add'])){
@@ -39,7 +47,7 @@ if (isset($_POST['add'])){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" />
-    <title>PHARMACEIES</title>
+    <title>Doctors</title>
     <link rel="stylesheet" href="css/normalize.css" />
     <!--fontawesome -->
     <link rel="stylesheet" href="css/all.min.css" />
@@ -130,68 +138,7 @@ if (isset($_POST['add'])){
                 </div>
             </header>
 
-
-
-
             <div class="listitems">
-                <!-- <h1 class="item">
-                    Request and monthly follow-up of your medications in the easiest way
-                </h1>
-                <div class="items">
-                    <div class="item1">
-                        <i size="16" class="fa-solid fa-bolt item1icon"></i>
-                        <div class="itemtitle">Immediate delivery</div>
-                    </div>
-                    <div class="item2">
-                        <i size="16" class="fa-solid fa-calendar-days item1icon"></i>
-                        <div class="itemtitle">Reminder of medication renewal dates</div>
-                    </div>
-                    <div class="item3">
-                        <i size="16" class="ffa-sharp fa-solid fa-user-doctor item1icon"></i>
-                        <div class="itemtitle">Contact a pharmacist</div>
-                    </div> -->
-                <!-- </div>
-        </div>
-        <div class="searchbox">
-            <h2 class="searchhead">
-                Order your medicines and everything you need from the pharmacy
-            </h2>
-            <div class="lablecontainer"> -->
-                <!--------------------------lable1---------------------------------->
-                <!-- <input id="med" type="file" accept="image/*" class="input" />
-                <label for="med" class="lable1">
-                    <div class="perceptionicon">
-                        <img id="prescription-icon" src="assets/images/icon1.png" size="16" />
-                    </div>
-                    <div class="Request">Request by prescription</div>
-                </label> -->
-                <!--------------------------lable2---------------------------------->
-                <!-- <input type="file" id="medicine" accept="image/*" class="input" />
-                <label for="medicine" class="lable2">
-
-                    <div class="perceptionicon">
-                        <img id="medicine-icon" src="assets/images/icon2.png" size="16" />
-                    </div>
-                    <div class="Request">Request a product photo</div>
-                </label> -->
-                <!--------------------------lable3---------------------------------->
-                <!-- <input type="file" id="medicine" accept="image/*" class="input" />
-                    <label for="medicine" class="lable2">
-                        <div class="perceptionicon">
-                            <img id="medicine-icon" src="images/icon2.png" size="16" />
-                        </div>
-                        <div class="Request">Request a product photo</div>
-                    </label> -->
-                <!--------------------------------------------------------------------------->
-                <!-- </div>
-                <div class="searchcontainer">
-                    <i id="search-icon" size="32" color="#808184"
-                        class="fa-sharp fa-solid fa-magnifying-glass iconsearch"></i>
-                    <input type="text" placeholder="search for your order" class="searchtextinbox" />
-                </div> -->
-                <!--******************************************************* -->
-                <!-- </div> -->
-
 
                 <div class="searchcontainer">
                     <form action="search.php" method="post" class=" d-flex py-0">
