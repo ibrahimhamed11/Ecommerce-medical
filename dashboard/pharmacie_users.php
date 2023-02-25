@@ -11,7 +11,7 @@ if (isset($_POST['add_pharmacie'])) {
     $pahrmacie_password = $_POST['doctor_pass'];
     // $rule=$_POST['rule'];
     //validation 
-    if (empty($pharmacie_name)) {
+    if (empty($pharmacie_name)||empty($pharmacie_adress)||empty($pharmacie_email)||empty($pahrmacie_password)) {
         $message[] = 'please fill out all';
     } else {
         $insert = "INSERT INTO users(name,address,phone,email,password,role)

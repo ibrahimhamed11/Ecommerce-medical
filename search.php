@@ -105,7 +105,7 @@
                     //$search = $_POST['search'];
                     //SQL query to get the products based on the search keyword
                     $sql = "SELECT * FROM users WHERE name LIKE 
-        '%$search%' OR address LIKE '%$search%' OR docDesc LIKE '%$search% 'OR specialization  LIKE '%$search%'";
+        '%$search%' OR address LIKE '%$search%' OR docDesc LIKE '%$search% 'OR specialization  LIKE '%$search%' ";
 
                      //execute the query
                         

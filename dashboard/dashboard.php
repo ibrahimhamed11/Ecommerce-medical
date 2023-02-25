@@ -10,7 +10,7 @@ if (!$conn) {
 //get admin name from db and print 
 session_start();
 if (!isset($_SESSION['id'])) {
-    header('location:login.php');
+    header('location:dashboard_login.php');
 }
 $adminId=$_SESSION['id'];
    $query = mysqli_query($conn, "SELECT * FROM users where role='admin' AND id='$adminId'");
@@ -24,7 +24,7 @@ $adminId=$_SESSION['id'];
 //get admin name from db and print 
 
 if (!isset($_SESSION['id'])) {
-    header('location:login.php');
+    header('location:dashboard_login.php');
 }
 $adminId=$_SESSION['id'];
    $query = mysqli_query($conn, "SELECT * FROM users where role='admin' AND id='$adminId'");

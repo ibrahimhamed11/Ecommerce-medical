@@ -1,8 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['id'])) {
-  header('location:login.php');
-}
+
 ///////////////// Display registed users in table //////////////////////////////////////
 // Connect to MySQL
 @include 'componant/config.php';
@@ -12,9 +10,16 @@ $displayQuery = "SELECT * FROM `users` WHERE `email` = '" . $_SESSION['email'] .
 $result = mysqli_query($conn, $displayQuery);
 
 // Appointnets Data
-$tableQuery = "SELECT * FROM `appointment` WHERE doctorId= " . $_SESSION['id'];
+$tableQuery = "SELECT * FROM `appointment` WHERE doctorId= " . $_SESSION['doc_id'];
 $tableResult = mysqli_query($conn, $tableQuery);
 
+
+
+
+if (!isset($_SESSION['doc_id'])) {
+    
+    header('location:doctor_login.php');
+  }
 ?>
 
 <!DOCTYPE html>
@@ -128,7 +133,7 @@ $tableResult = mysqli_query($conn, $tableQuery);
             <div class="title_age col-9">
                 <h3>Number of appointments</h3>
                 <p><?php
-              $numOfAppointments = "SELECT * FROM appointments WHERE doctorId = " . $_SESSION['id'];
+              $numOfAppointments = "SELECT * FROM appointment WHERE doctorId = " . $_SESSION['doc_id'];
 
               if ($appointResult = mysqli_query($conn, $numOfAppointments)) {
                 // Return the number of rows in result set

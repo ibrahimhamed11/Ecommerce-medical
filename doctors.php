@@ -1,5 +1,10 @@
-<?php
+<style>
+<?php include 'css/pharmacie.css';
 session_start();
+?>
+</style>
+<?php
+
 require_once ('componant/CreateDb.php');
 require_once ('componant/component.php');
 
@@ -51,6 +56,7 @@ if (isset($_POST['add'])){
     <!--fontawesome -->
     <link rel="stylesheet" href="css/all.min.css" />
     <!--google fonts-->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
@@ -137,7 +143,45 @@ if (isset($_POST['add'])){
                 </div>
             </header>
 
-
+            <!--Hany-->
+            <!-- start section two of information about booking in our website -->
+            <section class="section2">
+                <div class="container">
+                    <div class="sec2">
+                        <div class="child2">
+                            <div class="aboutone">
+                                <i class="fa-solid fa-calendar-check"></i>
+                                <h4>Book now</h4>
+                                <p>Once you book, you will be contacted quickly and directly</p>
+                                <p>Hurry up and book now</p>
+                            </div>
+                            <div class="aboutone">
+                                <i class="fa-solid fa-file-waveform"></i>
+                                <h4>Continuous follow-up of the patient</h4>
+                                <p>With us, we all reach a healthy and decent life</p>
+                                <p>Make sure and follow us continuously</p>
+                            </div>
+                            <div class="abouttwo">
+                                <i class="fa-solid fa-hands-holding-circle"></i>
+                                <h4>All the care you need</h4>
+                                <p>
+                                    We have a home visit, a quick check-up, and an operation
+                                    reservation
+                                </p>
+                                <p>Premium services</p>
+                            </div>
+                            <div class="abouttwo">
+                                <i class="fa-solid fa-building-shield"></i>
+                                <h4>Book now and pay later or at the clinic</h4>
+                                <p>Our booking price is the same as booking in the clinic</p>
+                                <p>Safer, faster and time saving</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+            </section>
+            <!--Hany-->
 
             <div class="listitems">
 
@@ -347,6 +391,9 @@ if (isset($_POST['add'])){
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
+
+<script src="js/all.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/main.js"></script>
 
 </html>

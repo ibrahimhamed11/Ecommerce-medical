@@ -1,5 +1,5 @@
 <style>
-<?php include 'assets/css/joinUsForm.css';
+<?php include 'css/joinUsForm.css';
 ?>
 </style>
 
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Escape any special characters to avoid SQL injection
     $name = mysqli_escape_string($conn, $_POST['name']);
     $email = mysqli_escape_string($conn, $_POST['email']);
-    $password = sha1($_POST['password']);
+    $password = ($_POST['password']);
     $phone = mysqli_escape_string($conn, $_POST['phone']);
     $address = mysqli_escape_string($conn, $_POST['address']);
     $role = $_POST['role'];
@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="input-row">
                     <div class="details">Role</div>
-                    <input type="text" name="Role" value="Doctor" readonly />
+                    <input type="text" name="role" value="pharmacie" readonly />
                 </div>
             </div>
             <div class="text-center">

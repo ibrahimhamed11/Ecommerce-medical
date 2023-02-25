@@ -13,13 +13,13 @@ session_start();
 		$row = mysqli_num_rows($query);
  
 		if($row > 0){
-			$_SESSION['id']=$fetch['id'];
+			$_SESSION['doc_id']=$fetch['id'];
             $_SESSION['email']=$fetch['email'];
 			echo "<script>alert('Login Successfully!')</script>";
 			echo "<script>window.location='doctor_profile.php'</script>";
 		}else{
 			echo "<script>alert('Invalid username or password')</script>";
-			echo "<script>window.location='login.php'</script>";
+			echo "<script>window.location='doctor_login.php'</script>";
 		}
 //  print_r($_SESSION['id']);
 	}

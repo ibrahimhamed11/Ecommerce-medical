@@ -1,7 +1,6 @@
 <style>
-  <?php
-  include 'assets/css/joinUsForm.css';
-  ?>
+<?php include 'css/joinUsForm.css';
+?>
 </style>
 
 <?php
@@ -43,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Escape any special characters to avoid SQL injection
     $name = mysqli_escape_string($conn, $_POST['name']);
     $email = mysqli_escape_string($conn, $_POST['email']);
-    $password = sha1($_POST['password']);
+    $password = ($_POST['password']);
     $phone = mysqli_escape_string($conn, $_POST['phone']);
     $address = mysqli_escape_string($conn, $_POST['address']);
     $role = $_POST['role'];
@@ -71,71 +70,78 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Form</title>
-  <!-- <link rel="stylesheet" href="assets/css/joinUsForm.css" /> -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Form</title>
+    <!-- <link rel="stylesheet" href="assets/css/joinUsForm.css" /> -->
 </head>
 
 <body>
-  <div class="input_container">
-    <h1 class="title details">Registration</h1>
-    <form method="post" name="formValidation" id="formValidation">
-      <div class="user-details">
-        <div class="input-row">
-          <div class="details">Full Name</div>
-          <input type="text" name="name" id="name" placeholder="Full Name*" />
-          <div class="error"> <?php if (in_array("name", $error_fields)) echo "Please, enter your name"; ?></div>
-        </div>
-        <div class="input-row">
-          <div class="details">Email</div>
-          <input type="email" name="email" id="email" placeholder="Email*" />
-          <div class="error"> <?php if (in_array("email", $error_fields)) echo "Please, enter a valid email"; ?></div>
-        </div>
-        <div class="input-row">
-          <div class="details">password</div>
-          <input type="password" name="password" id="password" placeholder="password*" />
-          <div class="error"> <?php if (in_array("password", $error_fields)) echo "Please, enter a password not less than 8 characters"; ?></div>
-        </div>
-        <div class="input-row">
-          <div class="details">phone</div>
-          <input type="number" name="phone" id="phone" placeholder="phone*" />
-          <div class="error"> <?php if (in_array("phone", $error_fields)) echo "Please, enter a phone number not less than 11 characters"; ?></div>
-        </div>
-        <div class="input-row">
-          <div class="details">Address</div>
-          <input type="text" name="address" id="address" placeholder="address*" />
-        </div>
-        <div class="input-row">
-          <div class="details">Role</div>
-          <input type="text" name="role" id="role" value="User" readonly />
-        </div>
-      </div>
-      <div class="gender-details">
-        <input type="radio" name="gender" id="dot-1" />
-        <input type="radio" name="gender" id="dot-2" />
-        <span class="gender-title">Gender</span>
-        <div class="category">
-          <label for="dot-1">
-            <span class="dot one"></span>
-            <span class="gender">Male</span>
-          </label>
-          <label for="dot-2">
-            <span class="dot two"></span>
-            <span class="gender">female</span>
-          </label>
-        </div>
-        <div class="error"> <?php if (in_array("gender", $error_fields)) echo "Please, choose your gender"; ?></div>
-      </div>
-      <div class="text-center">
-        <input type="submit" value="Register" />
-      </div>
-    </form>
-  </div>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" type="text/javascript"></script> -->
-  <!-- <script src="./assets/js/index.js" type="text/javascript"></script> -->
+    <div class="input_container">
+        <h1 class="title details">Registration</h1>
+        <form method="post" name="formValidation" id="formValidation">
+            <div class="user-details">
+                <div class="input-row">
+                    <div class="details">Full Name</div>
+                    <input type="text" name="name" id="name" placeholder="Full Name*" />
+                    <div class="error"> <?php if (in_array("name", $error_fields)) echo "Please, enter your name"; ?>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="details">Email</div>
+                    <input type="email" name="email" id="email" placeholder="Email*" />
+                    <div class="error">
+                        <?php if (in_array("email", $error_fields)) echo "Please, enter a valid email"; ?></div>
+                </div>
+                <div class="input-row">
+                    <div class="details">password</div>
+                    <input type="password" name="password" id="password" placeholder="password*" />
+                    <div class="error">
+                        <?php if (in_array("password", $error_fields)) echo "Please, enter a password not less than 8 characters"; ?>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="details">phone</div>
+                    <input type="number" name="phone" id="phone" placeholder="phone*" />
+                    <div class="error">
+                        <?php if (in_array("phone", $error_fields)) echo "Please, enter a phone number not less than 11 characters"; ?>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="details">Address</div>
+                    <input type="text" name="address" id="address" placeholder="address*" />
+                </div>
+                <div class="input-row">
+                    <div class="details">Role</div>
+                    <input type="text" name="role" id="role" value="user" readonly />
+                </div>
+            </div>
+            <div class="gender-details">
+                <input type="radio" name="gender" id="dot-1" />
+                <input type="radio" name="gender" id="dot-2" />
+                <span class="gender-title">Gender</span>
+                <div class="category">
+                    <label for="dot-1">
+                        <span class="dot one"></span>
+                        <span class="gender">Male</span>
+                    </label>
+                    <label for="dot-2">
+                        <span class="dot two"></span>
+                        <span class="gender">female</span>
+                    </label>
+                </div>
+                <div class="error"> <?php if (in_array("gender", $error_fields)) echo "Please, choose your gender"; ?>
+                </div>
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Register" />
+            </div>
+        </form>
+    </div>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" type="text/javascript"></script> -->
+    <!-- <script src="./assets/js/index.js" type="text/javascript"></script> -->
 </body>
 
 </html>

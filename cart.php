@@ -180,8 +180,35 @@ if (isset($_POST['remove'])){
                                     <hr>
                                     <h6><?php
                             echo $total;
+
+
+
                             ?> LE</h6>
                                 </div>
+
+
+                                <a href="order_details.php<?php  /* $total = 0;
+                    if (isset($_SESSION['cart'])){
+                        $product_id = array_column($_SESSION['cart'],'product_id');
+                        $result = $db->getData();
+                      $row = mysqli_fetch_assoc($result);
+                    echo $row['product_id'];
+                                }
+                               */?>"><input type="button" value="Complete the order " name="orderdetails"
+                                        class="btn buy" /></a>
+
+
+
+
+                                <!-- 
+                                <div><button <a; ?>"></a>
+                                        class="btn btn-primary buy" name="orderbuy">Complete the order</button>
+                                </div> -->
+                                <style>
+                                .buy {
+                                    margin: 40px;
+                                }
+                                </style>
                             </div>
                         </div>
                     </div>

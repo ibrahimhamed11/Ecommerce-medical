@@ -3,7 +3,7 @@
 session_start();
 @include 'componant/config.php';
 //validation
-$doc=$_SESSION['id'];
+$doc=$_SESSION['pharmacie_id'];
 
 if (isset($_POST['add_product'])) {
     //get data from user
@@ -13,7 +13,7 @@ if (isset($_POST['add_product'])) {
     $product_image = $_FILES['product_image']['name'];
     $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
     $product_image_folder = 'upload/' . $product_image;
-    $doctors_id=$_SESSION['id'];
+    $doctors_id=$_SESSION['pharmacie_id'];
     //validation 
 
 
@@ -59,7 +59,7 @@ if (isset($_GET['delete'])) {
     <link rel="stylesheet" href="css/pharmacie-profile.css" />
 
     <!-- <link rel="stylesheet" href="css/pharmacie.css"> -->
-    <!-- دي لينكات google fonts بتاع الخطوط -->
+    <!--google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
@@ -69,18 +69,19 @@ if (isset($_GET['delete'])) {
 </head>
 
 
-<!-- <?php
-if (!isset($_SESSION['id'])) {
-    header('location:login.php');
+<?php
+//check session if true continue else transfare to login
+if (!isset($_SESSION['pharmacie_id'])) {
+    header('location:pharmacie_login.php');
 }
-?> -->
+?>
 
 <body>
     <div class="pharmaceies-page">
         <!-- start nav -->
         <nav class="navbar navbar-expand-lg navbar-light nav sticky-top p-0">
             <div class="container">
-                <div class="col-6 logo">
+                <div class="col-3 logo">
                     <div class="images">
                         <img src="images/logo.PNG" alt="" />
                         <span>Re<h>ع</h>aya</span>
@@ -91,32 +92,34 @@ if (!isset($_SESSION['id'])) {
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse col-7 justify-content-end" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3 " aria-current="page" href="index.php">HOME</a>
+                            <a class="nav-link p-lg-2" aria-current="page" href="index.php">HOME</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="pharmacies.php">PHARMACEIES</a>
-
+                            <a class="nav-link p-lg-2" href="pharmacies.php">PHARMACEIES</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3 active" href="#">PHARMACY PROFILE</a>
+                            <a class="nav-link p-lg-2" href="doctors.php">DOCTORS</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="doctors.php">DOCTORS</a>
-                        </li>
-                        <li class="nav-item align-self-center ">
-                            <a class="nav-link p-1 p-lg-3" href="doctor_profile.php">DOCTOR PROFILE</a>
+                            <a class="nav-link p-lg-2" href="contact.php">CONTACT</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="contact.php">CONTACT</a>
+                            <a class="nav-link p-lg-2" href="join us.php">JOIN</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="join us.php">JOIN</a>
+                            <a class="nav-link p-lg-2" href="pharmacie_profile.php">PHARMACEIES PROFILE</a>
                         </li>
                         <li class="nav-item align-self-center">
-                            <a class="nav-link p-1 p-lg-3" href="donate.php">DONATE</a>
+                            <a class="nav-link p-lg-2 active" href="doctor_profile.php">DOCTORS PROFILE</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="nav-link p-lg-2" href="user_prodile.php">USER PROFILE</a>
+                        </li>
+                        <li class="nav-item align-self-center">
+                            <a class="btn btn-outline-primary p-lg-2" href="logout.php">LOGOUT</a>
                         </li>
                     </ul>
                 </div>
@@ -175,7 +178,7 @@ if (!isset($_SESSION['id'])) {
 
                             require_once('componant/config.php');
 
-                            $doc="$_SESSION[id]";
+                            $doc="$_SESSION[pharmacie_id]";
 
                             // print_r($doc);
 

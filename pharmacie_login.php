@@ -8,20 +8,20 @@ session_start();
 		$password = $_POST['password'];
 
  
-		$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$password' AND `role`='admin' ") ;
+		$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$password' AND `role`='pharmacie' ") ;
 		$fetch = mysqli_fetch_array($query);
 		$row = mysqli_num_rows($query);
  
 		if($row > 0){
-			$_SESSION['id']=$fetch['id'];
+			$_SESSION['pharmacie_id']=$fetch['id'];
             $_SESSION['email']=$fetch['email'];
 			echo "<script>alert('Login Successfully!')</script>";
-			echo "<script>window.location='dashboard/dashboard.php'</script>";
+			echo "<script>window.location='pharmacie_profile.php'</script>";
 		}else{
 			echo "<script>alert('Invalid username or password')</script>";
-			echo "<script>window.location='dashboard_login.php'</script>";
+			echo "<script>window.location='pharmacie_login.php'</script>";
 		}
-//  print_r($_SESSION['id']);
+//  print_r($_SESSION['pharmacie_id']);
 	}
     
  

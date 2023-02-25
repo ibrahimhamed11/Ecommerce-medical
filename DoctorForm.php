@@ -30,6 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (!(isset($_POST['specialization']))) {
     $error_fields[] = 'specialization';
   }
+  // if (!(isset($_POST['image']))) {
+  //   $error_fields[] = 'image';
+  // }
 
   if (!(isset($_POST['price']))) {
     $error_fields[] = 'price';
@@ -50,18 +53,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Escape any special characters to avoid SQL injection
     $name = mysqli_escape_string($conn, $_POST['name']);
     $email = mysqli_escape_string($conn, $_POST['email']);
-    $password = sha1($_POST['password']);
+    $password = ($_POST['password']);
     $phone = mysqli_escape_string($conn, $_POST['phone']);
     $address = mysqli_escape_string($conn, $_POST['address']);
     $specialization = mysqli_escape_string($conn, $_POST['specialization']);
     $price = mysqli_escape_string($conn, $_POST['price']);
     $role = $_POST['role'];
     $gender = $_POST['gender'];
-
+    $description = $_POST['description'];
+    // $image = $_POST['image'];
+//doctor image 
+    $doctor_img = $_FILES['doctor_img']['name'];
+    $doctor_image_tmp_name = $_FILES['doctor_img']['tmp_name'];
+    $doctor_image_folder = 'upload/' . $doctor_img;
+    //doctor image 
     // Insert the data
-    $query = "INSERT INTO `users` (`name`, `email`, `password`, `phone`, `address`, `role`, `gender`, `specialization`,  `price`) VALUES ('" . $name . "', '" . $email . "', '" . $password . "', '" . $phone . "', '" . $address . "', '" . $role . "', '" . $gender . "', '" . $specialization . "', '" . $price . "')";
+    $query = "INSERT INTO `users` (`name`, `email`, `password`, `phone`, `address`, `role`, `gender`, `specialization`,  `price`, `docDesc`, `image`) VALUES ('" . $name . "', '" . $email . "', '" . $password . "', '" . $phone . "', '" . $address . "', '" . $role . "', '" . $gender . "', '" . $specialization . "', '" . $price . "', '" . $description . "', '$doctor_img')";
     if (mysqli_query($conn, $query)) {
-      header("Location: index.php");
+      move_uploaded_file($doctor_image_tmp_name, $doctor_image_folder);
+
+      header("Location: doctors.php");
       exit;
     } else {
       // echo $query
@@ -92,6 +103,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1 class="title details">Registration</h1>
         <form method="post" name="formValidation" id="formValidation">
             <div class="user-details">
+
+
+
+
+                <div class="input-row">
+                    <div class="details">Image</div>
+                    <input type="file" class="box" name="doctor_img" accept="image/png, image/jpeg, image/jpg">
+                </div>
+
+
+
+
                 <div class="input-row">
                     <div class="details">Full Name</div>
                     <input type="text" name="name" placeholder="Full Name*" />
@@ -130,6 +153,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
                 <div class="input-row">
+                    <div class="details">Description</div>
+                    <input type="text" name="description" placeholder="Description*" />
+                    <div class="error">
+                        <?php if (in_array("description", $error_fields)) echo "Please, enter your description"; ?>
+                    </div>
+                </div>
+                <div class="input-row">
                     <div class="details">price</div>
                     <input type="text" name="price" placeholder="price*" />
                     <div class="error"> <?php if (in_array("price", $error_fields)) echo "Please, enter your price"; ?>
@@ -137,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="input-row">
                     <div class="details">Role</div>
-                    <input type="text" name="role" value="Doctor" readonly />
+                    <input type="text" name="role" value="doctor" readonly />
                 </div>
             </div>
             <div class="gender-details">
@@ -164,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" type="text/javascript"></script> -->
-    <!-- <script src="./assets/js/index.js" type="text/javascript"></script> -->
+    <script src="js/index.js" type="text/javascript"></script>
 </body>
 
 </html>

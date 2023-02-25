@@ -1,36 +1,72 @@
 <?php
 // get id of doctor from appointment. 
-$docId=$id=$_GET['addbooking'];
+// $docId=$id=$_GET['addbooking'];
 // start connection.
-$conn = mysqli_connect('localhost', 'root','', 'reaya');//get doctor name from ussers table 
-$select= mysqli_query($conn, "SELECT `name` FROM users where id =$docId");
-$docname = mysqli_fetch_assoc($select);
-$docnn=($docname['name']);
+
+session_start();
+@include 'componant/config.php';
+require_once("componant/CreateDb.php");
+require_once("componant/component.php");
 
 
 
-if (isset($_POST['adding'])) {
-  //get data from user
-$doctor_name =$docnn;
-  $patient_name = $_POST['name'];
-  $patient_phone = $_POST['phone'];
-  $patient_date=$_POST['patient_date'];
+$db = new CreateDb("reaya", "products");
+$cartb = ($_SESSION['cart']);
 
-  //validation 
-  if (empty($doctor_name) ) {
-      print_r('please fill out all');
-  } else {
-      $insert = "INSERT INTO appointment(patientName,patient_phone,doctor_name,status,doctorId,date)
-       VALUES ('$patient_name','$patient_phone','$docnn','inprocess','$docId','$patient_date')";
-      $upload = mysqli_query($conn,$insert);
-      
-      if ($upload) {
-        $message[]='New Appointment added successfully';
-      } else {
-        $message[]='Could not add the Appointment';
-      }
-  }
-};
+
+$product_id = array_column($cartb, 'product_id');
+$result = $db->getData();
+$row = mysqli_fetch_assoc($result);
+
+
+foreach($cartb as $value)
+{
+    foreach($value as $valu )
+    {
+
+        $insert = "INSERT INTO orders(product_Name)
+                        VALUES ('$valu')";
+                $upload = mysqli_query($conn, $insert);
+        // print_r ($valu);
+
+    }
+    // print_r($cartb);
+}
+// if (isset($_POST['orderdetails'])) {
+//     //get data from user form   
+//     $client_name = $_POST['client_name'];
+//     $client_phone = $_POST['client_phone'];
+//     $client_email = $_POST['client_email'];
+//     $client_address = $_POST['client_address'];
+//     $client_address2 = $_POST['client_address2'];
+
+//     //validation 
+//     if (empty($client_name)) {
+//         print_r('please fill out all');
+//     } else {
+       
+//             foreach ($product_id as $id) {
+                
+//                 $ordername = $row['product_name'];
+//                 $orderprice = $row['product_price'];
+//                 //comment importatnt
+//                 // $order_id = $row['product_id'];
+//  $insert = "INSERT INTO orders(product_Name,price,client_name,client_phone,client_email,client_address,client_address2)
+//                         VALUES ('$ordername','$orderprice','$client_name','$client_phone','$client_email','$client_address','$client_address2')";
+//                 $upload = mysqli_query($conn, $insert);
+                
+//             }
+
+//                 if ($upload) {
+//                     $message[] = 'order added successfully';
+//                 } else {
+//                     $message[] = 'Could not add the order';
+//                 }
+            
+        
+//     }
+// }
+;
 ?>
 <!doctype html>
 <html lang="en">
@@ -59,14 +95,14 @@ $doctor_name =$docnn;
 <style>
 /* Start Form */
 .section-two {
-    background-image: url(../images/images.png), url(../images/images.png);
+    background-image: url(./assets/images/images.png), url(./assets/images/images.png);
     background-repeat: no-repeat;
     background-size: 50px;
     background-position: 18% 4%, 79% 73%;
 }
 
 .container .form {
-    background-image: url(../images/1db315228240eb2ed1a3432ab564f4f6.png);
+    background-image: url(./assets/images/1db315228240eb2ed1a3432ab564f4f6.png);
     height: 400px;
     object-fit: cover;
     vertical-align: middle;
@@ -175,44 +211,41 @@ $doctor_name =$docnn;
         </header>
 
     </div>
-    <div> <?php
-            if (isset($message)) {
-                foreach ($message as $message) {
-                    echo '<span class="message">' . $message . '</span>';
-                }
+    <div>
+        <?php
+        if (isset($message)) {
+            foreach ($message as $message) {
+                echo '<span class="message">' . $message . '</span>';
             }
-            ?></div>
+        }
+        ?>
+    </div>
     <section class="section-two">
         <div class="container mt-5 mb-4">
             <form method="post" enctype="multipart/form-data" class="form" id="form">
                 <div class="mb-3">
-                    <input type="text" class="form-control mb-4" name="name" placeholder="Enter Your Name"
+                    <input type="text" class="form-control mb-4" name="client_name" placeholder="Enter Your Name"
                         aria-label="product-name" />
-                    <input type="number" class="form-control mb-4" name="phone" placeholder="Enter Your Phone"
+                    <input type="number" class="form-control mb-4" name="client_phone" placeholder="Enter Your Phone"
                         aria-label="Server" />
-                    <input type="text" class="form-control mb-4" name="bookdate" placeholder="Enter Your Description"
+                    <input type="text" class="form-control mb-4" name="client_email" placeholder="Enter Your email"
                         aria-label="Server" />
-                </div>
-                <div class="mb-3">
-                    <label for="formFile" class="form-label">Enter Your Booking Date</label>
-                    <input name="patient_date" class="form-control" type="datetime-local" />
-                </div>
-                <!-- here i add a doctor id which it is hidden -->
-                <div>
-                    <input type="text" name="status" value="inprocess" hidden>
+                    <input type="text" class="form-control mb-4" name="client_address" placeholder="Enter Your Adress"
+                        aria-label="Server" />
 
 
-                    <!-- <input type="text" name="doctor_n" value="<?php $select = mysqli_query($conn, "SELECT * FROM users where id =$docId");
-            $row = mysqli_fetch_assoc($select);
-            echo $row['name']; ?>">
-                    <input type="text" name="doctor_id" value="<?php echo $docId ?>">
-                </div> -->
+                    <input type="text" class="form-control mb-4" name="client_address2"
+                        placeholder="Enter Your second Adress" aria-label="Server" />
+
                     <div class="mb-3">
-                        <button type="submit" name="adding" id="form_butt" onclick="nonedisplay()"
+                        <button type="submit" name="orderdetails" id="form_butt" onclick="nonedisplay()"
                             class="btn form_butt mt-5">
                             Submit
                         </button>
                     </div>
+                </div>
+
+
             </form>
         </div>
     </section>
@@ -229,7 +262,7 @@ $doctor_name =$docnn;
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-2">
                 <!-- Content -->
                 <div class="pb-2">
-                    <img src="images/logoFooter.PNG" alt="" />
+                    <img src="./assets/images/logoFooter.PNG" alt="" />
                     <span>Re<h>ع</h>aya</span>
                 </div>
                 <p></p>

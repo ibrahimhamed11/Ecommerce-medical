@@ -3,7 +3,7 @@
 session_start();
 @include 'componant/config.php';
 //validation
-$doc="$_SESSION[id]";
+$doc="$_SESSION[pharmacie_id]";
 // print_r($doc);
 if (isset($_POST['add_product'])) {
 //get data from user
@@ -13,7 +13,7 @@ $product_description = $_POST['product_description'];
 $product_image = $_FILES['product_image']['name'];
 $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
 $product_image_folder = 'upload/' . $product_image;
-$doctors_id=$_SESSION['id'];
+$doctors_id=$_SESSION['pharmacie_id'];
 //validation
 
 

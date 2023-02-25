@@ -42,7 +42,7 @@ if (isset($_GET['delete'])) {
 //get admin name from db and print 
 session_start();
 if (!isset($_SESSION['id'])) {
-    header('location:login.php');
+    header('location:dashboard_login.php');
 }
 $adminId=$_SESSION['id'];
    $query = mysqli_query($conn, "SELECT * FROM users where role='admin' AND id='$adminId'");
@@ -250,7 +250,7 @@ $select = mysqli_query($conn, "SELECT * FROM appointment ");
                                     <?php echo $row['doctor_name']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row['date']; ?>
+                                    <?php echo $row['status']; ?>
                                 </td>
 
                                 <td>

@@ -256,3 +256,21 @@ if (!isset($_SESSION['doctors_id'])) {
 
 
 </h3>
+
+
+
+<div><button class="btn btn-primary buy" name="orderbuy href="
+        booking.php?addbooking=<?php $_SESSION['cart'] ?>">Complete the order</button>
+
+
+
+
+
+
+    <div><button class="btn btn-primary buy" name="orderbuy">Complete the order</button>
+    </div>
+    <style>
+    .buy {
+        margin: 40px;
+    }
+    </style>
