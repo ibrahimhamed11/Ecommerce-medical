@@ -25,7 +25,7 @@ if (isset($_POST['add_appointment'])) {
         if ($upload) {
             $message[] = 'New Appointment added successfully';
         } else {
-            $message[] = 'Could not add the Appointment';
+            $message[] = 'Could not add thhhe Appointment';
         }
     }
 }
@@ -136,6 +136,12 @@ $adminId=$_SESSION['id'];
                     <a class="  d-flex align-items-center" href="admin.php">
                         <i class="fa-regular fa-circle-user fa-fw"></i>
                         <span>Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-items-center" href="../logout.php">
+                        <i class="fa-regular fa-circle-user fa-fw"></i>
+                        <span>Logout</span>
                     </a>
                 </li>
             </ul>

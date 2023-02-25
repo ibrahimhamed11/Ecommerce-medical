@@ -2,6 +2,7 @@
 @include '../componant/config.php';
 $conn = mysqli_connect('localhost', 'root', '', 'reaya');
 
+@include '../componant/config.php';
 
 //get admin name from db and print 
 session_start();
@@ -102,6 +103,12 @@ $adminId=$_SESSION['id'];
                         <span>Admin</span>
                     </a>
                 </li>
+                <li>
+                    <a class="d-flex align-items-center" href="../logout.php">
+                        <i class="fa-regular fa-circle-user fa-fw"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="content">
@@ -111,7 +118,7 @@ $adminId=$_SESSION['id'];
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <div class="icon d-flex align-items-center">
-                    <img src="images/admin.png" alt="" />
+                    <img src="../images/admin.png" alt="" />
                 </div>
             </div>
             <!-- end head -->
@@ -155,6 +162,12 @@ $adminId=$_SESSION['id'];
             </div>
             <!-- end form -->
 
+
+            <?php
+$quiry=("SELECT* from orders JOIN products on orders.product_Id=products.product_id JOIN users on products.user_id=users.id");
+$select = mysqli_query($conn,$quiry);
+
+?>
             <!-- start patient table -->
             <div class="patient bg-white">
                 <div class="table-header">
@@ -167,29 +180,83 @@ $adminId=$_SESSION['id'];
                             <tr>
                                 <td>Client Name</td>
                                 <td>Client Address</td>
-                                <td>Pharmacy Name</td>
-                                <td>Pharmacy Address</td>
+                                <td>Client Phone</td>
+                                <td>Client Email</td>
+                                <td>Status</td>
+                                <td>Pharmacie Name</td>
                                 <td>Price</td>
-                                <td>Action</td>
+
+
+                                <!-- <td>Action</td> -->
                             </tr>
                         </thead>
                         <tbody>
+                            <?php while ($row = mysqli_fetch_assoc($select)) { 
+                                
+                                
+                                
+                             
+                                
+                                
+                                ?>
                             <tr>
-                                <td>Angelica</td>
-                                <td>Linden Avenue, Orlando</td>
-                                <td>Abdeen</td>
-                                <td>Linden Avenue, Orlando</td>
-                                <td>50LE</td>
-                                <td class="d-flex">
-                                    <a href="#" class="edit col-5 text-center">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="#" class="delete col-5 offset-2 text-center">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </a>
+                                <td>
+                                    <?php echo $row['client_name']; ?>
                                 </td>
+
+                                <td>
+                                    <?php echo $row['client_address']; ?>
+                                </td>
+
+                                <td>
+                                    <?php echo $row['client_phone']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['client_email']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['order_status']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['name']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['product_price']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['product_id'];?>
+                                </td>
+                                <td>
+                                    <?php 
+                          
+
+                        //   $productId=$row['product_id'];
+
+                        // //   Print_r($productId);
+                        // $total=0;
+                        //   foreach ($row as $id){
+                        //     if ($row['product_id'] == $id){
+                             
+                        //         $total = $total + (int)$row['product_price'];
+                        //         echo $total;
+                        //     }
+                            
+                        // }
+                       
+                                    ; ?>
+                                </td>
+
+
+
+                                <!-- <td>
+                                    <a href="appointment.php?delete=<?php // echo $row['order_id']; ?>" class="btn">
+                                        <i class="fas fa-trash"></i>
+                                        delete </a>
+
+                                </td> -->
                             </tr>
                         </tbody>
+                        <?php } ?>
                     </table>
                 </div>
             </div>
