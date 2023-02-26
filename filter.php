@@ -31,17 +31,7 @@ if (isset($_POST['filter'])) {
         //count the rows
         $count = mysqli_num_rows($query);
         //check whether the product is available
-        if ($count > 0) {
-            while ($row = mysqli_fetch_assoc($query)) {
-
-                doctorsCard($row['name'], $row['price'], $row['specialization'], $row['docDesc'], $row['address'], $row['image'], $row['id']);
-
-            }
-        } else {
-            echo "<div class='alert alert-danger'>
-there is no product matching your search....
-</div>";
-        }
+       
 
     }
 }
@@ -145,7 +135,22 @@ there is no product matching your search....
             <div class="container">
                 <div class="row text-center py-5">
 
+                    <?php  
 
+
+ if ($count > 0) {
+            while ($row = mysqli_fetch_assoc($query)) {
+
+                doctorsCard($row['name'], $row['price'], $row['specialization'], $row['docDesc'], $row['address'], $row['image'], $row['id']);
+
+            }
+        } else {
+            echo "<div style=\"text-align:center;\" class='alert alert-danger'>
+there is no doctor matching your filter....
+</div>";
+        }
+
+?>
 
 
                 </div>
@@ -204,13 +209,12 @@ there is no product matching your search....
                             <div class="col-md-2 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                                 <!-- Links -->
                                 <h6 class="text-uppercase fw-bold mb-4">ABOUT</h6>
-                                <p><i class="fa-solid fa-phone"></i> +1800-001-658</p>
+                                <p><i class="fa-solid fa-phone"></i>+2001212117200</p>
                                 <p>
-                                    <i class="fa-solid fa-envelope"></i> Info@Peacefulthemes.Com
+                                    <i class="fa-solid fa-envelope"></i> Ibrahim.hamed112@hotmail.com
                                 </p>
                                 <p>
-                                    <i class="fa-solid fa-location-dot"></i> Themeforest, Envato HQ
-                                    24 Fifthst., Los Angeles, USA
+                                    <i class="fa-solid fa-location-dot"></i> Mansoura,Daqhliah,35618 Egypt
                                 </p>
                             </div>
 

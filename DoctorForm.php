@@ -63,21 +63,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $description = $_POST['description'];
     // $image = $_POST['image'];
 //doctor image 
-    $doctor_img = $_FILES['doctor_img']['name'];
-    $doctor_image_tmp_name = $_FILES['doctor_img']['tmp_name'];
-    $doctor_image_folder = 'upload/' . $doctor_img;
+$doctor_image = $_FILES['doctor_img']['name'];
+$doctor_image_tmp_name = $_FILES['doctor_img']['tmp_name'];
+$doctor_image_folder = 'upload/' . $doctor_image;
     //doctor image 
     // Insert the data
-    $query = "INSERT INTO `users` (`name`, `email`, `password`, `phone`, `address`, `role`, `gender`, `specialization`,  `price`, `docDesc`, `image`) VALUES ('" . $name . "', '" . $email . "', '" . $password . "', '" . $phone . "', '" . $address . "', '" . $role . "', '" . $gender . "', '" . $specialization . "', '" . $price . "', '" . $description . "', '$doctor_img')";
-    if (mysqli_query($conn, $query)) {
-      move_uploaded_file($doctor_image_tmp_name, $doctor_image_folder);
+    $query = "INSERT INTO `users` (`name`, `email`, `password`, `phone`, `address`, `role`, `gender`, `specialization`,  `price`, `docDesc`, image) VALUES ('" . $name . "', '" . $email . "', '" . $password . "', '" . $phone . "', '" . $address . "', '" . $role . "', '" . $gender . "', '" . $specialization . "', '" . $price . "', '" . $description . "', '$doctor_image')";
+   
+   
+    $upload = mysqli_query($conn, $query);
+        if ($upload) {
+            move_uploaded_file($doctor_image_tmp_name, $doctor_image_folder);
+            $message[] = 'New doctor added successfully';
+        } else {
+            $message[] = 'Could not add the doctor';
+        }
+   
+   
+   
+   
+    // if (mysqli_query($conn, $query)) {
+    //   move_uploaded_file($doctor_image_tmp_name, $doctor_image_folder);
 
-      header("Location: doctors.php");
-      exit;
-    } else {
-      // echo $query
-      echo mysqli_error($conn);
-    }
+    //   header("Location: doctors.php");
+    //   exit;
+    // } else {
+    //   // echo $query
+    //   echo mysqli_error($conn);
+    // }
 
     // Close the connection
     mysqli_close($conn);
@@ -101,15 +114,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="input_container">
         <h1 class="title details">Registration</h1>
-        <form method="post" name="formValidation" id="formValidation">
+        <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data" name="formValidation"
+            id="formValidation">
             <div class="user-details">
 
 
 
 
                 <div class="input-row">
-                    <div class="details">Image</div>
-                    <input type="file" class="box" name="doctor_img" accept="image/png, image/jpeg, image/jpg">
+                    <input type="file" accept="image/png, image/jpeg, image/jpg" name="doctor_img" class="box">
+                    <div class="error"></div>
                 </div>
 
 

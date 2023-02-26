@@ -99,6 +99,12 @@ $adminId=$_SESSION['id'];
                         <span>Admin</span>
                     </a>
                 </li>
+                <li>
+                    <a class="d-flex align-items-center" href="../logout.php">
+                        <i class="fa-regular fa-circle-user fa-fw"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="content">

@@ -14,6 +14,8 @@ if (isset($_POST['add_doctor'])) {
     $doctor_phone = $_POST['doctor_phone'];
     $doctor_email = $_POST['doctor_email'];
     $doctor_description = $_POST['doctor_descrip'];
+
+    
     $doctor_image = $_FILES['doctor_img']['name'];
     $doctor_image_tmp_name = $_FILES['doctor_img']['tmp_name'];
     $doctor_image_folder = '../upload/' . $doctor_image;
@@ -142,6 +144,12 @@ $adminId=$_SESSION['id'];
                     <a class="d-flex align-items-center" href="admin.php">
                         <i class="fa-regular fa-circle-user fa-fw"></i>
                         <span>Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-items-center" href="../logout.php">
+                        <i class="fa-regular fa-circle-user fa-fw"></i>
+                        <span>Logout</span>
                     </a>
                 </li>
             </ul>

@@ -12,60 +12,62 @@ require_once("componant/component.php");
 
 $db = new CreateDb("reaya", "products");
 $cartb = ($_SESSION['cart']);
-
+// print_r($cartb);
 
 $product_id = array_column($cartb, 'product_id');
 $result = $db->getData();
 $row = mysqli_fetch_assoc($result);
 
 
-foreach($cartb as $value)
-{
-    foreach($value as $valu )
-    {
+// foreach($cartb as $value)
+// {
+//     foreach($value as $valu )
+//     {
 
-        $insert = "INSERT INTO orders(product_Name)
-                        VALUES ('$valu')";
-                $upload = mysqli_query($conn, $insert);
-        // print_r ($valu);
-
-    }
-    // print_r($cartb);
-}
-// if (isset($_POST['orderdetails'])) {
-//     //get data from user form   
-//     $client_name = $_POST['client_name'];
-//     $client_phone = $_POST['client_phone'];
-//     $client_email = $_POST['client_email'];
-//     $client_address = $_POST['client_address'];
-//     $client_address2 = $_POST['client_address2'];
-
-//     //validation 
-//     if (empty($client_name)) {
-//         print_r('please fill out all');
-//     } else {
-       
-//             foreach ($product_id as $id) {
-                
-//                 $ordername = $row['product_name'];
-//                 $orderprice = $row['product_price'];
-//                 //comment importatnt
-//                 // $order_id = $row['product_id'];
-//  $insert = "INSERT INTO orders(product_Name,price,client_name,client_phone,client_email,client_address,client_address2)
-//                         VALUES ('$ordername','$orderprice','$client_name','$client_phone','$client_email','$client_address','$client_address2')";
+//         $insert = "INSERT INTO orders(product_Name)
+//                         VALUES ('$valu')";
 //                 $upload = mysqli_query($conn, $insert);
-                
-//             }
+//         // print_r ($valu);
 
-//                 if ($upload) {
-//                     $message[] = 'order added successfully';
-//                 } else {
-//                     $message[] = 'Could not add the order';
-//                 }
+//     }
+//     // print_r($cartb);
+// }
+
+if (isset($_POST['orderdetails'])) {
+    //get data from user form   
+    $client_name = $_POST['client_name'];
+    $client_phone = $_POST['client_phone'];
+    $client_email = $_POST['client_email'];
+    $client_address = $_POST['client_address'];
+    //validation 
+    if (empty($client_name)) {
+        
+        print_r('please fill out all');
+    } else {
+       
+
+        
+            foreach ($product_id as $id) {
+            
+               
+            
+                //comment importatnt
+                // $order_id = $row['product_id'];
+ $insert = "INSERT INTO orders(product_Id,client_name,client_phone,client_email,client_address,order_status)
+                        VALUES ('$id','$client_name','$client_phone','$client_email','$client_address','inprocess')";
+                $upload = mysqli_query($conn, $insert);
+                
+            }
+
+                if ($upload) {
+                    $message[] = 'order added successfully';
+                } else {
+                    $message[] = 'Could not add the order';
+                }
             
         
-//     }
-// }
+    }
+}
 ;
 ?>
 <!doctype html>
@@ -234,8 +236,6 @@ foreach($cartb as $value)
                         aria-label="Server" />
 
 
-                    <input type="text" class="form-control mb-4" name="client_address2"
-                        placeholder="Enter Your second Adress" aria-label="Server" />
 
                     <div class="mb-3">
                         <button type="submit" name="orderdetails" id="form_butt" onclick="nonedisplay()"

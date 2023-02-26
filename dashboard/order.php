@@ -223,11 +223,11 @@ $select = mysqli_query($conn,$quiry);
                                 <td>
                                     <?php echo $row['product_price']; ?>
                                 </td>
-                                <td>
-                                    <?php echo $row['product_id'];?>
-                                </td>
-                                <td>
-                                    <?php 
+                                <!-- <td>
+                                    <?php  //echo $row['product_id'];?>
+                                </td> -->
+
+                                <?php 
                           
 
                         //   $productId=$row['product_id'];
@@ -244,7 +244,7 @@ $select = mysqli_query($conn,$quiry);
                         // }
                        
                                     ; ?>
-                                </td>
+
 
 
 

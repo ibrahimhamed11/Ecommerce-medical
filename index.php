@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="css/mekky.css" />
+    <link rel="stylesheet" href="css/mekky.css?" />
     <!-- دي لينكات google fonts بتاع الخطوط -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

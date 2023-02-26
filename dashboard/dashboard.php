@@ -81,7 +81,7 @@ if (!isset($_SESSION['id'])) {
             </div>
             <ul>
                 <li>
-                    <a class=" d-flex align-items-center" href="dashboard.php">
+                    <a class=" active d-flex align-items-center" href="dashboard.php">
                         <i class="fa-regular fa-chart-bar fa-fw"></i>
                         <span>Dashboard</span>
                     </a>

@@ -195,7 +195,7 @@ if (isset($_POST['remove'])){
                     echo $row['product_id'];
                                 }
                                */?>"><input type="button" value="Complete the order " name="orderdetails"
-                                        class="btn buy" /></a>
+                                        class="btn buy  btn-primary mx-2" /></a>
 
 
 
@@ -206,7 +206,7 @@ if (isset($_POST['remove'])){
                                 </div> -->
                                 <style>
                                 .buy {
-                                    margin: 40px;
+                                    margin: 10px;
                                 }
                                 </style>
                             </div>
@@ -324,6 +324,8 @@ if (isset($_POST['remove'])){
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
 <script src="js/main.js"></script>
+<script src="js/all.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 <!-- end footer -->
 
 </html>
