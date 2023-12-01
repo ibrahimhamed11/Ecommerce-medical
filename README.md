@@ -2,10 +2,10 @@
 
 ### Project Explanation
 
-Medical Care System and Ecommerce 
+Medical Care System and Ecommerce
+
 ### Video Demo
 
-<video width="320" height="240" controls>
-  <source src="https://www.youtube.com/watch?v=rYug0O_qOI0" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<div style="position: relative; width: 100%; padding-bottom: 56.25%;">
+  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/rYug0O_qOI0" frameborder="0" allowfullscreen></iframe>
+</div>
