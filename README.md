@@ -6,6 +6,4 @@ Medical Care System and Ecommerce
 
 ### Video Demo
 
-<div style="position: relative; width: 100%; padding-bottom: 56.25%;">
-  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/rYug0O_qOI0" frameborder="0" allowfullscreen></iframe>
-</div>
+[![Click to watch the video](https://img.youtube.com/vi/rYug0O_qOI0/0.jpg)](https://www.youtube.com/watch?v=rYug0O_qOI0)
